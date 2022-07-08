@@ -36,7 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (repo.existsById(id)) {
             repo.deleteById(id);
         } else {
-            throw new RuntimeException("Please check the Customer ID.. No Such Customer..!");
+            throw new RuntimeException("Please check the NIC No.. No Such Customer..!");
         }
     }
 

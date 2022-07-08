@@ -5,24 +5,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @ToString
-//@Entity
+@Entity
 public class RideHistory {
 
     @Id
-    private String ride;
+    @Column(name = "referenceNo", updatable = false, nullable = false)
+    private Long referenceNo;
 
     private double damageFee;
     private double extraCharge;
     private double otherCharges;
     private double balance;
     private double totalCharge;
+
+    @MapsId
+    @OneToOne
+    @JoinColumn(name = "referenceNo", referencedColumnName = "referenceNo")
+    private Ride ride;
 }

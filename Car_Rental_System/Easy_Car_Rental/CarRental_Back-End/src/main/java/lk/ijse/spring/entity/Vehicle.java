@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,5 +30,8 @@ public class Vehicle {
     private double loss_damage_amount;
     private double daily_cost;
     private double monthly_cost;
+
+    @OneToMany(mappedBy = "vehicle",cascade = CascadeType.ALL)
+    private List<Ride> rides;
 
 }

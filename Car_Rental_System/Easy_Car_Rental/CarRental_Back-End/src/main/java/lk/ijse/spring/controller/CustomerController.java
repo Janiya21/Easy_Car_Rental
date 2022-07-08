@@ -34,9 +34,9 @@ public class CustomerController {
         return new ResponseUtil(200,"Successfully Updated !!",null);
     }
 
-    @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil deleteCustomer(@RequestParam String id) {
-        customerService.deleteCustomer(id);
+    @DeleteMapping(params = {"nic"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteCustomer(@RequestParam String nic) {
+        customerService.deleteCustomer(nic);
         return new ResponseUtil(200,"Successfully Deleted !!",null);
     }
 

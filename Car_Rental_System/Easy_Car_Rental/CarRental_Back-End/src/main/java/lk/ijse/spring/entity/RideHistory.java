@@ -14,13 +14,11 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @NoArgsConstructor
 @Data
 @ToString
-@Entity
+//@Entity
 public class RideHistory {
 
     @Id
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private Ride ride;
+    private String ride;
 
     private double damageFee;
     private double extraCharge;

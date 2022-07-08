@@ -17,7 +17,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @Data
 @ToString
-@Entity
+//@Entity
 public class Ride {
 
     @Id

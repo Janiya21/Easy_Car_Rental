@@ -31,14 +31,15 @@ public class JPAConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource ds, JpaVendorAdapter va) {
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
-        bean.setJpaVendorAdapter(va);
-        bean.setDataSource(ds);
+        bean.setJpaVendorAdapter(va); // Vendor (Hibernate)
+        bean.setDataSource(ds); //Connection
         bean.setPackagesToScan(env.getRequiredProperty("entity.package.name")); // location of the entity
         return bean;
     }
 
     @Bean
     public DataSource dataSource() throws NamingException {
+        //Driver Manager Data Source
         DriverManagerDataSource dataSource= new DriverManagerDataSource();
         dataSource.setUrl(env.getRequiredProperty("my.app.url"));
         dataSource.setUsername(env.getRequiredProperty("my.app.username"));

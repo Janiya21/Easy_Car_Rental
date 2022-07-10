@@ -23,7 +23,7 @@ public class Driver {
     private String driverId;
     private String password;
     private String name;
-    private int email;
+    private String email;
     private String telNo;
 
     @OneToMany(mappedBy = "driver",cascade = CascadeType.ALL)

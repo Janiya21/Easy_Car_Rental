@@ -49,6 +49,6 @@ public class DriverController  {
 
     @GetMapping(path = "all")
     public ResponseUtil getAllIds() {
-        return new ResponseUtil(200,"Successfully Returned !!",driverService.getAllDrivers());
+        return new ResponseUtil(200,"Successfully Returned !!",driverService.getAllDriverIDs());
     }
 }

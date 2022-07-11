@@ -15,21 +15,21 @@ import java.util.List;
 @Entity
 public class Vehicle {
     @Id
-    private String regNo;
+    private String regNo; //
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "userName",referencedColumnName = "userName",nullable = false)
     private Admin admin;
 
-    private int brand;
-    private String comfortability;
-    private String fuel_type;
-    private String No_of_passengers;
-    private String color;
-    private String millage_before_Reg;
-    private double loss_damage_amount;
-    private double daily_cost;
-    private double monthly_cost;
+    private String brand; //
+    private String comfortability; //
+    private String fuel_type; //
+    private String No_of_passengers; //
+    private String color; //
+    private String millage_before_Reg; //
+    private double loss_damage_amount; //
+    private double daily_cost; //
+    private double monthly_cost; //
 
     @OneToMany(mappedBy = "vehicle",cascade = CascadeType.ALL)
     private List<Ride> rides;

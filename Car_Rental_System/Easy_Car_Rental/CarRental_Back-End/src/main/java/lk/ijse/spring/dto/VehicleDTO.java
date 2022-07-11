@@ -16,7 +16,7 @@ import java.util.List;
 public class VehicleDTO {
 
     private String regNo;
-    private int brand;
+    private String brand;
     private String comfortability;
     private String fuel_type;
     private String No_of_passengers;

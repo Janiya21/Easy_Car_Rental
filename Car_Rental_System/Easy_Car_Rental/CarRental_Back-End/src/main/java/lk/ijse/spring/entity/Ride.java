@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -39,5 +36,9 @@ public class Ride {
     @ManyToOne
     @JoinColumn(name = "driverId", referencedColumnName = "driverId",  nullable = false)
     private Driver driver;
+
+    /*@OneToOne(mappedBy = "referenceNo", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private RideHistory rideHistory;*/
 
 }

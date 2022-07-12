@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/easy_car_rental</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="easy_car_rental@localhost [2]" uuid="aa1a9706-34dd-44ee-b05a-16492ac01750">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/easy_car_rental</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

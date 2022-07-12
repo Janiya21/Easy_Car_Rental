@@ -29,15 +29,15 @@ public class Ride {
     private Double downPayment;
 
     @ManyToOne
-    @JoinColumn(name= "NIC", referencedColumnName = "NIC",insertable = false,nullable = false)
+    @JoinColumn(name= "NIC", referencedColumnName = "NIC",nullable = false)
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name= "regNo", referencedColumnName = "regNo",insertable = false, nullable = false)
+    @JoinColumn(name= "regNo", referencedColumnName = "regNo", nullable = false)
     private Vehicle vehicle;
 
     @ManyToOne
-    @JoinColumn(name = "driverId", referencedColumnName = "driverId", insertable = false, nullable = false)
+    @JoinColumn(name = "driverId", referencedColumnName = "driverId",  nullable = false)
     private Driver driver;
 
 }

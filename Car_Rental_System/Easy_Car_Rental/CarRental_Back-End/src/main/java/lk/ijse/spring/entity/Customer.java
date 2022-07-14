@@ -27,8 +27,6 @@ public class Customer {
     private String email;
     private String nic_or_License_photo;
 
-    private MultipartFile cusNic;
-
     @JsonIgnore
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     private List<Ride> rides;

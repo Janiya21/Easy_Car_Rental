@@ -29,7 +29,7 @@ public class CustomerController {
         return new ResponseUtil(200,"Successfully returned !!",customerService.getAllCustomers());
     }
 
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile) {
         try {
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();

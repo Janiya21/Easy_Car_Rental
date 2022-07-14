@@ -80,8 +80,8 @@
             method: 'get',
             dataType: 'json',
             success: function (resp) {
-                console.log("Fuckkkkkkkkkkkk")
-                let url = resp[resp.length - 1];
+
+                let url = resp.data[resp.data.length - 1];
 
                 $("#display").css({
                     "background": `url(${baseUrl + url})`,
@@ -89,8 +89,8 @@
                     "height": "300px"
                 });
 
-                for (let i in resp) {
-                    let row = `<tr><td><img src="${baseUrl + resp[i]}" width="100px"></td></tr>`;
+                for (let i in resp.data) {
+                    let row = `<tr><td><img src="${baseUrl + resp.data[i]}" width="100px"></td></tr>`;
                     $("#table").append(row);
                 }
 

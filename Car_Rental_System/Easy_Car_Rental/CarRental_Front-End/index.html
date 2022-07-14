@@ -53,7 +53,7 @@
         data.append("myFile", file, fileName);
 
         $.ajax({
-            url: baseUrl + "api/v1/upload",
+            url: baseUrl + "api/v1/customer/upload",
             method: 'post',
             async: true,
             contentType: false,
@@ -76,10 +76,11 @@
     function loadTheLastUploadedImage() {
         $("#table").empty();
         $.ajax({
-            url: baseUrl + "api/v1/download",
+            url: baseUrl + "api/v1/customer/download",
             method: 'get',
             dataType: 'json',
             success: function (resp) {
+                console.log("Fuckkkkkkkkkkkk")
                 let url = resp[resp.length - 1];
 
                 $("#display").css({

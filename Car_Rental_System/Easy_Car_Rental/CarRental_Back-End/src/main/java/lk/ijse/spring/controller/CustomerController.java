@@ -31,13 +31,15 @@ public class CustomerController {
 
     @GetMapping(path = "download",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllImagesFromDatabase() {
+        System.out.println("fuck meee");
         return new ResponseUtil(200,"Done",allImages);
     }
 
     @PostMapping(path = "upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile) {
+        System.out.println("fuck youuu");
         try {
-            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+            String projectPath = new File("C:\\Users\\JANITH\\Desktop\\Desktop All Here\\Web All\\Spring MVC cw\\Car_Rental_System\\Easy_Car_Rental\\CarRental_Front-End\\car-regs").getParentFile().getParentFile().getAbsolutePath();
             File uploadsDir = new File(projectPath + "/uploads");
             System.out.println(projectPath);
             uploadsDir.mkdir();
@@ -46,7 +48,7 @@ public class CustomerController {
             allImages.add("uploads/" + myFile.getOriginalFilename());
 
             return new ResponseUtil(200,"Successfully returned !!",null);
-        } catch (URISyntaxException | IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return new ResponseUtil(500,e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

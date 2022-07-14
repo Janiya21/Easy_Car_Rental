@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,6 +26,8 @@ public class Customer {
     private String tel;
     private String email;
     private String nic_or_License_photo;
+
+    private MultipartFile cusNic;
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)

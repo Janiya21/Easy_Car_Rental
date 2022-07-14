@@ -31,7 +31,6 @@ public class CustomerController {
 
     @GetMapping(path = "download",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllImagesFromDatabase() {
-        System.out.println("fuck meee");
         return new ResponseUtil(200,"Done",allImages);
     }
 

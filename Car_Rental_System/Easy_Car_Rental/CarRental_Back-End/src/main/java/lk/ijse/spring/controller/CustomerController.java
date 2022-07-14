@@ -29,6 +29,11 @@ public class CustomerController {
         return new ResponseUtil(200,"Successfully returned !!",customerService.getAllCustomers());
     }
 
+    @GetMapping(path = "download",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllImagesFromDatabase() {
+        return new ResponseUtil(200,"Done",allImages);
+    }
+
     @PostMapping(path = "upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile) {
         try {

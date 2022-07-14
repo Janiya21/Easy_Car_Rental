@@ -42,7 +42,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
-    let baseUrl = "http://localhost:8081/easyRents/api/v1/admin";
+    let baseUrl = "http://localhost:8081/easyRents/";
 
     loadTheLastUploadedImage();
 
@@ -76,7 +76,7 @@
     function loadTheLastUploadedImage() {
         $("#table").empty();
         $.ajax({
-            url: baseUrl + "api/v1/upload",
+            url: baseUrl + "api/v1/download",
             method: 'get',
             dataType: 'json',
             success: function (resp) {

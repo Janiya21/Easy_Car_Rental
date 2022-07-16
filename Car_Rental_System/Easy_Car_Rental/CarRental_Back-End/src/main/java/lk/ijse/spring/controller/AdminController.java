@@ -52,4 +52,6 @@ public class AdminController {
         return new ResponseUtil(200,"Successfully Returned !!",adminService.getAllAdminUserNames());
     }
 
+
+
 }

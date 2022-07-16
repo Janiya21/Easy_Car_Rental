@@ -1,13 +1,7 @@
-$("#loginBtn").click(function (){
+function AdminloginCheck(){
 
-});
-
-loginCheck();
-
-function loginCheck(){
-
-    let username = $("#txtAdminUserName").val();
-    let password = $("#txtAdminPassword").val();
+    let username = "Suresh_22" ;
+    let password = "sure209";
 
     $.ajax({
         url: baseUrl + "api/v1/admin",
@@ -15,10 +9,9 @@ function loginCheck(){
         success: function (resp) {
             let data = resp.data;
             for (let ad of data) {
-                console.log(ad.userName , ad.password);
                 if(username === ad.userName){
                     if(password === ad.password){
-
+                        console.log("yooo");
                     }else{
                         alert("Wrong Password !!");
                     }

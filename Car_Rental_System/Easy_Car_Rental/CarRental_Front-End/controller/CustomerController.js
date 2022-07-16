@@ -1,5 +1,3 @@
-let baseUrl = "http://localhost:8081/easyRents/";
-
 loadTheLastUploadedImage();
 
 $("#btnUpload").click(function () {
@@ -50,6 +48,32 @@ function loadTheLastUploadedImage() {
                 $("#table").append(row);
             }
 
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function CustomerLoginCheck(){
+
+    let username = "";
+    let password = "";
+
+    $.ajax({
+        url: baseUrl + "api/v1/customer",
+        method: "GET",
+        success: function (resp) {
+            let data = resp.data;
+            for (let ad of data) {
+                if(username === ad.NIC){
+                    if(password === ad.password){
+                        console.log("yooo");
+                    }else{
+                        alert("Wrong Password !!");
+                    }
+                }
+            }
         },
         error: function (err) {
             console.log(err);

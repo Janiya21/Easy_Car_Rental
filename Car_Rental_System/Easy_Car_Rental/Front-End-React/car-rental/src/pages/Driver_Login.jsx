@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
 
 
-class Customer_Form extends Component {
+class Driver_Form extends Component {
 
     constructor(props){
         super(props)
@@ -40,17 +40,17 @@ class Customer_Form extends Component {
 
     render() {
         return (
-
+            
             <form style = {{margin: "40px"}} class="loginForm ui form" onSubmit={this.handleSubmit}>
                 <div class="field">
                     <div class="field">
-                        <label>NIC</label>
+                        <label>Driver Id</label>
                         <input placeholder="Last Name"/>
                     </div>
                         <label>Email</label>
                         <input placeholder="Email Address"/>
                     </div>
-
+                
                     <div class="equal width fields">
                         <div class="field">
                             <label>First name</label>
@@ -66,11 +66,11 @@ class Customer_Form extends Component {
                         </div>
                     </div>
 
-                     <div class="field">
+                    <div class="field">
                         <label>password</label>
                         <input  type="text" value={this.state.password} onChange={this.handlePasswordChange} placeholder="Password"/>
                     </div>
-                     <div class="field">
+                    <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" class="hidden" readonly="" tabindex="0"/>
                             <label>I agree to the User Terms and Conditions</label>
@@ -83,4 +83,4 @@ class Customer_Form extends Component {
     }
 }
 
-export default Customer_Form;
+export default Driver_Form;

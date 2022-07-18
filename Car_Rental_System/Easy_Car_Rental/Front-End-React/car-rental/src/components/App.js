@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import './App.css';
-import Form from './Form';
+import Form from './Customer_Form';
+import Form2 from "./Driver_Form";
+import NavBar from './NavBar'
 
 class App extends Component{
   render(){
     return (
       <div className="App">
+
+          <NavBar />
+
+          <b><h1 style = {{marginTop: "40px"}}>Customer Registration</h1></b>
           <Form />
+
+          <b><h1 style = {{marginTop: "80px"}}>Driver Registration</h1></b>
+          <Form2 />
       </div>
     )
   }

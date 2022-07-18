@@ -9,11 +9,15 @@ class App extends Component{
     return (
       <div className="App">
 
-          <NavBar />
+          <div>
+            <NavBar />
+          </div>
 
+          <page>
           <b><h1 style = {{marginTop: "40px"}}>Customer Registration</h1></b>
           <Form />
-
+          </page>
+          
           <b><h1 style = {{marginTop: "80px"}}>Driver Registration</h1></b>
           <Form2 />
       </div>

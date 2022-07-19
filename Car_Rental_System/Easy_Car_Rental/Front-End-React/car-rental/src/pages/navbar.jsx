@@ -3,19 +3,23 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/driver">Driver</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-      </ul>
-    </nav>
+         <div class="ui inverted segment">
+                       
+    <div class="ui inverted secondary menu">
+        <a class="active item">
+            <Link to="/">Home</Link>
+        </a>
+        <a class="item">
+            <Link to="/customer">Customer</Link>
+        </a>
+        <a class="item">
+            <Link to="/driver">Driver</Link>
+        </a>
+        <a class="item">
+            <Link to="/contact">Contact</Link>
+        </a>
+    </div>
+</div>
   );
 }
 

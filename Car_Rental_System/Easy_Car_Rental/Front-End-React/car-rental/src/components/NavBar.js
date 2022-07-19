@@ -18,19 +18,13 @@ class NavBar extends Component {
                        
                     <div class="ui inverted secondary pointing menu">
                         <a class="item">
-                            Home
+                            <Link to="/">Home</Link>
                         </a>
                         <a class="active item">
-                            Customer
+                         <Link to="/driver">Driver</Link>
                         </a>
                         <a class="item">
-                            Driver
-                        </a>
-                        <a class="item">
-                            Admin
-                        </a>
-                        <a class="item">
-                            Order
+                        <Link to="/contact">Contact</Link>
                         </a>
                     </div>
                 </div>

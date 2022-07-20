@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
+import Luxary_V from './Luxary_Vehicles';
+import Premium_V from './Premium_Vehicles';
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class Homepage extends Component {
 
@@ -14,100 +17,199 @@ class Homepage extends Component {
     render() {
         return (
 
-            <div class="ui internally celled grid">
-                <div class="ui steps">
-                    <div class="step">
-                        <i aria-hidden="true" class="icon car"></i>
-                        <div class="content"><div class="title">Select A Car</div>
-                            <div class="description">Choose your shipping options</div>
+            <div>
+                <div class="ui internally celled grid">
+                    <div class="ui steps">
+                        <div class="active step">
+                            <i aria-hidden="true" class="calendar times icon"></i>
+                            <div class="content">
+                                <div class="title">Select a Date/Time</div>
+                                <div class="description">Enter billing information</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <i aria-hidden="true" class="icon car"></i>
+                            <div class="content"><div class="title">Select A Car</div>
+                                <div class="description">Choose your shipping options</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <i aria-hidden="true" class="drivers license icon"></i>
+                            <div class="content">
+                                <div class="title">Pick-up Random Driver</div>
+                                <div class="description">Enter billing information</div>
+                            </div>
+                        </div>
+                        <div class="disabled step">
+                            <i aria-hidden="true" class="info icon"></i>
+                            <div class="content">
+                                <div class="title">Confirm Order</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="active step">
-                        <i aria-hidden="true" class="calendar times icon"></i>
-                        <div class="content">
-                            <div class="title">Select a Date/Time</div>
-                            <div class="description">Enter billing information</div>
+
+                    <div class="row" style={{ height: "68vh" }}>
+                        <div class="eight wide column">
+
+                            <img src={require('../images/add1.png')} />
+                            {/* <img src="https://fleetroot.com/blog/wp-content/uploads/2020/08/20-features-in-car-rental-software-in-2020.jpg" style={{ margin: "20px 0 20px 30px" }} class="ui large rounded image" /> */}
+
+                            <div className="row" style={{ margin: "60px 0 0 70px" }}>
+
+                                <div class="ui statistics">
+                                    <div class="ui statistic">
+                                        <div class="value">22</div>
+                                        <div class="label">Saves</div>
+                                    </div>
+                                    <div class="ui statistic">
+                                        <div class="text value">Three<br />Thousand
+                                        </div>
+                                        <div class="label">Signups</div>
+                                    </div>
+                                    <div class="ui statistic">
+                                        <div class="value">
+                                            <i aria-hidden="true" class="plane icon"></i>5
+                                        </div>
+                                        <div class="label">Flights</div>
+                                    </div>
+                                    <div class="ui statistic">
+                                        <div class="value">
+                                            <img src="https://react.semantic-ui.com/images/avatar/small/joe.jpg" class="ui circular inline image" />42
+                                        </div>
+                                        <div class="label">Team Members</div></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="eight wide column">
+                            <div className="row" >
+                                <form class="ui form">
+                                    <div class="field">
+                                        <label>Pick-Up</label>
+                                        <input placeholder="pickup date" />
+                                    </div>
+                                    <div class="field">
+                                        <label>Return-Off</label>
+                                        <input placeholder="return date" />
+                                    </div>
+                                    <div class="field">
+                                        <label>PickUp Location</label>
+                                        <input placeholder="your location" />
+                                    </div>
+                                    <div class="equal width fields">
+                                        <div class="field"><label>Pickup Time</label>
+                                            <div class="ui fluid input">
+                                                <input type="text" placeholder="pickup time" />
+                                            </div>
+                                        </div>
+                                        <div class="field"><label>Return Time</label>
+                                            <div class="ui fluid input">
+                                                <input type="text" placeholder="return time" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui checkbox">
+                                            <input type="checkbox" class="hidden" readonly="" tabindex="0" />
+                                            <label>Search Available Vehicles</label>
+                                        </div>
+                                    </div>
+                                    <button class="ui button" type="submit">Search</button>
+                                </form>
+                            </div>
+                            <div class="ui container" style={{ padding: "30px 0 0 0" }}>
+                                Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
+                                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+                                Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut
+                                metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
+                                Curabitur ullamcorper ultricies nisi.Aenean imperdiet. Etiam ultricies nisi vel augue.
+                                Curabitur ullamcorper ultricies nisi.
+                            </div>
                         </div>
                     </div>
-                    <div class="active step">
-                        <i aria-hidden="true" class="drivers license icon"></i>
-                        <div class="content">
-                            <div class="title">Pick-up Random Driver</div>
-                            <div class="description">Enter billing information</div>
+
+                </div>
+
+                <div class="ui raised segment">
+                    <h1 class="ui container center aligned">Most Available Cars Matching For You </h1>
+                </div>
+
+                <div class="ui grid" style={{ margin: "20px" }}>
+
+                    <div style={{ margin: "20px 50px 30px 90px" }} class="ui doubling three column grid">
+                        <div class="column">
+                    
+                            <div class="ui card">
+                                <div class="image">
+                                    <img style={{height:"23vh",width:"18.6vw"}} src="https://neethutravels.com/wp-content/uploads/2018/02/mercedes-benz-s-class.jpg" />
+                                </div>
+                                <div class="content">
+                                    <div class="header">Luxary Vehicles</div>
+                                    <div class="meta">
+                                        <span class="date">Starting from : rs 8000 - 20000</span>
+                                    </div>
+                                    <div class="description">Max Comfortable - 5 passengers</div>
+                                </div>
+                                <div class="extra content">
+                                    <a><i aria-hidden="true" class="user icon"></i>920 Buyers</a>
+                                </div>
+                                <button class="ui button">
+                                    <Link to="/luxary_vehicle">
+                                        <div class="detail"><h3>Availability : 13</h3></div>
+                                    </Link>
+                                </button>
+                            </div>
+
                         </div>
-                    </div>
-                    <div class="disabled step">
-                        <i aria-hidden="true" class="info icon"></i>
-                        <div class="content">
-                            <div class="title">Confirm Order</div>
+                        <div class="column">
+
+                            <div class="ui card">
+                                <div class="image">
+                                    <img src="https://rental.timescar.jp/price/items/C3212.jpg" />
+                                </div>
+                                <div class="content">
+                                    <div class="header">Luxary Vehicles</div>
+                                    <div class="meta">
+                                        <span class="date">Starting from : rs 6000 - 17000</span>
+                                    </div>
+                                    <div class="description">Medium Comfortable - 5 passengers</div>
+                                </div>
+                                <div class="extra content">
+                                    <a><i aria-hidden="true" class="user icon"></i>2.1K Buyers</a>
+                                </div>
+                                <button class="ui button">
+                                    <Link to="/premium_vehicle">
+                                        <div class="detail"><h3>Availability : 23</h3></div>
+                                    </Link>
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="column">
+
+                            <div class="ui card">
+                                <div class="image">
+                                    <img style={{height:"23vh",width:"18.6vw"}} src="http://3.bp.blogspot.com/-QK3rjTIu0zA/UywFlaaeZtI/AAAAAAAAA_4/IaxajFYLAMQ/s1600/Mazda-Carol-10.jpg" />
+                                </div>
+                                <div class="content">
+                                    <div class="header">General</div>
+                                    <div class="meta">
+                                        <span class="date">Starting from : rs 3000 - 11000</span>
+                                    </div>
+                                    <div class="description">Medium Comfortable - 5 passengers</div>
+                                </div>
+                                <div class="extra content">
+                                    <a><i aria-hidden="true" class="user icon"></i>5K Buyers</a>
+                                </div>
+                                <button class="ui button">
+                                    <div class="detail"><h3>Availability : 32</h3></div>
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="six wide column">
-
-                        <img src="https://fleetroot.com/blog/wp-content/uploads/2020/08/20-features-in-car-rental-software-in-2020.jpg" style={{ margin: "60px" }} class="ui large rounded image" />
-                        
-                        <div className="row" style={{ marginLeft: "20px" }}>
-
-                            <div class="ui statistics">
-                                <div class="ui statistic">
-                                    <div class="value">22</div>
-                                    <div class="label">Saves</div>
-                                </div>
-                                <div class="ui statistic">
-                                    <div class="text value">Three<br />Thousand
-                                </div>
-                                <div class="label">Signups</div>
-                            </div>
-                            <div class="ui statistic">
-                                <div class="value">
-                                    <i aria-hidden="true" class="plane icon"></i>5
-                                </div>
-                                <div class="label">Flights</div>
-                            </div>
-                            <div class="ui statistic">
-                                <div class="value">
-                                    <img src="https://react.semantic-ui.com/images/avatar/small/joe.jpg" class="ui circular inline image" />42
-                                </div>
-                                <div class="label">Team Members</div></div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="ten wide column">
-                        <div className="row">
-                            <div>
-                                <h2 class="ui icon center aligned header">
-                                    <i aria-hidden="true" class="users circular icon"></i>
-                                    <div class="content">About Us</div>
-                                </h2>
-                                <img src="https://react.semantic-ui.com/images/wireframe/centered-paragraph.png" class="ui large centered image"/>
-                            </div>
-                        </div>
-                        <div class="ui container" style={{ padding: "30px" }}>
-                            <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-                                ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-                                consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                                In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
-                                link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-                                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
-                                Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut
-                                metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
-                                Curabitur ullamcorper ultricies nisi.
-                            </h4>
-                            <br></br>
-
-                            Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-                                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
-                                Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut
-                                metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
-                                Curabitur ullamcorper ultricies nisi.
-                        </div>
-                    </div>
-                </div>
             </div>
         )
     }

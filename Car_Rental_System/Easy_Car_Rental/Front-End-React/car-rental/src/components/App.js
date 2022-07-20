@@ -14,8 +14,8 @@ class App extends Component{
           </div>
 
           <page>
-          <b><h1 style = {{marginTop: "40px"}}>Customer Registration</h1></b>
-          <Form />
+            <b><h1 style = {{marginTop: "40px"}}>Customer Registration</h1></b>
+            <Form />
           </page>
           
           <b><h1 style = {{marginTop: "80px"}}>Driver Registration</h1></b>

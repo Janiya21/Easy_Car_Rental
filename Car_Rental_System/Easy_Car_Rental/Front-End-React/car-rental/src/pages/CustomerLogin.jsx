@@ -22,7 +22,7 @@ class CustomerLogin extends Component {
                         <div className="row">
                             <h2 style={{ margin: "50px 0 50px 260px" }} class="ui header"><img src="https://react.semantic-ui.com/images/avatar/large/patrick.png" class="ui circular image" />Customer Log-In</h2>
                         </div>
-                        <form class="ui form">
+                        <form style={{width:"30vw", marginLeft:"10vw"}} class="ui form">
                             <div class="field">
                                 <label>NIC</label>
                                 <div class="ui left icon input">
@@ -37,30 +37,46 @@ class CustomerLogin extends Component {
                                     <i aria-hidden="true" class="lock icon"></i>
                                 </div>
                             </div>
-                            <button style={{ margin: "40px 0 30px 20vw" }} class="ui primary button">Login</button>
+                            <button style={{ margin: "40px 0 30px 10vw" }} class="ui primary button">Login</button>
                         </form>
                     </div>
-                    <div class="middle aligned column">
-                        <form class="ui form">
+                    <div style={{marginTop:"40px"}} class="middle aligned column">
+                        <form style={{width:"40vw", marginLeft:"5vw"}} class="ui form">
                             <div class="field">
-                                <label>First Name</label>
-                                <input placeholder="First Name"/>
+                                <label>NIC</label>
+                                <input placeholder="nic no"/>
                             </div>
                             <div class="field">
-                                <label>Last Name</label>
-                                <input placeholder="Last Name"/>
+                                <label>Full Name</label>
+                                <input placeholder="full Name"/>
+                            </div>
+                            <div class="field">
+                                <label>Email</label>
+                                <input placeholder="email"/>
+                            </div>
+                            <div class="field">
+                                <label>TelNo</label>
+                                <input placeholder="telno"/>
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="password" placeholder="enter password"/>
+                            </div>
+                            <div class="field">
+                                <label>Confirm Password</label>
+                                <input type="password" placeholder="re-enter password"/>
                             </div>
                             <div class="field">
                                 <div class="ui checkbox">
                                     <input type="checkbox" class="hidden" readonly="" tabindex="0"/>
-                                    <label>I agree to the Terms and Conditions</label>
+                                    <label>Accept the responsibility about Information You provided</label>
                                 </div>
                             </div>
-                            <button class="ui button" type="submit">Submit</button>
+                            <button class="ui primary button" style={{ margin: "40px 0 30px 20vw" }} type="submit">Sign_In</button>
                         </form>
                     </div>
                 </div>
-                <div class="ui vertical divider">Or</div>
+                <div class="ui vertical divider">OR</div>
             </div>
         );
     }

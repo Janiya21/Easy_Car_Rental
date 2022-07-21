@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react';
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 
-class DriverLogin extends Component {
+class Admin_Login extends Component {
 
     constructor(props) {
         super(props)
-
-        this.state = {
-            username: '',
-            password: '',
-        }
     }
 
     render() {
@@ -20,7 +15,7 @@ class DriverLogin extends Component {
                 <div class="column">
                     <div className="row">
                         <h2 style={{ margin: "50px 0 50px 260px" }} class="ui header">
-                            <img src="https://img.freepik.com/premium-vector/man-with-steering-wheel-driver-avatar-chauffeur-character_176411-3059.jpg?w=2000" class="ui circular image" />Driver Log-In</h2>
+                            <img src="https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Image.png" class="ui circular image" />Admin Log-In</h2>
                     </div>
                     <form style={{width:"30vw", marginLeft:"10vw"}} class="ui form">
                         <div class="field">
@@ -37,7 +32,11 @@ class DriverLogin extends Component {
                                 <i aria-hidden="true" class="lock icon"></i>
                             </div>
                         </div>
-                        <button style={{ margin: "40px 0 30px 10vw" }} class="ui primary button">Login</button>
+                        <button style={{ margin: "40px 0 30px 10vw" }} class="ui primary button">
+                            <Link to="/admin_cusView">
+                                <div class="detail"><h4 style={{color:"white"}}>Log_In</h4></div>
+                            </Link>
+                        </button>
                     </form>
                 </div>
                 <div style={{marginTop:"40px"}} class="middle aligned column">
@@ -79,7 +78,11 @@ class DriverLogin extends Component {
                                 <label>Accept the responsibility about Information You provided</label>
                             </div>
                         </div>
-                        <button class="ui primary button" style={{ margin: "40px 0 0 15vw" }} type="submit">Sign_In</button>
+                        <button style={{ margin: "40px 0 30px 10vw" }} class="ui primary button">
+                            <Link to="/admin_cusView">
+                                <div class="detail"><h4 style={{color:"white"}}>Sign_In</h4></div>
+                            </Link>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -89,4 +92,4 @@ class DriverLogin extends Component {
     }
 }
 
-export default DriverLogin;
+export default Admin_Login;

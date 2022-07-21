@@ -16,7 +16,7 @@ function Navbar() {
                     <Link to="/driver">Driver</Link>
                 </a>
                 <a class="item">
-                    <Link to="/contact">Contact</Link>
+                    <Link to="/admin">Admin</Link>
                 </a>
             </div>
         </div>

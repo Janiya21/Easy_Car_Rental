@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Table, Grid, Menu, Icon, Card, Image, Label, Progress, Segment, Input  } from 'semantic-ui-react';
+import { Button, Table, Grid, Menu, Icon, Form, Checkbox, Label, Progress, Segment, Input  } from 'semantic-ui-react';
 
 class Customer_Ad extends Component {
 
@@ -12,7 +12,26 @@ class Customer_Ad extends Component {
             <Grid celled='internally'>
                 <Grid.Row>
                     <Grid.Column width={7}>
-                        <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                    <Form>
+                        <Form.Field>
+                        <label>NIC No</label>
+                        <input placeholder='nic number' />
+                        </Form.Field>
+                        <Form.Group widths='equal'>
+                            <Form.Input fluid label='First name' placeholder='email' />
+                            <Form.Input fluid label='Last name' placeholder='name' />
+                        </Form.Group>
+                        <Form.Field>
+                        <Form.Field>
+                        <label>Tel No</label>
+                        <input placeholder='telephone' />
+                        </Form.Field>
+                        </Form.Field>
+                        <Form.Group widths='equal'>
+                            <Button type='submit'>Delete</Button>
+                            <Button type='submit'>Update</Button>
+                        </Form.Group>
+                    </Form>
                     </Grid.Column>
                     <Grid.Column width={7}>
                     <Table celled style={{marginLeft:"0px", width:"50vw"}}>

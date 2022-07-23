@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {  Grid, Table, Rating, Card, Image, Label, Header, Segment  } from 'semantic-ui-react';
-import { Link } from "react-router-dom";
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import {  Grid, Table, Rating, Card, Image, Input, Header, Segment  } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import {TextField} from '@mui/material';
 
 class Admin_CarView extends Component {
 
@@ -13,19 +14,22 @@ class Admin_CarView extends Component {
         this.state = {
         }
     }
-    
+
 
     render() {
+        // const [value, setValue] = React.useState(null);
         return (
             <div>
-                <div class="ui menu">
+                <div style={{marginTop:"-20px"}} class="ui menu">
                     <a class="item">All Cars</a>
-                    <a class="item">Reviews</a>
+                    <a class="item">
+                        <Link to="add_newCar">Add New Vehicle</Link>
+                    </a>
                     <a class="item">Upcoming Events</a>
                 </div>
                 <Segment raised><b>All Available Cars</b></Segment>
 
-                <div className='date'>
+                    {/* <div className='date'>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
                             label="Pickup Date"
@@ -36,62 +40,114 @@ class Admin_CarView extends Component {
                             renderInput={(params) => <TextField {...params} />}
                         />
                         </LocalizationProvider>        
-                        </div>
+                    </div> */}
+
+                    <Input style={{padding:"5px 0 20px 20px"}} icon='search' placeholder='Search Date Here' />
 
                 <Grid>
-                    <Grid.Column width={10}>
+                    <Grid.Column width={15}>
                         
-                    <Table celled padded>
+                    <Table style={{marginLeft:"30px", overflow:"scroll"}} celled padded>
                         <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell singleLine>Evidence Rating</Table.HeaderCell>
-                            <Table.HeaderCell>Effect</Table.HeaderCell>
-                            <Table.HeaderCell>Efficacy</Table.HeaderCell>
-                            <Table.HeaderCell>Consensus</Table.HeaderCell>
-                            <Table.HeaderCell>Comments</Table.HeaderCell>
+                            <Table.HeaderCell singleLine>Model</Table.HeaderCell>
+                            <Table.HeaderCell>Reg No</Table.HeaderCell>
+                            <Table.HeaderCell>Brand</Table.HeaderCell>
+                            <Table.HeaderCell>Fuel Type</Table.HeaderCell>
+                            <Table.HeaderCell>Comfortability</Table.HeaderCell>
+                            <Table.HeaderCell>Millage_Reg</Table.HeaderCell>
+                            <Table.HeaderCell>Loss Damage</Table.HeaderCell>
+                            <Table.HeaderCell>Daily Cost</Table.HeaderCell>
+                            <Table.HeaderCell>Monthly Cost</Table.HeaderCell>
                         </Table.Row>
                         </Table.Header>
 
                         <Table.Body>
-                        <Table.Row>
-                            <Table.Cell>
-                            <Header as='h2' textAlign='center'>
-                                A
-                            </Header>
-                            </Table.Cell>
-                            <Table.Cell singleLine>Power Output</Table.Cell>
-                            <Table.Cell>
-                            <Rating icon='star' defaultRating={3} maxRating={3} />
-                            </Table.Cell>
-                            <Table.Cell textAlign='right'>
-                            80% <br />
-                            <a href='#'>18 studies</a>
-                            </Table.Cell>
-                            <Table.Cell>
-                            Creatine supplementation is the reference compound for increasing
-                            muscular creatine levels; there is variability in this increase,
-                            however, with some nonresponders.
-                            </Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                            <Table.Cell>
-                            <Header as='h2' textAlign='center'>
-                                A
-                            </Header>
-                            </Table.Cell>
-                            <Table.Cell singleLine>Weight</Table.Cell>
-                            <Table.Cell>
-                            <Rating icon='star' defaultRating={3} maxRating={3} />
-                            </Table.Cell>
-                            <Table.Cell textAlign='right'>
-                            100% <br />
-                            <a href='#'>65 studies</a>
-                            </Table.Cell>
-                            <Table.Cell>
-                            Creatine is the reference compound for power improvement, with numbers
-                            from one meta-analysis to assess potency
-                            </Table.Cell>
-                        </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    {/* <Header as='h2' textAlign='center'></Header> */}
+                                    <div class="image">
+                                            <img style={{height:"15vh",width:"10vw"}} src="https://www.csojapan.com/stock_images/66103/66103d.jpg" class="ui image" />
+                                    </div>
+                                </Table.Cell>
+                                <Table.Cell singleLine>CBC-2189</Table.Cell>
+                                <Table.Cell singleLine>Toyota</Table.Cell>
+                                <Table.Cell singleLine>Petrol</Table.Cell>
+                                <Table.Cell singleLine>Premium</Table.Cell>
+                                <Table.Cell singleLine>12000</Table.Cell>
+                                <Table.Cell singleLine>20000.00</Table.Cell>
+                                <Table.Cell singleLine>8000.00</Table.Cell>
+                                <Table.Cell singleLine>13800.00</Table.Cell>
+
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    {/* <Header as='h2' textAlign='center'></Header> */}
+                                    <div class="image">
+                                            <img style={{height:"15vh",width:"10vw"}} src="https://www.csojapan.com/stock_images/66103/66103d.jpg" class="ui image" />
+                                    </div>
+                                </Table.Cell>
+                                <Table.Cell singleLine>CBC-2189</Table.Cell>
+                                <Table.Cell singleLine>Toyota</Table.Cell>
+                                <Table.Cell singleLine>Petrol</Table.Cell>
+                                <Table.Cell singleLine>Premium</Table.Cell>
+                                <Table.Cell singleLine>12000</Table.Cell>
+                                <Table.Cell singleLine>20000.00</Table.Cell>
+                                <Table.Cell singleLine>8000.00</Table.Cell>
+                                <Table.Cell singleLine>13800.00</Table.Cell>
+                            
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    {/* <Header as='h2' textAlign='center'></Header> */}
+                                    <div class="image">
+                                            <img style={{height:"15vh",width:"10vw"}} src="https://www.csojapan.com/stock_images/66103/66103d.jpg" class="ui image" />
+                                    </div>
+                                </Table.Cell>
+                                <Table.Cell singleLine>CBC-2189</Table.Cell>
+                                <Table.Cell singleLine>Toyota</Table.Cell>
+                                <Table.Cell singleLine>Petrol</Table.Cell>
+                                <Table.Cell singleLine>Premium</Table.Cell>
+                                <Table.Cell singleLine>12000</Table.Cell>
+                                <Table.Cell singleLine>20000.00</Table.Cell>
+                                <Table.Cell singleLine>8000.00</Table.Cell>
+                                <Table.Cell singleLine>13800.00</Table.Cell>
+                            
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    {/* <Header as='h2' textAlign='center'></Header> */}
+                                    <div class="image">
+                                            <img style={{height:"15vh",width:"10vw"}} src="https://www.csojapan.com/stock_images/66103/66103d.jpg" class="ui image" />
+                                    </div>
+                                </Table.Cell>
+                                <Table.Cell singleLine>CBC-2189</Table.Cell>
+                                <Table.Cell singleLine>Toyota</Table.Cell>
+                                <Table.Cell singleLine>Petrol</Table.Cell>
+                                <Table.Cell singleLine>Premium</Table.Cell>
+                                <Table.Cell singleLine>12000</Table.Cell>
+                                <Table.Cell singleLine>20000.00</Table.Cell>
+                                <Table.Cell singleLine>8000.00</Table.Cell>
+                                <Table.Cell singleLine>13800.00</Table.Cell>
+                            
+                            </Table.Row>
+                             <Table.Row>
+                                <Table.Cell>
+                                    {/* <Header as='h2' textAlign='center'></Header> */}
+                                    <div class="image">
+                                            <img style={{height:"15vh",width:"10vw"}} src="https://www.csojapan.com/stock_images/66103/66103d.jpg" class="ui image" />
+                                    </div>
+                                </Table.Cell>
+                                <Table.Cell singleLine>CBC-2189</Table.Cell>
+                                <Table.Cell singleLine>Toyota</Table.Cell>
+                                <Table.Cell singleLine>Petrol</Table.Cell>
+                                <Table.Cell singleLine>Premium</Table.Cell>
+                                <Table.Cell singleLine>12000</Table.Cell>
+                                <Table.Cell singleLine>20000.00</Table.Cell>
+                                <Table.Cell singleLine>8000.00</Table.Cell>
+                                <Table.Cell singleLine>13800.00</Table.Cell>
+                            
+                            </Table.Row>
                         </Table.Body>
                     </Table>
 

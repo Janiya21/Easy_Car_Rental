@@ -25,6 +25,7 @@ import Admin_CusView from './pages/Admin/Admin_AllView';
 import Cus_Addmin from './pages/Admin/Customer_Ad';
 import Driver_Admin from './pages/Admin/Driver_Ad.jsx';
 import Car_Admin from './pages/Admin/Car_Ad';
+import NewCar_Admin from './pages/Admin/Add_NewCar.jsx';
 
 export default function App() {
   return (
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="cus_Admin" element={<Cus_Addmin />} />
           <Route path="driver_Admin" element={<Driver_Admin />} />
           <Route path="car_Admin" element={<Car_Admin />} />
+          <Route path="add_newCar" element={<NewCar_Admin />} />
         </Route>
 
       </Routes>

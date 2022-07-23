@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
 import Luxary_V from './Luxary_Vehicles';
 import Premium_V from './Premium_Vehicles';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Dropdown } from 'semantic-ui-react';
+import {  Link } from "react-router-dom";
 
 class Homepage extends Component {
 
@@ -15,8 +16,13 @@ class Homepage extends Component {
     }
 
     render() {
+        const options = [
+            { key: 1, text: 'Luxary', value: 1 },
+            { key: 2, text: 'Premium', value: 2 },
+            { key: 3, text: 'General', value: 3 },
+          ]
         return (
-
+                
             <div>
                 <div class="ui internally celled grid">
                     <div class="ui steps">
@@ -103,18 +109,14 @@ class Homepage extends Component {
                                             </div>
                                         </div>
                                         <div class="field"><label>Return Time</label>
-                                            <div class="ui fluid input">
-                                                <input type="text" placeholder="return time" />
-                                            </div>
+                                            <Dropdown clearable options={options} selection />
                                         </div>
                                     </div>
-                                    <div class="field">
-                                        <div class="ui checkbox">
-                                            <input type="checkbox" class="hidden" readonly="" tabindex="0" />
-                                            <label>Search Available Vehicles</label>
-                                        </div>
-                                    </div>
-                                    <button class="ui button" type="submit">Search</button>
+                                    <button class="ui button" type="submit">
+                                        <Link to="/customer">
+                                            Search Vehicle
+                                        </Link>
+                                    </button>
                                 </form>
                             </div>
                             <div class="ui container" style={{ padding: "30px 0 0 0" }}>
@@ -130,7 +132,7 @@ class Homepage extends Component {
 
                 </div>
 
-                <div class="ui raised segment">
+                {/* <div class="ui raised segment">
                     <h1 class="ui container center aligned">Most Available Cars Matching For You </h1>
                 </div>
 
@@ -208,7 +210,7 @@ class Homepage extends Component {
 
                         </div>
                     </div>
-                </div>
+                </div> */}
 
             </div>
         )

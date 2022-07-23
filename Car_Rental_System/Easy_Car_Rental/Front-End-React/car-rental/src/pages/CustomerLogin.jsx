@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
-
+import {  Link } from "react-router-dom";
 
 class CustomerLogin extends Component {
 
@@ -37,7 +37,11 @@ class CustomerLogin extends Component {
                                     <i aria-hidden="true" class="lock icon"></i>
                                 </div>
                             </div>
-                            <button style={{ margin: "40px 0 30px 10vw" }} class="ui primary button">Login</button>
+                            <button style={{ margin: "40px 0 30px 10vw" }} class="ui primary inverted button">
+                                <Link to="/luxary_vehicle">
+                                    Log In
+                                </Link>
+                            </button>
                         </form>
                     </div>
                     <div style={{marginTop:"40px"}} class="middle aligned column">

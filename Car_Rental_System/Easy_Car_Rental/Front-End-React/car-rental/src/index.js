@@ -21,8 +21,10 @@ import Driver_Login from './pages/DriverLogin.jsx';
 import Luxary_V from './pages/Luxary_Vehicles';
 import Premium_V from './pages/Premium_Vehicles';
 import Admin_Login from './pages/Admin_Login.jsx';
-import Admin_CusView from './pages/Admin/Admin_CustomerView';
+import Admin_CusView from './pages/Admin/Admin_AllView';
 import Cus_Addmin from './pages/Admin/Customer_Ad';
+import Driver_Admin from './pages/Admin/Driver_Ad.jsx';
+import Car_Admin from './pages/Admin/Car_Ad';
 
 export default function App() {
   return (
@@ -41,6 +43,8 @@ export default function App() {
         <Route element={<Layout2 />}>
           <Route path="admin_cusView" element={<Admin_CusView />} />
           <Route path="cus_Admin" element={<Cus_Addmin />} />
+          <Route path="driver_Admin" element={<Driver_Admin />} />
+          <Route path="car_Admin" element={<Car_Admin />} />
         </Route>
 
       </Routes>

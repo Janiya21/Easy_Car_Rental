@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Table, Grid, Popup, Icon, Header, Image, Card, Statistic, Segment, Input  } from 'semantic-ui-react';
 
-class Customer_Ad extends Component {
+class Driver_Ad extends Component {
 
     constructor(props) {
         super(props)
@@ -33,7 +33,7 @@ class Customer_Ad extends Component {
                         </Statistic.Group>
                     </div>
                     <Header as='h3' block>
-                        Customer Requests
+                        Driver Requests
                     </Header>
 
                     <Table basic='very' celled collapsing style={{margin:"20px 0 0 50px"}}>
@@ -347,27 +347,6 @@ class Customer_Ad extends Component {
                         </Table.Body>
                     </Table>
 
-                    {/* <Form>
-                        <Form.Field>
-                        <label>NIC No</label>
-                        <input placeholder='nic number' />
-                        </Form.Field>
-                        <Form.Group widths='equal'>
-                            <Form.Input fluid label='name' placeholder='name' />
-                            <Form.Input fluid label='email' placeholder='email' />
-                        </Form.Group>
-                        <Form.Field>
-                        <Form.Field>
-                        <label>Tel No</label>
-                        <input placeholder='telephone' />
-                        </Form.Field>
-                        </Form.Field>
-                        <Form.Group widths='equal'>
-                            <Button type='submit'>Delete</Button>
-                            <Button type='submit'>Update</Button>
-                        </Form.Group>
-                    </Form> */}
-
                     </Grid.Column>
                     </Grid.Row>
 
@@ -379,4 +358,4 @@ class Customer_Ad extends Component {
     }
 }
 
-export default Customer_Ad;
+export default Driver_Ad;

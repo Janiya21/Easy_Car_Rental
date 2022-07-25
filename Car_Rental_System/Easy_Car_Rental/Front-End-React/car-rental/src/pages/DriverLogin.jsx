@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
-
+import axios from 'axios';
 
 class DriverLogin extends Component {
 
@@ -8,12 +8,56 @@ class DriverLogin extends Component {
         super(props)
 
         this.state = {
-            username: '',
-            password: '',
+            driverId: '',
+            name: '',
+            email:'',
+            telNo:'',
+            password:''
         }
     }
 
+    changeHandler = (e) => {
+        this.setState({ [e.target.name] : e.target.value});
+    }
+
+    submitHandler = async (e) => {
+        e.preventDefault();
+        console.log(this.state);
+
+        let res = await this.postDriver(this.state);
+        console.log(res);
+
+        if (res.status === 201) {
+            this.setState({
+                alert: true,
+                message: res.data.message,
+                severity: 'success'
+            });
+        } else {
+            this.setState({
+                alert: true,
+                message: res.response.data.message,
+                severity: 'error'
+            });
+        }
+    }
+
+    postDriver = async (data) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('http://localhost:8081/easyRents/api/v1/driver', data)
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        });
+
+        return await promise;
+    }
+ 
     render() {
+        const {driverId,name,email,telNo,password} = this.state;
         return (
             <div class="ui">
             <div class="ui two column grid">
@@ -27,51 +71,40 @@ class DriverLogin extends Component {
                             <label>Driver_ID</label>
                             <div class="ui left icon input">
                                 <input type="text" placeholder="driver id" />
-                                <i aria-hidden="true" class="user icon"></i>
+                                <i aria-hidden="true" class="user icon"/>
                             </div>
                         </div>
                         <div class="field">
                             <label>Password</label>
                             <div class="ui left icon input">
                                 <input type="password" />
-                                <i aria-hidden="true" class="lock icon"></i>
+                                <i aria-hidden="true" class="lock icon"/>
                             </div>
                         </div>
                         <button style={{ margin: "40px 0 30px 10vw" }} class="ui primary button">Login</button>
                     </form>
                 </div>
                 <div style={{marginTop:"40px"}} class="middle aligned column">
-                    <form style={{width:"40vw", marginLeft:"5vw"}} class="ui form">
-                        {/* <div class="equal width fields">
-                            <div class="field">
-                                <label for="form-subcomponent-shorthand-input-first-name">First name</label>
-                                <div class="ui fluid input">
-                                    <input type="text" placeholder="First name" id="form-subcomponent-shorthand-input-first-name"/>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <button style={{ margin: "22px 0 0 5vw" }} class="ui primary button">Generate ID</button>
-                            </div>
-                        </div> */}
+                    <form style={{width:"40vw", marginLeft:"5vw"}} class="ui form" onSubmit={this.submitHandler}>
+                        <div class="field">
+                            <label>Driver ID</label>
+                            <input name="driverId" placeholder="driverId" value={driverId} onChange={this.changeHandler}/>
+                        </div>
                         <div class="field">
                             <label>Full Name</label>
-                            <input placeholder="Last Name"/>
+                            <input name="name" placeholder="name"  value={name}  onChange={this.changeHandler}/>
                         </div>
                         <div class="field">
                             <label>Email</label>
-                            <input placeholder="Last Name"/>
+                            <input name="email" placeholder="email"  value={email}  onChange={this.changeHandler}/>
                         </div>
                         <div class="field">
                             <label>TelNo</label>
-                            <input placeholder="Last Name"/>
+                            <input name="telNo" placeholder="telephone"  value={telNo}  onChange={this.changeHandler}/>
                         </div>
                         <div class="field">
                             <label>Password</label>
-                            <input type="password" placeholder="Last Name"/>
-                        </div>
-                        <div class="field">
-                            <label>Confirm Password</label>
-                            <input type="password" placeholder="Last Name"/>
+                            <input name="password" type="password" placeholder="enter a password" value={password}  onChange={this.changeHandler}/>
                         </div>
                         <div style={{marginTop:"30px"}} class="field">
                             <div class="ui checkbox">

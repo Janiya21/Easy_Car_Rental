@@ -13,9 +13,9 @@ function Navbar() {
                 <Menu inverted pointing vertical>
                     <Dropdown item text='Registrations'>
                         <Dropdown.Menu >
-                            <Dropdown.Item >
+                            <Dropdown.Item style={{height:"7vh"}}>
                                 <a class="item">
-                                    <Link style={{color:"black"}} to="/customer"><h5>Custom</h5></Link>
+                                    <Link style={{color:"black"}} to="/customer"><h5>Customer</h5></Link>
                                 </a>
                             </Dropdown.Item>
                             <Dropdown.Item>

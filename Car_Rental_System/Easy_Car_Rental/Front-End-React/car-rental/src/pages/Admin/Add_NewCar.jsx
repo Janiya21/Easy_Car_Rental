@@ -1,11 +1,68 @@
 import React, { Component } from 'react';
 import { Button, Popup, Grid, Form, Icon, Card, Image, Label, Header, Segment, Input  } from 'semantic-ui-react';
 import {Link } from "react-router-dom";
+import axios from 'axios';
 
 class New_Car extends Component {
+    constructor(props){
+        super(props)
+
+        this.state = {
+            regNo: '',
+            brand: '',
+            passengers:'',
+            color:'',
+            comfortability:'',
+            fuelType:'',
+            lossDamage:'',
+            millege:'',
+            dailyCost:'',
+            monthlyCost:''
+        }
+    }
+
+    changeHandler = (e) => {
+        this.setState({ [e.target.name] : e.target.value});
+    }
+
+    submitHandler = async (e) => {
+        e.preventDefault();
+        console.log(this.state);
+
+        let res = await this.postDriver(this.state);
+        console.log(res);
+
+        if (res.status === 201) {
+            this.setState({
+                alert: true,
+                message: res.data.message,
+                severity: 'success'
+            });
+        } else {
+            this.setState({
+                alert: true,
+                message: res.response.data.message,
+                severity: 'error'
+            });
+        }
+    }
+
+    postDriver = async (data) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('http://localhost:8081/easyRents/api/v1/vehicle', data)
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        });
+
+        return await promise;
+    }
 
     render() {
-    
+        const {regNo,brand,passengers,color,comfortability,fuelType,lossDamage,millege,dailyCost,monthlyCost} = this.state;
         return (
             <div>
                 <div style={{marginTop:"-20px"}} class="ui menu">
@@ -33,10 +90,10 @@ class New_Car extends Component {
                         <form style={{width:"30vw", marginLeft:"5vw"}} class="ui form">
                             <Form.Group widths='equal'>
                                 <div class="field">
-                                    <input placeholder="RegNo"/>
+                                    <input name="regNo" placeholder="RegNo"/>
                                 </div>
                                 <div class="field">
-                                    <input placeholder="Brand"/>
+                                    <input name="brand" placeholder="Brand"/>
                                 </div>
                             </Form.Group>
                             <div class="field">

@@ -15,18 +15,6 @@ class Customer_Ad extends Component {
         this.callAPI();
     }
 
-    // componentDidMount(){
-    //     axios.get('http://localhost:8081/easyRents/api/v1/customer')
-    //     .then( response => {
-    //         console.log(response);
-    //         this.setState({posts:response.data});
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
-
-    // }
-
     callAPI(){
         fetch("http://localhost:8081/easyRents/api/v1/customer").then(
             (response) => response.json()

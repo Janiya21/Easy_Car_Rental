@@ -51,11 +51,11 @@ class Admin_All extends Component {
                             </a>
                         </Menu.Item>
 
-                        <Menu.Item name='updates' active={activeItem === 'updates'} onClick={this.handleItemClick}>
+                        {/* <Menu.Item name='updates' active={activeItem === 'updates'} onClick={this.handleItemClick}>
                             <a class="active item">
                                 <Link to="/">Home</Link>
                             </a>
-                        </Menu.Item>
+                        </Menu.Item> */}
 
                         <Menu.Item name='updates' active={activeItem === 'updates'} onClick={this.handleItemClick}>
                             <a class="active item">

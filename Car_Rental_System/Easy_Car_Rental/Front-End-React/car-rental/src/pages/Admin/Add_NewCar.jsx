@@ -10,14 +10,15 @@ class New_Car extends Component {
         this.state = {
             regNo: '',
             brand: '',
-            passengers:'',
+            No_of_passengers:'',
             color:'',
             comfortability:'',
-            fuelType:'',
-            lossDamage:'',
-            millege:'',
-            dailyCost:'',
-            monthlyCost:''
+            fuel_type:'',
+            loss_damage_amount:'',
+            millage_before_Reg:'',
+            daily_cost:'',
+            monthly_cost:'',
+            admin:null
         }
     }
 
@@ -62,7 +63,7 @@ class New_Car extends Component {
     }
 
     render() {
-        const {regNo,brand,passengers,color,comfortability,fuelType,lossDamage,millege,dailyCost,monthlyCost} = this.state;
+        const {regNo,brand,No_of_passengers,color,comfortability,fuel_type,loss_damage_amount,millage_before_Reg,daily_cost,monthly_cost} = this.state;
         return (
             <div>
                 <div style={{marginTop:"-20px"}} class="ui menu">
@@ -87,46 +88,47 @@ class New_Car extends Component {
                             <button style={{margin:"14px 0 10px 195px"}} type="button" id="btnUpload" class="ui button primary">Upload File</button>
                         </form>
 
-                        <form style={{width:"30vw", marginLeft:"5vw"}} class="ui form">
+                        <form style={{width:"30vw", marginLeft:"5vw"}} class="ui form" onSubmit={this.submitHandler}>
                             <Form.Group widths='equal'>
                                 <div class="field">
-                                    <input name="regNo" placeholder="RegNo"/>
+                                    <input name="regNo" value={regNo} onChange={this.changeHandler} placeholder="RegNo"/>
                                 </div>
                                 <div class="field">
-                                    <input name="brand" placeholder="Brand"/>
+                                    <input name="brand" value={brand} onChange={this.changeHandler} placeholder="Brand"/>
                                 </div>
                             </Form.Group>
                             <div class="field">
-                                <input placeholder="Passengers"/>
+                                <input name="No_of_passengers" value={No_of_passengers} onChange={this.changeHandler} placeholder="Passengers"/>
                             </div>
                             <div class="field">
-                                <input placeholder="color"/>
+                                <input name="color" value={color} onChange={this.changeHandler} placeholder="color"/>
                             </div>
                             <div class="field">
-                                <input placeholder="comfortability"/>
+                                <input name="comfortability" value={comfortability} onChange={this.changeHandler} placeholder="comfortability"/>
                             </div>
                             <div class="field">
-                                <input placeholder="fuel type"/>
+                                <input name="fuel_type" value={fuel_type} onChange={this.changeHandler} placeholder="fuel type"/>
                             </div>
                             <div class="field">
-                                <input placeholder="lost damage"/>
+                                <input name="loss_damage_amount" value={loss_damage_amount} onChange={this.changeHandler} placeholder="lost damage"/>
                             </div>
                             <div class="field">
-                                <input placeholder="milege before reg"/>
+                                <input name="millage_before_Reg" value={millage_before_Reg} onChange={this.changeHandler} placeholder="milege before reg"/>
                             </div>
                             <Form.Group widths='equal'>
                                 <div class="field">
-                                    <input placeholder="daily cost"/>
+                                    <input name="daily_cost" value={daily_cost} onChange={this.changeHandler} placeholder="daily cost"/>
                                 </div>
                                 <div class="field">
-                                    <input placeholder="monthly cost"/>
+                                    <input name="monthly_cost" value={monthly_cost} onChange={this.changeHandler} placeholder="monthly cost"/>
                                 </div>
                             </Form.Group>
                         
                             <button style={{ margin: "20px 0 30px 12vw" }} class="ui primary button">
-                                <Link to="/admin_cusView">
-                                    <div class="detail"><h4 style={{color:"white"}}>Submit</h4></div>
-                                </Link>
+                                {/* <Link to="/admin_cusView">
+                                    <div  type="submit" class="detail"><h4 style={{color:"white"}}>Submit</h4></div>
+                                </Link> */}
+                                <div type="submit" class="detail"><h4 style={{color:"white"}}>Submit</h4></div>
                             </button>
                         </form>
                     </Grid.Column>

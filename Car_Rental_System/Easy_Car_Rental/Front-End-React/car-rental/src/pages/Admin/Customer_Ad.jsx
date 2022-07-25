@@ -41,23 +41,74 @@ class Customer_Ad extends Component {
     render() {
         // const {posts} = this.state
         let tb_data = this.state.posts.map((item)=>{
-            return (
-                <Table.Row>
-                    <Table.Cell>{item.nic}</Table.Cell>
-                    <Table.Cell>{item.name}</Table.Cell>
-                    <Table.Cell>
-                        <Popup
-                             content={<img style={{width:"20vw"}} src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />}
-                            on='click'           
-                            trigger={<Button content='Show' />}
-                        />
-                    </Table.Cell>
-                    <Table.Cell>{item.email}</Table.Cell>
-                    <Table.Cell>{item.tel}</Table.Cell>
-                    <Table.Cell>{item.tel}</Table.Cell>
-                    <Table.Cell><Button icon='zip' /></Table.Cell>
-                </Table.Row>
-            )
+            if(item.status === "Approved"){
+                return (
+                    <Table.Row>
+                        <Table.Cell>{item.nic}</Table.Cell>
+                        <Table.Cell>{item.name}</Table.Cell>
+                        <Table.Cell>
+                            <Popup
+                                 content={<img style={{width:"20vw"}} src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />}
+                                on='click'           
+                                trigger={<Button content='Show' />}
+                            />
+                        </Table.Cell>
+                        <Table.Cell>{item.email}</Table.Cell>
+                        <Table.Cell>{item.tel}</Table.Cell>
+                        <Table.Cell>{item.status}</Table.Cell>
+                        <Table.Cell><Button icon='zip' /></Table.Cell>
+                    </Table.Row>
+                )
+            }
+            
+        });
+        let pending_table = this.state.posts.map((item)=>{
+            if(item.status === "Pending"){
+                return (
+                    <Table.Row>
+                         <Table.Cell>
+                            <Header as='h4' image>
+                                <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' />
+                                <Header.Content>
+                                {item.name}
+                                <Header.Subheader>{item.nic}</Header.Subheader>
+                                </Header.Content>
+                            </Header>
+                            </Table.Cell>
+                            <Table.Cell>
+                                    <Popup
+                                        content={
+                                            <Card>
+                                                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+                                                <Card.Content>
+                                                <Card.Header>{item.name}</Card.Header>
+                                                <Card.Meta>
+                                                    <span className='date'>{item.nic}</span>
+                                                </Card.Meta>
+                                                <Card.Description>
+                                                    {item.email}
+                                                </Card.Description>
+                                                </Card.Content>
+                                                <Card.Content extra>
+                                                <a>
+                                                    <Icon name='user' />
+                                                    {item.tel}
+                                                </a>
+                                                </Card.Content>
+                                            </Card>
+                                        }
+                                        on='click'
+                                        trigger={<Button content='Show' />}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                <Button basic color='green'>Approve</Button>
+                                <Button basic color='red'>Decline </Button>
+                            </Table.Cell>
+                    </Table.Row>
+                )
+            }
+            
         })
         return (
             <Grid celled='internally'>
@@ -97,170 +148,7 @@ class Customer_Ad extends Component {
                         </Table.Header>
 
                         <Table.Body>
-                        <Table.Row>
-                            <Table.Cell>
-                            <Header as='h4' image>
-                                <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' />
-                                <Header.Content>
-                                Lena
-                                <Header.Subheader>Human Resources</Header.Subheader>
-                                </Header.Content>
-                            </Header>
-                            </Table.Cell>
-                            <Table.Cell>
-                                    <Popup
-                                        content={
-                                            <Card>
-                                                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-                                                <Card.Content>
-                                                <Card.Header>Matthew</Card.Header>
-                                                <Card.Meta>
-                                                    <span className='date'>Joined in 2015</span>
-                                                </Card.Meta>
-                                                <Card.Description>
-                                                    Matthew is a musician living in Nashville.
-                                                </Card.Description>
-                                                </Card.Content>
-                                                <Card.Content extra>
-                                                <a>
-                                                    <Icon name='user' />
-                                                    22 Friends
-                                                </a>
-                                                </Card.Content>
-                                            </Card>
-                                        }
-                                        on='click'
-                                        trigger={<Button content='Show' />}
-                                    />
-                                </Table.Cell>
-                                <Table.Cell>
-                                <Button basic color='green'>Approve</Button>
-                                <Button basic color='red'>Decline </Button>
-                            </Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                            <Table.Cell>
-                            <Header as='h4' image>
-                                <Image src='https://react.semantic-ui.com/images/avatar/small/matthew.png' rounded size='mini' />
-                                <Header.Content>
-                                Matthew
-                                <Header.Subheader>Fabric Design</Header.Subheader>
-                                </Header.Content>
-                            </Header>
-                            </Table.Cell>
-                            <Table.Cell> 
-                                <Popup
-                                    content={
-                                        <Card>
-                                            <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-                                            <Card.Content>
-                                            <Card.Header>Matthew</Card.Header>
-                                            <Card.Meta>
-                                                <span className='date'>Joined in 2015</span>
-                                            </Card.Meta>
-                                            <Card.Description>
-                                                Matthew is a musician living in Nashville.
-                                            </Card.Description>
-                                            </Card.Content>
-                                            <Card.Content extra>
-                                            <a>
-                                                <Icon name='user' />
-                                                22 Friends
-                                            </a>
-                                            </Card.Content>
-                                        </Card>
-                                    }  
-                                    on='click'    
-                                    trigger={<Button content='Show' />}
-                                />    
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Button basic color='green'>Approve</Button>
-                                <Button basic color='red'>Decline </Button>
-                            </Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                            <Table.Cell>
-                            <Header as='h4' image>
-                                <Image src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' rounded size='mini' />
-                                <Header.Content>
-                                Lindsay
-                                <Header.Subheader>Entertainment</Header.Subheader>
-                                </Header.Content>
-                            </Header>
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Popup
-                                    content={
-                                        <Card>
-                                            <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-                                            <Card.Content>
-                                            <Card.Header>Matthew</Card.Header>
-                                            <Card.Meta>
-                                                <span className='date'>Joined in 2015</span>
-                                            </Card.Meta>
-                                            <Card.Description>
-                                                Matthew is a musician living in Nashville.
-                                            </Card.Description>
-                                            </Card.Content>
-                                            <Card.Content extra>
-                                            <a>
-                                                <Icon name='user' />
-                                                22 Friends
-                                            </a>
-                                            </Card.Content>
-                                        </Card>
-                                    }                                     
-                                    on='click'    
-                                    trigger={<Button content='Show' />}
-                                /> 
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Button basic color='green'>Approve</Button>
-                                <Button basic color='red'>Decline </Button>
-                            </Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                            <Table.Cell>
-                            <Header as='h4' image>
-                                <Image src='https://react.semantic-ui.com/images/avatar/small/mark.png' rounded size='mini' />
-                                <Header.Content>
-                                Mark
-                                <Header.Subheader>Executive</Header.Subheader>
-                                </Header.Content>
-                            </Header>
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Popup
-                                    content={
-                                        <Card>
-                                            <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-                                            <Card.Content>
-                                            <Card.Header>Matthew</Card.Header>
-                                            <Card.Meta>
-                                                <span className='date'>Joined in 2015</span>
-                                            </Card.Meta>
-                                            <Card.Description>
-                                                Matthew is a musician living in Nashville.
-                                            </Card.Description>
-                                            </Card.Content>
-                                            <Card.Content extra>
-                                            <a>
-                                                <Icon name='user' />
-                                                22 Friends
-                                            </a>
-                                            </Card.Content>
-                                        </Card>
-                                    }                                     
-                                    on='click'    
-                                    trigger={<Button content='Show' />}
-                                /> 
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Button basic color='green'>Approve</Button>
-                                <Button basic color='red'>Decline </Button>
-                            </Table.Cell>
-                        </Table.Row>
+                            {pending_table}
                         </Table.Body>
                     </Table>
 

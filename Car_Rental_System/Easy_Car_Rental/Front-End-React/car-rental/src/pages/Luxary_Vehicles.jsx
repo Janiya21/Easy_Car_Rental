@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { Label } from 'semantic-ui-react';
+import { Label,Header } from 'semantic-ui-react';
+import styles from '../css/loader.css'
+
+function loader(){
+    const loader = document.getElementById("loader");
+    loader.style.display = "flex";
+}
 
 class Luxary_Vehicles extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
     }
+
+    bookTheCar = () => {
+        loader();
+        setTimeout(e =>{
+            <Link to="/add_order">
+                Book Vehicle
+            </Link>
+            console.log("fggg");
+        },5000);
+    };
 
     render() {
         return (
             <div>
+            
                 <div class="ui steps">
                     <div class="step">
                         <i aria-hidden="true" class="calendar times icon"></i>
@@ -40,6 +57,11 @@ class Luxary_Vehicles extends Component {
                     </div>
                 </div>
 
+                <div id="loader" class="loader" className={styles.loader} style={{display:"none"}} ></div>
+
+                <Header style={{marginLeft:"20px"}} as='h3' block>
+                    Matching Results For Your Search
+                </Header>
 
                 <div className="row">
                     <div class="ui very relaxed four column grid" style={{ margin: "30px" }}>
@@ -58,10 +80,10 @@ class Luxary_Vehicles extends Component {
                                 </div>
                                 <div class="extra content">
                                     <a>
-                                        <button style={{ width: "260px" }} class="ui primary button">
-                                            <Link to="/add_order">
-                                                Book Vehicle
-                                            </Link>
+                                        <button id="btnBook" onClick={this.bookTheCar} style={{ width: "260px" }} class="ui primary button">
+                                        <Link to="/add_order">
+                                            Book Vehicle
+                                        </Link>
                                         </button>
                                     </a>
                                 </div>
@@ -83,7 +105,7 @@ class Luxary_Vehicles extends Component {
                                 <div class="extra content">
                                     <a>
                                         <button style={{ width: "260px" }} class="ui primary button">
-                                        <Link to="">
+                                            <Link to="/add_order">
                                                 Book Vehicle
                                             </Link>
                                         </button>
@@ -219,8 +241,6 @@ class Luxary_Vehicles extends Component {
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
 

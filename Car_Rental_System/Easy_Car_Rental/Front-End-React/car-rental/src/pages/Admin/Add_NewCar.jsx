@@ -15,12 +15,12 @@ class New_Car extends Component {
                     <a class="active item">
                         <Link to="/add_newCar">Add New Vehicle</Link>
                     </a>
-                    <a class="item">Upcoming Events</a>
+                    <a class="item">Under Maintance</a>
                 </div>
 
                 <Grid>
                     <Grid.Column width={6}>
-                        <form style={{margin:"10px 0 0 10px"}}>
+                        <form style={{margin:"0 0 0 5vw"}}>
                             <b>Please Attach Photo Here :</b>
                             <Popup content='Add users to your feed' 
                             trigger={
@@ -30,7 +30,7 @@ class New_Car extends Component {
                             <button style={{margin:"14px 0 10px 195px"}} type="button" id="btnUpload" class="ui button primary">Upload File</button>
                         </form>
 
-                        <form style={{width:"30vw", marginLeft:"1vw"}} class="ui form">
+                        <form style={{width:"30vw", marginLeft:"5vw"}} class="ui form">
                             <Form.Group widths='equal'>
                                 <div class="field">
                                     <input placeholder="RegNo"/>
@@ -73,8 +73,8 @@ class New_Car extends Component {
                             </button>
                         </form>
                     </Grid.Column>
-                    <Grid.Column width={4}>
-                        BBC
+                    <Grid.Column width={7} style={{ margin: "20px 0 30px 3vw" }}>
+                        <Image src='https://www.efind.lk/storage/images/vehicle_images/honda-civic-ex-tec-2017-for-sale-in-kaduwela-sri-lanka-efindlk-15965565876819.jpg' fluid />
                     </Grid.Column>
                 </Grid>
             </div>

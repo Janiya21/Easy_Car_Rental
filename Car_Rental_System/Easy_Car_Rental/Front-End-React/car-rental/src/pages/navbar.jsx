@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Dropdown, Menu } from 'semantic-ui-react'
 
 function Navbar() {
   return (
@@ -9,15 +10,27 @@ function Navbar() {
                 <a class="active item">
                     <Link to="/">Home</Link>
                 </a>
-                <a class="item">
-                    <Link to="/customer">Customer</Link>
-                </a>
-                <a class="item">
-                    <Link to="/driver">Driver</Link>
-                </a>
-                <a class="item">
-                    <Link to="/admin">Admin</Link>
-                </a>
+                <Menu inverted pointing vertical>
+                    <Dropdown item text='Registrations'>
+                        <Dropdown.Menu >
+                            <Dropdown.Item >
+                                <a class="item">
+                                    <Link style={{color:"black"}} to="/customer"><h5>Custom</h5></Link>
+                                </a>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                                <a class="item">
+                                    <Link style={{color:"black"}} to="/driver"><h5>Driver</h5></Link>
+                                </a>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                                <a class="item">
+                                    <Link style={{color:"black"}} to="/admin"><h5>Admin</h5></Link>
+                                </a>
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </Menu>
             </div>
         </div>
   );

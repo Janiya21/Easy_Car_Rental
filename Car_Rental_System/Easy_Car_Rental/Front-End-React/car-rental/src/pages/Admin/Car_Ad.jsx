@@ -25,9 +25,9 @@ class Admin_CarView extends Component {
                     <a class="item">
                         <Link to="/add_newCar">Add New Vehicle</Link>
                     </a>
-                    <a class="item">Upcoming Events</a>
+                    <a class="item">Under Maintance</a>
                 </div>
-                <Segment raised><b>All Available Cars</b></Segment>
+                <Segment raised><b>All Available Cars On Choosen Date</b></Segment>
 
                     {/* <div className='date'>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -86,7 +86,7 @@ class Admin_CarView extends Component {
                                 <Table.Cell>
                                     {/* <Header as='h2' textAlign='center'></Header> */}
                                     <div class="image">
-                                            <img style={{height:"15vh",width:"10vw"}} src="https://www.csojapan.com/stock_images/66103/66103d.jpg" class="ui image" />
+                                            <img style={{height:"15vh",width:"10vw"}} src="https://i.pinimg.com/originals/42/59/74/42597420a332603526ae09219cf65b17.jpg" class="ui image" />
                                     </div>
                                 </Table.Cell>
                                 <Table.Cell singleLine>CBC-2189</Table.Cell>
@@ -104,7 +104,7 @@ class Admin_CarView extends Component {
                                 <Table.Cell>
                                     {/* <Header as='h2' textAlign='center'></Header> */}
                                     <div class="image">
-                                            <img style={{height:"15vh",width:"10vw"}} src="https://www.csojapan.com/stock_images/66103/66103d.jpg" class="ui image" />
+                                            <img style={{height:"15vh",width:"10vw"}} src="https://sbimotor.com/uploads/car/images/77933/FhRaDUzxqAaYELSb_3.jpg" class="ui image" />
                                     </div>
                                 </Table.Cell>
                                 <Table.Cell singleLine>CBC-2189</Table.Cell>
@@ -122,7 +122,7 @@ class Admin_CarView extends Component {
                                 <Table.Cell>
                                     {/* <Header as='h2' textAlign='center'></Header> */}
                                     <div class="image">
-                                            <img style={{height:"15vh",width:"10vw"}} src="https://www.csojapan.com/stock_images/66103/66103d.jpg" class="ui image" />
+                                            <img style={{height:"15vh",width:"10vw"}} src="http://www.auto-lanka.com/img.web/UserImage/220103234928/image_8ea5118147db8adb514320c5c530da7c8778b9c7650899151b9e7c07aa16edf0.jpg" class="ui image" />
                                     </div>
                                 </Table.Cell>
                                 <Table.Cell singleLine>CBC-2189</Table.Cell>

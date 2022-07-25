@@ -1,34 +1,85 @@
 import React, { Component } from 'react';
-import { Button, Table, Grid, Popup, Icon, Header, Image, Card, Statistic, Segment, Input  } from 'semantic-ui-react';
+import { Button, Table, Grid, Popup, Icon, Header, Image, Card, Statistic, Form, Input  } from 'semantic-ui-react';
+import axios from 'axios';
 
 class Customer_Ad extends Component {
 
     constructor(props) {
         super(props)
+
+        this.state ={
+            posts:[]
+        }
+
+        this.callAPI = this.callAPI.bind(this)
+        this.callAPI();
+    }
+
+    // componentDidMount(){
+    //     axios.get('http://localhost:8081/easyRents/api/v1/customer')
+    //     .then( response => {
+    //         console.log(response);
+    //         this.setState({posts:response.data});
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     })
+
+    // }
+
+    callAPI(){
+        fetch("http://localhost:8081/easyRents/api/v1/customer").then(
+            (response) => response.json()
+        ).then((data)=> {
+            console.log(data);
+            this.setState({
+                posts:data.data
+            })
+        })
     }
 
     render() {
+        // const {posts} = this.state
+        let tb_data = this.state.posts.map((item)=>{
+            return (
+                <Table.Row>
+                    <Table.Cell>{item.nic}</Table.Cell>
+                    <Table.Cell>{item.name}</Table.Cell>
+                    <Table.Cell>
+                        <Popup
+                             content={<img style={{width:"20vw"}} src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />}
+                            on='click'           
+                            trigger={<Button content='Show' />}
+                        />
+                    </Table.Cell>
+                    <Table.Cell>{item.email}</Table.Cell>
+                    <Table.Cell>{item.tel}</Table.Cell>
+                    <Table.Cell>{item.tel}</Table.Cell>
+                    <Table.Cell><Button icon='zip' /></Table.Cell>
+                </Table.Row>
+            )
+        })
         return (
             <Grid celled='internally'>
                 <Grid.Row>
                     <Grid.Column width={7}>
-                    <div style={{marginLeft:"60px"}}>
+                    <div style={{marginLeft:"40px"}}>
                         <Statistic.Group>
                         <Statistic>
-                            <Statistic.Value>22</Statistic.Value>
-                            <Statistic.Label>Faves</Statistic.Label>
+                            <Statistic.Value>4.5</Statistic.Value>
+                            <Statistic.Label>Ratings</Statistic.Label>
                         </Statistic>
                         <Statistic>
-                            <Statistic.Value>31,200</Statistic.Value>
-                            <Statistic.Label>Views</Statistic.Label>
+                            <Statistic.Value>11,000</Statistic.Value>
+                            <Statistic.Label>Total Customers</Statistic.Label>
                         </Statistic>
                         <Statistic>
-                            <Statistic.Value>22</Statistic.Value>
-                            <Statistic.Label>Members</Statistic.Label>
+                            <Statistic.Value>92%</Statistic.Value>
+                            <Statistic.Label>Reviews</Statistic.Label>
                         </Statistic>
                         <Statistic>
-                            <Statistic.Value>22</Statistic.Value>
-                            <Statistic.Label>Members</Statistic.Label>
+                            <Statistic.Value>72</Statistic.Value>
+                            <Statistic.Label>Batch Earns</Statistic.Label>
                         </Statistic>
                         </Statistic.Group>
                     </div>
@@ -232,118 +283,7 @@ class Customer_Ad extends Component {
                         </Table.Header>
 
                         <Table.Body>
-                            <Table.Row>
-                                <Table.Cell>No Name Specified</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>
-                                    <Popup
-                                        content={<img style={{width:"20vw"}} src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />}
-                                        on='click'
-                                        
-                                        trigger={<Button content='Show' />}
-                                    />
-                                </Table.Cell>
-                                <Table.Cell negative>None</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell><Button icon='zip' /></Table.Cell>
-                            </Table.Row>
-                            <Table.Row positive>
-                                <Table.Cell>Jimmy</Table.Cell>
-                                <Table.Cell><Icon name='checkmark' />Approved</Table.Cell>
-                                <Table.Cell> 
-                                    <Popup
-                                        content={<img style={{width:"20vw"}} src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />}
-                                        on='click'
-                                        
-                                        trigger={<Button content='Show' />}
-                                    />
-                                </Table.Cell>
-                                <Table.Cell>None</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell><Button icon='zip' /></Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell>Jamie</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>
-                                    <Popup
-                                        content={<img style={{width:"20vw"}} src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />}
-                                        on='click'
-                                        
-                                        trigger={<Button content='Show' />}
-                                    />
-                                </Table.Cell>
-                                <Table.Cell positive><Icon name='close' />Requires call</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell><Button icon='zip' /></Table.Cell>
-                            </Table.Row>
-                            <Table.Row negative>
-                                <Table.Cell>Jill</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>
-                                    <Popup
-                                        content={<img style={{width:"20vw"}} src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />}
-                                        on='click'
-                                        
-                                        trigger={<Button content='Show' />}
-                                    />
-                                </Table.Cell>
-                                <Table.Cell>None</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell><Button icon='zip' /></Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell>No Name Specified</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>
-                                    <Popup
-                                        content={<img style={{width:"20vw"}} src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />}
-                                        on='click'
-                                        
-                                        trigger={<Button content='Show' />}
-                                    />
-                                </Table.Cell>
-                                <Table.Cell negative>None</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell><Button icon='zip' /></Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell>No Name Specified</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>
-                                    <Popup
-                                        content={<img style={{width:"20vw"}} src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />}
-                                        on='click'
-                                        
-                                        trigger={<Button content='Show' />}
-                                    />
-                                </Table.Cell>
-                                <Table.Cell negative>None</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell><Button icon='zip' /></Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell>No Name Specified</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>
-                                    <Popup
-                                        content={<img style={{width:"20vw"}} src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />}
-                                        on='click'
-                                        
-                                        trigger={<Button content='Show' />}
-                                    />
-                                </Table.Cell>
-                                <Table.Cell negative>None</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell>Unknown</Table.Cell>
-                                <Table.Cell><Button icon='zip' /></Table.Cell>
-                            </Table.Row>
+                            {tb_data}
                         </Table.Body>
                     </Table>
 

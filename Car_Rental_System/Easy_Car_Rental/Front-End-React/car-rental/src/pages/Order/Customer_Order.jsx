@@ -51,7 +51,7 @@ class CustomerOrder extends Component {
                         <p>Rental, deposit and all other charges related to vehicle hire should be paid in advance by the Hirer. If the rental is delayed, daily rates will apply until the vehicle is safely returned. </p>
                         <p>We will charge extra money for late hours !</p>
                 </Message>
-                <Grid style={{marginTop:"20px"}}>
+                <Grid style={{margin:"20px"}}>
                     <Grid.Column width={4} >
                         <div class="ui card" style={{margin:"0 0 0 20px"}}>
                                 <div class="image">
@@ -68,8 +68,8 @@ class CustomerOrder extends Component {
                                 
                             </div>
                     </Grid.Column>
-                    <Grid.Column width={10}>
-                    <Table basic='very' celled collapsing>
+                    <Grid.Column width={5}>
+                        <Table basic='very' celled collapsing>
                             <Table.Body>
                             <Table.Row>
                                 <Table.Cell>
@@ -122,6 +122,60 @@ class CustomerOrder extends Component {
                             <Table.Row>
                                 <Table.Cell>
                                     <Header as='h4' image>
+                                        <Header.Content>Driver's Name</Header.Content>
+                                    </Header>
+                                </Table.Cell>
+                                <Table.Cell>Saman Kumara</Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <Header as='h4' image>
+                                        <Header.Content>Your Email</Header.Content>
+                                    </Header>
+                                </Table.Cell>
+                                <Table.Cell>DasunShanaka7@gmail.com</Table.Cell>
+                            </Table.Row>
+                            </Table.Body>
+                        </Table>
+                    </Grid.Column>
+                    <Grid.Column width={5}>
+                    <Table basic='very' celled collapsing>
+                            <Table.Body>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <Header as='h4' image>
+                                        <Header.Content> Customer Emaergance No</Header.Content>
+                                    </Header>
+                                </Table.Cell>
+                                <Table.Cell>0768739283</Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <Header as='h4' image>
+                                        <Header.Content>Customer's Address</Header.Content>
+                                    </Header>
+                                </Table.Cell>
+                                <Table.Cell>22B Werahera, Colombo</Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <Header as='h4' image>
+                                        <Header.Content>Extar Charge</Header.Content>
+                                    </Header>
+                                </Table.Cell>
+                                <Table.Cell>0.00</Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <Header as='h4' image>
+                                        <Header.Content>Vehicle Charge</Header.Content>
+                                    </Header>
+                                </Table.Cell>
+                                <Table.Cell>12000.00</Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <Header as='h4' image>
                                         <Header.Content>Loss Damage Charge</Header.Content>
                                     </Header>
                                 </Table.Cell>
@@ -134,6 +188,18 @@ class CustomerOrder extends Component {
                                     </Header>
                                 </Table.Cell>
                                 <Table.Cell><h2>Rs 28000.00</h2></Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                   
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <button id="btnBook" style={{ width: "200px" }} class="ui inverted primary button">
+                                        <Link to="/add_order">
+                                            Confirm Order
+                                        </Link>
+                                    </button>
+                                </Table.Cell>
                             </Table.Row>
                             </Table.Body>
                         </Table>

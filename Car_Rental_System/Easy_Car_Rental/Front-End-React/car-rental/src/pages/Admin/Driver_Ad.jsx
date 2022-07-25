@@ -13,22 +13,22 @@ class Driver_Ad extends Component {
                 <Grid.Row>
                     <Grid.Column width={7}>
                     <div style={{marginLeft:"60px"}}>
-                        <Statistic.Group>
+                    <Statistic.Group>
                         <Statistic>
-                            <Statistic.Value>22</Statistic.Value>
-                            <Statistic.Label>Faves</Statistic.Label>
+                            <Statistic.Value>4.7</Statistic.Value>
+                            <Statistic.Label>Ratings</Statistic.Label>
                         </Statistic>
                         <Statistic>
-                            <Statistic.Value>31,200</Statistic.Value>
-                            <Statistic.Label>Views</Statistic.Label>
+                            <Statistic.Value>104</Statistic.Value>
+                            <Statistic.Label>Total Drivers</Statistic.Label>
                         </Statistic>
                         <Statistic>
-                            <Statistic.Value>22</Statistic.Value>
-                            <Statistic.Label>Members</Statistic.Label>
+                            <Statistic.Value>81%</Statistic.Value>
+                            <Statistic.Label>Reviews</Statistic.Label>
                         </Statistic>
                         <Statistic>
-                            <Statistic.Value>22</Statistic.Value>
-                            <Statistic.Label>Members</Statistic.Label>
+                            <Statistic.Value>65</Statistic.Value>
+                            <Statistic.Label>Batch Earns</Statistic.Label>
                         </Statistic>
                         </Statistic.Group>
                     </div>

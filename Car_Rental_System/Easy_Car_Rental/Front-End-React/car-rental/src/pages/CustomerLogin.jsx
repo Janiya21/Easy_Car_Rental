@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react';
+import { Popup, Checkbox, Form } from 'semantic-ui-react';
 import {  Link } from "react-router-dom";
 
 class CustomerLogin extends Component {
@@ -44,7 +44,7 @@ class CustomerLogin extends Component {
                             </button>
                         </form>
                     </div>
-                    <div style={{marginTop:"40px"}} class="middle aligned column">
+                    <div style={{marginTop:"10px"}} class="middle aligned column">
                         <form style={{width:"40vw", marginLeft:"5vw"}} class="ui form">
                             <div class="field">
                                 <label>NIC</label>
@@ -71,10 +71,12 @@ class CustomerLogin extends Component {
                                 <input type="password" placeholder="re-enter password"/>
                             </div>
                             <div class="field">
-                                <div class="ui checkbox">
-                                    <input type="checkbox" class="hidden" readonly="" tabindex="0"/>
-                                    <label>Accept the responsibility about Information You provided</label>
-                                </div>
+                                <b>Please Attach Photo Here :</b>
+                                <Popup content='Add users to your feed' 
+                                trigger={
+                                    <input style={{margin:"10px 0 0 0px"}} id="file" name="myFile" type="file" />} 
+                                />
+                                <button style={{margin:"14px 0 10px 195px"}} type="button" id="btnUpload" class="ui button primary">Upload File</button>
                             </div>
                             <button class="ui primary button" style={{ margin: "40px 0 30px 20vw" }} type="submit">Sign_In</button>
                         </form>

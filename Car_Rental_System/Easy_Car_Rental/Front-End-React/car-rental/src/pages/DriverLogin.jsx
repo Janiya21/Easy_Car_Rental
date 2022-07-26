@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
 import axios from 'axios';
+import {  Link } from "react-router-dom";
 
 class DriverLogin extends Component {
 
@@ -81,7 +82,11 @@ class DriverLogin extends Component {
                                 <i aria-hidden="true" class="lock icon"/>
                             </div>
                         </div>
-                        <button style={{ margin: "40px 0 30px 10vw" }} class="ui primary button">Login</button>
+                        <button style={{ margin: "40px 0 30px 10vw" }} class="ui inverted primary button">
+                            <Link to="/driver_view">
+                                Log-In
+                            </Link>
+                        </button>
                     </form>
                 </div>
                 <div style={{marginTop:"40px"}} class="middle aligned column">

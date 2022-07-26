@@ -27,6 +27,8 @@ import Driver_Admin from './pages/Admin/Driver_Ad.jsx';
 import Car_Admin from './pages/Admin/Car_Ad';
 import NewCar_Admin from './pages/Admin/Add_NewCar.jsx';
 import Cus_Order from './pages/Order/Customer_Order'
+import Driver_View from './pages/Driver/Driver_View';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -48,6 +50,7 @@ export default function App() {
           <Route path="driver_Admin" element={<Driver_Admin />} />
           <Route path="car_Admin" element={<Car_Admin />} />
           <Route path="add_newCar" element={<NewCar_Admin />} />
+          <Route path="driver_view" element={<Driver_View />} />
         </Route>
 
       </Routes>

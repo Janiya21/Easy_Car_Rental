@@ -56,7 +56,13 @@ class Luxary_Vehicles extends Component {
                     <Table.Cell singleLine>{item.loss_damage_amount}</Table.Cell>
                     <Table.Cell singleLine>{item.daily_cost}</Table.Cell>
                     <Table.Cell singleLine>{item.monthly_cost}</Table.Cell>
-                    <Table.Cell singleLine><Button>Continue</Button></Table.Cell>
+                    <Table.Cell singleLine>
+                        <Button>
+                            <Link to="/add_order">
+                                Continue
+                            </Link>
+                        </Button>
+                    </Table.Cell>
                 </Table.Row>
             )
         });

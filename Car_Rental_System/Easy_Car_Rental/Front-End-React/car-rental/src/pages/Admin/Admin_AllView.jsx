@@ -47,7 +47,7 @@ class Admin_All extends Component {
                         <Menu.Item name='updates' active={activeItem === 'updates'} onClick={this.handleItemClick}>
                         <Label>1</Label>
                             <a class="active item">
-                                <Link to="/">Orders</Link>
+                                <Link to="/order_Admin">Orders</Link>
                             </a>
                         </Menu.Item>
 

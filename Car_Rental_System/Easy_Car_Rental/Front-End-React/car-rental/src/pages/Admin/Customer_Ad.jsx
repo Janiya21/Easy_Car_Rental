@@ -129,9 +129,9 @@ class Customer_Ad extends Component {
                     <Table basic='very' celled collapsing style={{margin:"20px 0 0 50px"}}>
                         <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Employee</Table.HeaderCell>
-                            <Table.HeaderCell>Correct Guesses</Table.HeaderCell>
-                            <Table.HeaderCell>Show Details</Table.HeaderCell>
+                            <Table.HeaderCell>Customer</Table.HeaderCell>
+                            <Table.HeaderCell>Other Details</Table.HeaderCell>
+                            <Table.HeaderCell>Status</Table.HeaderCell>
                         </Table.Row>
                         </Table.Header>
 

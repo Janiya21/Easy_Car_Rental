@@ -28,6 +28,7 @@ import Car_Admin from './pages/Admin/Car_Ad';
 import NewCar_Admin from './pages/Admin/Add_NewCar.jsx';
 import Cus_Order from './pages/Order/Customer_Order'
 import Driver_View from './pages/Driver/Driver_View';
+import Order_Admin from './pages/Admin/Order_Ad.jsx'
 
 export default function App() {
   return (
@@ -51,6 +52,7 @@ export default function App() {
           <Route path="car_Admin" element={<Car_Admin />} />
           <Route path="add_newCar" element={<NewCar_Admin />} />
           <Route path="driver_view" element={<Driver_View />} />
+          <Route path="order_Admin" element={<Order_Admin />} />
         </Route>
 
       </Routes>

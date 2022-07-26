@@ -1,14 +1,3 @@
-/*import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './components/App';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);*/
-
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Driver_Reg from "./pages/Driver_Reg";
@@ -42,7 +31,6 @@ export default function App() {
           <Route path="luxary_vehicle" element={<Luxary_V />} />
           <Route path="premium_vehicle" element={<Premium_V />} />
           <Route path="add_order" element={<Cus_Order />} />
-          {/* <Route path="admin_cusView" element={<Admin_CusView />} /> */}
         </Route>
 
         <Route element={<Layout2 />}>

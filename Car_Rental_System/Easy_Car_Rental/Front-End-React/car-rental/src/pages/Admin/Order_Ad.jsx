@@ -30,7 +30,7 @@ class Order_Ad extends Component {
        
         let tb_data = this.state.posts.map((item)=>{
             console.log(item);
-            if (item.reqStatus === "Pending"){
+            if (item.reqStatus === "Approved"){
 
                 //console.log(item);
 

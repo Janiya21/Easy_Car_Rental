@@ -3,7 +3,8 @@ import { Button, Checkbox, Form } from 'semantic-ui-react';
 import Luxary_V from './Luxary_Vehicles';
 import Premium_V from './Premium_Vehicles';
 import { Dropdown } from 'semantic-ui-react';
-import {  Link } from "react-router-dom";
+import {  Link, useNavigate } from "react-router-dom";
+
 
 class Homepage extends Component {
 
@@ -11,16 +12,35 @@ class Homepage extends Component {
         super(props)
 
         this.state = {
-
+            pickup_date:'',
+            return_date:'',
+            pickup_location:'',
+            vehicle_type:''
         }
     }
 
+    // =================================================================
+
+        peoplestates = () => {
+            const navigate = useNavigate();
+            const openprofile = (id) => {
+                navigate("/customer",{
+                    state: {
+                        id: "fuckk"
+                    }
+                });
+            }
+            return openprofile;
+        }
+
+    // =================================================================
+
+    changeHandler = (e) => {
+        this.setState({ [e.target.name] : e.target.value});
+    }
+
     render() {
-        const options = [
-            { key: 1, text: 'Luxary', value: 1 },
-            { key: 2, text: 'Premium', value: 2 },
-            { key: 3, text: 'General', value: 3 },
-          ]
+        const {pickup_date,return_date,location,vehicle_type} = this.state; 
         return (
                 
             <div>
@@ -92,28 +112,25 @@ class Homepage extends Component {
                                 <form class="ui form">
                                     <div class="field">
                                         <label>Pick-Up</label>
-                                        <input placeholder="pickup date" />
+                                        <input name="pickup_date" value={pickup_date} onChange={this.changeHandler}  placeholder="pickup date" />
                                     </div>
                                     <div class="field">
-                                        <label>Return-Off</label>
-                                        <input placeholder="return date" />
+                                        <label>Return-date</label>
+                                        <input name="return_date" value={return_date} onChange={this.changeHandler}  placeholder="return date" />
                                     </div>
                                     <div class="field">
                                         <label>PickUp Location</label>
-                                        <input placeholder="your location" />
+                                        <input name="location" value={location} onChange={this.changeHandler}  placeholder="your location" />
                                     </div>
                                     <div class="equal width fields">
-                                        <div class="field"><label>Pickup Time</label>
-                                            <div class="ui fluid input">
-                                                <input type="text" placeholder="pickup time" />
-                                            </div>
-                                        </div>
-                                        <div class="field"><label>Return Time</label>
-                                            <Dropdown clearable options={options} selection />
-                                        </div>
+                                        <select name="vehicle_type" value={vehicle_type} onChange={this.changeHandler} class="ui dropdown">
+                                            <option value="general" onChange={this.changeHandler}>General</option>
+                                            <option value="premium" onChange={this.changeHandler}>Premium</option>
+                                            <option value="luxary" onChange={this.changeHandler}>Luxary</option>
+                                        </select>
                                     </div>
-                                    <button class="ui button" type="submit">
-                                        <Link to="/customer">
+                                    <button class="ui button">
+                                        <Link to='/customer'>
                                             Search Vehicle
                                         </Link>
                                     </button>

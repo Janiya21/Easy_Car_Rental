@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Table, Rating, Card, Image, Input, Header, Segment } from 'semantic-ui-react';
+import { Grid, Table, Button, Card, Image, Input, Popup, Segment, Icon } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -36,10 +36,15 @@ class Admin_CarView extends Component {
             return (
                 <Table.Row>
                     <Table.Cell>
-                        {/* <Header as='h2' textAlign='center'></Header> */}
-                        <div class="image">
-                            <img style={{ height: "15vh", width: "10vw" }} src="https://www.csojapan.com/stock_images/66103/66103d.jpg" class="ui image" />
-                        </div>
+                        <Popup
+                            content={
+                                <Card>
+                                    <Image src='https://www.csojapan.com/stock_images/66103/66103d.jpg' wrapped ui={false} />
+                                </Card>
+                            }
+                            on='click'
+                            trigger={<Button content='Show' />}
+                        />
                     </Table.Cell>
                     <Table.Cell singleLine>{item.regNo}</Table.Cell>
                     <Table.Cell singleLine>{item.brand}</Table.Cell>
@@ -88,7 +93,7 @@ class Admin_CarView extends Component {
                             </Table.Header>
 
                             <Table.Body>
-                                
+
                                 {tb_data}
                             </Table.Body>
                         </Table>

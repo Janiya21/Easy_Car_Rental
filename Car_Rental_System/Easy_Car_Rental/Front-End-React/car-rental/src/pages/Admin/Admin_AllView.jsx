@@ -31,7 +31,7 @@ class Admin_All extends Component {
                         </Menu.Item>
 
                         <Menu.Item name='spam' active={activeItem === 'spam'} onClick={this.handleItemClick}>
-                        <Label>51</Label>
+                        <Label>2</Label>
                             <a class="active item">
                                 <Link to="/driver_Admin">Driver</Link>
                             </a>

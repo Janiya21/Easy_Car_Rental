@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Popup, Grid, Form, Icon, Card, Image, Label, Header, Segment, Input  } from 'semantic-ui-react';
+import { Button, Popup, Grid, Form, Icon, Card, Image, Dropdown, Input  } from 'semantic-ui-react';
 import {Link } from "react-router-dom";
 import axios from 'axios';
 
@@ -18,7 +18,12 @@ class New_Car extends Component {
             millage_before_Reg:'',
             daily_cost:'',
             monthly_cost:'',
-            admin:null
+            admin:{
+                userName: "Suresh_22",
+                password: "sure209",
+                email: "Suresh22@gmail.com",
+                contactNo: "0768712189"
+            }
         }
     }
 
@@ -77,8 +82,8 @@ class New_Car extends Component {
                 </div>
 
                 <Grid>
-                    <Grid.Column width={6}>
-                        <form style={{margin:"0 0 0 5vw"}}>
+                    <Grid.Column width={7}>
+                        <form style={{margin:"0 0 0 10vw"}}>
                             <b>Please Attach Photo Here :</b>
                             <Popup content='Add users to your feed' 
                             trigger={
@@ -88,7 +93,7 @@ class New_Car extends Component {
                             <button style={{margin:"14px 0 10px 195px"}} type="button" id="btnUpload" class="ui button primary">Upload File</button>
                         </form>
 
-                        <form style={{width:"30vw", marginLeft:"5vw"}} class="ui form" onSubmit={this.submitHandler}>
+                        <form style={{width:"30vw", marginLeft:"10vw"}} class="ui form" onSubmit={this.submitHandler}>
                             <Form.Group widths='equal'>
                                 <div class="field">
                                     <input name="regNo" value={regNo} onChange={this.changeHandler} placeholder="RegNo"/>
@@ -101,13 +106,30 @@ class New_Car extends Component {
                                 <input name="No_of_passengers" value={No_of_passengers} onChange={this.changeHandler} placeholder="Passengers"/>
                             </div>
                             <div class="field">
-                                <input name="color" value={color} onChange={this.changeHandler} placeholder="color"/>
+                                {/* <input name="color" value={color} onChange={this.changeHandler} placeholder="color"/> */}
+                            
+                                <select name="color" value={color} onChange={this.changeHandler} class="ui dropdown">
+                                    <option value="black" onChange={this.changeHandler}>Black</option>
+                                    <option value="white" onChange={this.changeHandler}>White</option>
+                                    <option value="red" onChange={this.changeHandler}>Red</option>
+                                </select>
+                                
                             </div>
                             <div class="field">
-                                <input name="comfortability" value={comfortability} onChange={this.changeHandler} placeholder="comfortability"/>
+                                {/* <input name="comfortability" value={comfortability} onChange={this.changeHandler} placeholder="comfortability"/> */}
+                                <select name="comfortability" value={comfortability} onChange={this.changeHandler} class="ui dropdown">
+                                    <option value="general" onChange={this.changeHandler}>General</option>
+                                    <option value="premium" onChange={this.changeHandler}>Premium</option>
+                                    <option value="luxary" onChange={this.changeHandler}>Luxary</option>
+                                </select>
                             </div>
                             <div class="field">
-                                <input name="fuel_type" value={fuel_type} onChange={this.changeHandler} placeholder="fuel type"/>
+                                {/* <input name="fuel_type" value={fuel_type} onChange={this.changeHandler} placeholder="fuel type"/> */}
+                                <select name="fuel_type" value={fuel_type} onChange={this.changeHandler} class="ui dropdown">
+                                    <option value="petrol" onChange={this.changeHandler}>Petrol</option>
+                                    <option value="diesel" onChange={this.changeHandler}>Diesel</option>
+                                    <option value="electric" onChange={this.changeHandler}>Eletric</option>
+                                </select>
                             </div>
                             <div class="field">
                                 <input name="loss_damage_amount" value={loss_damage_amount} onChange={this.changeHandler} placeholder="lost damage"/>
@@ -133,7 +155,7 @@ class New_Car extends Component {
                         </form>
                     </Grid.Column>
                     <Grid.Column width={7} style={{ margin: "20px 0 30px 3vw" }}>
-                        <Image src='https://www.efind.lk/storage/images/vehicle_images/honda-civic-ex-tec-2017-for-sale-in-kaduwela-sri-lanka-efindlk-15965565876819.jpg' fluid />
+                        <Image src='https://img-ik.cars.co.za/ik-seo/carsimages/7881627/2015-BMW-5-Series-520d-M-Sport-Auto.jpg?v=1921613738&tr=h-450%2Cw-600' fluid />
                     </Grid.Column>
                 </Grid>
             </div>

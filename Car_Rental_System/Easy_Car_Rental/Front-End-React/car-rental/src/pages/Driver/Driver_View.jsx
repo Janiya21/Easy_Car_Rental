@@ -56,7 +56,7 @@ class Driver_View extends Component {
         return (
             <Grid celled='internally'>
                 <Grid.Row>
-                    <Grid.Column width={13}>
+                    <Grid.Column width={16}>
                     <div style={{marginLeft:"40px"}}>
                         <Statistic.Group>
                         <Statistic>
@@ -82,7 +82,7 @@ class Driver_View extends Component {
                     </Header>
 
                     {/* <Input icon='search' placeholder='Search customer by NIC' />  */}
-                    <Table celled style={{marginLeft:"0px", width:"78vw"}}>
+                    <Table celled style={{marginLeft:"0px", width:"96vw"}}>
                         <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>DriverID</Table.HeaderCell>
@@ -104,10 +104,6 @@ class Driver_View extends Component {
 
 
 
-                    </Grid.Column>
-                    <Grid.Column width={2}>
-                    
-                    
                     </Grid.Column>
                     </Grid.Row>
 

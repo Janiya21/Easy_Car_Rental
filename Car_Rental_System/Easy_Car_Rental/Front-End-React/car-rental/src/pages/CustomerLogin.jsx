@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Popup, Checkbox, Form } from 'semantic-ui-react';
-import {  Link } from "react-router-dom";
+import {  Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 class CustomerLogin extends Component {
 
     constructor(props) {
-        super(props)
-
+        super(props);
+        
         this.state = {
             nic: '',
             name: '',
@@ -17,6 +17,7 @@ class CustomerLogin extends Component {
             status:'Pending',
             nic_or_License_photo:'added'
         }
+        
     }
 
     changeHandler = (e) => {

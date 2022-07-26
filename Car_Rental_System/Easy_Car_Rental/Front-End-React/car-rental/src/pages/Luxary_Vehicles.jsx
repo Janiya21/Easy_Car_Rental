@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { Label,Header } from 'semantic-ui-react';
+import { Grid, Table, Button, Card, Image, Input, Popup, Segment, Icon, Header } from 'semantic-ui-react';
 import styles from '../css/loader.css'
 
 function loader(){
@@ -12,19 +12,54 @@ class Luxary_Vehicles extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            posts: []
+        }
+
+        this.callAPI = this.callAPI.bind(this)
+        this.callAPI();
     }
 
-    bookTheCar = () => {
-        loader();
-        setTimeout(e =>{
-            <Link to="/add_order">
-                Book Vehicle
-            </Link>
-            console.log("fggg");
-        },5000);
-    };
+    callAPI() {
+        fetch("http://localhost:8081/easyRents/api/v1/vehicle").then(
+            (response) => response.json()
+        ).then((data) => {
+            console.log(data);
+            this.setState({
+                posts: data.data
+            })
+        })
+    }
 
     render() {
+        let tb_data = this.state.posts.map((item) => {
+            return (
+                <Table.Row>
+                    <Table.Cell>
+                        <Popup
+                            content={
+                                <Card>
+                                    <Image src='https://www.csojapan.com/stock_images/66103/66103d.jpg' wrapped ui={false} />
+                                </Card>
+                            }
+                            on='click'
+                            trigger={<Button content='Show' />}
+                        />
+                    </Table.Cell>
+                    <Table.Cell singleLine>{item.regNo}</Table.Cell>
+                    <Table.Cell singleLine>{item.brand}</Table.Cell>
+                    <Table.Cell singleLine>{item.fuel_type}</Table.Cell>
+                    <Table.Cell singleLine>{item.comfortability}</Table.Cell>
+                    <Table.Cell singleLine>{item.no_of_passengers}</Table.Cell>
+                    {/* <Table.Cell singleLine>{item.millage_before_Reg}</Table.Cell> */}
+                    <Table.Cell singleLine>{item.loss_damage_amount}</Table.Cell>
+                    <Table.Cell singleLine>{item.daily_cost}</Table.Cell>
+                    <Table.Cell singleLine>{item.monthly_cost}</Table.Cell>
+                    <Table.Cell singleLine><Button>Continue</Button></Table.Cell>
+                </Table.Row>
+            )
+        });
         return (
             <div>
             
@@ -63,184 +98,30 @@ class Luxary_Vehicles extends Component {
                     Matching Results For Your Search
                 </Header>
 
-                <div className="row">
-                    <div class="ui very relaxed four column grid" style={{ margin: "30px" }}>
-                        <div class="column">
-                            <div class="ui card">
-                                <div class="image">
-                                    <img style={{ height: "23vh", width: "18.8vw" }} src="https://d8asu6slkrh4m.cloudfront.net/2019/09/bmw-525i-sri-lanka.jpg" class="ui image" />
-                                </div>
-                                <div class="content">
-                                    <h3>BMW  - 220d</h3>
-                                    <div class="meta">
-                                        <span class="date">Diesl  | 5 Passengers</span>
-                                        <h4>Daily : 11000   |  monthly : 145000</h4>
-                                        <h5>Loss Damage : 23000</h5>
-                                    </div>
-                                </div>
-                                <div class="extra content">
-                                    <a>
-                                        <button id="btnBook" onClick={this.bookTheCar} style={{ width: "260px" }} class="ui primary button">
-                                        <Link to="/add_order">
-                                            Book Vehicle
-                                        </Link>
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="ui card">
-                                <div class="image">
-                                    <img src="https://i.pinimg.com/originals/42/59/74/42597420a332603526ae09219cf65b17.jpg" class="ui image" />
-                                </div>
-                                <div class="content">
-                                    <h3>BMW  - 220d</h3>
-                                    <div class="meta">
-                                        <span class="date">Diesl  | 5 Passengers</span>
-                                        <h4>Daily : 11000   |  monthly : 145000</h4>
-                                        <h5>Loss Damage : 23000</h5>
-                                    </div>
-                                </div>
-                                <div class="extra content">
-                                    <a>
-                                        <button style={{ width: "260px" }} class="ui primary button">
-                                            <Link to="/add_order">
-                                                Book Vehicle
-                                            </Link>
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="ui card">
-                                <div class="image">
-                                    <img src="https://i0.wp.com/autodirect.lk/wp-content/uploads/2022/02/DSC_2249-scaled.jpg?resize=798%2C466&ssl=1" class="ui image" />
-                                </div>
-                                <div class="content">
-                                    <h3>BMW  - 220d</h3>
-                                    <div class="meta">
-                                        <span class="date">Diesl  | 5 Passengers</span>
-                                        <h4>Daily : 11000   |  monthly : 145000</h4>
-                                        <h5>Loss Damage : 23000</h5>
-                                    </div>
-                                </div>
-                                <div class="extra content">
-                                    <a>
-                                        <button style={{ width: "260px" }} class="ui primary button">Book Vehicle</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="ui card">
-                                <div class="image">
-                                    <img style={{ height: "23vh", width: "18.8vw" }} src="https://m.atcdn.co.uk/a/media/w375/f169958c6ec342abac2f6da807a05a1f.jpg" class="ui image" />
-                                </div>
-                                <div class="content">
-                                    <h3>BMW  - 220d</h3>
-                                    <div class="meta">
-                                        <span class="date">Diesl  | 5 Passengers</span>
-                                        <h4>Daily : 11000   |  monthly : 145000</h4>
-                                        <h5>Loss Damage : 23000</h5>
-                                    </div>
-                                </div>
-                                <div class="extra content">
-                                    <a>
-                                        <button style={{ width: "260px" }} class="ui primary button">Book Vehicle</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+                <Table style={{ marginLeft: "30px", overflow: "scroll" }} celled padded>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell singleLine>Model</Table.HeaderCell>
+                                    <Table.HeaderCell>Reg No</Table.HeaderCell>
+                                    <Table.HeaderCell>Brand</Table.HeaderCell>
+                                    <Table.HeaderCell>Fuel Type</Table.HeaderCell>
+                                    <Table.HeaderCell>Comfortability</Table.HeaderCell>
+                                    <Table.HeaderCell>Passengers</Table.HeaderCell>
+                                    {/* <Table.HeaderCell>Millage_Reg</Table.HeaderCell> */}
+                                    <Table.HeaderCell>Loss Damage</Table.HeaderCell>
+                                    <Table.HeaderCell>Daily Cost</Table.HeaderCell>
+                                    <Table.HeaderCell>Monthly Cost</Table.HeaderCell>
+                                    <Table.HeaderCell>Continue</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
 
+                            <Table.Body>
 
-                <div className="row">
-                    <div class="ui very relaxed four column grid" style={{ margin: "30px" }}>
-                        <div class="column">
-                            <div class="ui card">
-                                <div class="image">
-                                    <img style={{ height: "24vh", width: "18.8vw" }} src="https://d8asu6slkrh4m.cloudfront.net/2015/01/toyota-premio-l.jpg" class="ui image" />
-                                </div>
-                                <div class="content">
-                                    <h3>BMW  - 220d</h3>
-                                    <div class="meta">
-                                        <span class="date">Diesl  | 5 Passengers</span>
-                                        <h4>Daily : 11000   |  monthly : 145000</h4>
-                                        <h5>Loss Damage : 23000</h5>
-                                    </div>
-                                </div>
-                                <div class="extra content">
-                                    <a>
-                                        <button style={{ width: "260px" }} class="ui primary button">Book Vehicle</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="ui card">
-                                <div class="image">
-                                    <img style={{ height: "24vh", width: "18.8vw" }} src="https://donrac.ae/wp-content/uploads/2018/08/Audi-A8.jpg" class="ui image" />
-                                </div>
-                                <div class="content">
-                                    <h3>BMW  - 220d</h3>
-                                    <div class="meta">
-                                        <span class="date">Diesl  | 5 Passengers</span>
-                                        <h4>Daily : 11000   |  monthly : 145000</h4>
-                                        <h5>Loss Damage : 23000</h5>
-                                    </div>
-                                </div>
-                                <div class="extra content">
-                                    <a>
-                                        <button style={{width:"260px"}} class="ui primary button">Book Vehicle</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="ui card">
-                                <div class="image">
-                                    <img style={{ height: "24vh", width: "18.8vw" }} src="https://cdn.rnudah.com/images/plain/254e5457e05985b8edfc19f8dfd127d2-2773136204621886675.jpg" class="ui image" />
-                                </div>
-                                <div class="content">
-                                    <h3>BMW  - 220d</h3>
-                                    <div class="meta">
-                                        <span class="date">Diesl  | 5 Passengers</span>
-                                        <h4>Daily : 11000   |  monthly : 145000</h4>
-                                        <h5>Loss Damage : 23000</h5>
-                                    </div>
-                                </div>
-                                <div class="extra content">
-                                    <a>
-                                        <button style={{width:"260px"}} class="ui primary button">Book Vehicle</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="ui card">
-                                <div class="image">
-                                    <img style={{ height: "24vh", width: "18.8vw" }} src="https://img.usedcarsphil.com/crop/480x271/2022/01/10/17696eaf-925b.jpg" class="ui image" />
-                                </div>
-                                <div class="content">
-                                    <h3>BMW  - 220d</h3>
-                                    <div class="meta">
-                                        <span class="date">Diesl  | 5 Passengers</span>
-                                        <h4>Daily : 11000   |  monthly : 145000</h4>
-                                        <h5>Loss Damage : 23000</h5>
-                                    </div>
-                                </div>
-                                <div class="extra content">
-                                    <a>
-                                        <button style={{width:"260px"}} class="ui primary button">Book Vehicle</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                {tb_data}
+                            </Table.Body>
+                        </Table>
+
             </div>
 
 

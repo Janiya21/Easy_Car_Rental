@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Popup, Checkbox, Form } from 'semantic-ui-react';
-import {  Link, useLocation } from "react-router-dom";
+import {  Link, useParams, useLocation} from "react-router-dom";
 import axios from "axios";
+
 
 class CustomerLogin extends Component {
 
@@ -46,6 +47,8 @@ class CustomerLogin extends Component {
         }
     }
 
+    
+
     /*==============================*/
 
     postCustomer = async (data) => {
@@ -65,6 +68,7 @@ class CustomerLogin extends Component {
     /*==============================*/
 
     render() {
+    
         const {nic,name,email,password,tel} = this.state;
         return (
             <div class="ui">

@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { Button, Popup, Grid, Menu, Icon, Card, Image, Label, Header, Segment, Input  } from 'semantic-ui-react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import '@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css';
+import Paper from '@mui/material/Paper';
+import {
+  ArgumentAxis,
+  ValueAxis,
+  Chart,
+  LineSeries,
+} from '@devexpress/dx-react-chart-material-ui';
 
 class Admin_All extends Component {
 
@@ -17,7 +25,13 @@ class Admin_All extends Component {
 
     render() {
         const { activeItem } = this.state;
-        const square = { width: 175, height: 175}
+        const square = { width: 175, height: 175};
+        const data = [
+            { argument: 1, value: 10 },
+            { argument: 2, value: 20 },
+            { argument: 3, value: 30 },
+          ];
+          
         return (
             <div class="ui equal width grid" style={{width:"106vw"}} >
                 <div class="three wide column" style={{marginLeft:"20px"}}>
@@ -154,6 +168,15 @@ class Admin_All extends Component {
                                 />
                             </Grid.Column>
                         </Grid>
+
+                        <Paper>
+                            <Chart data={data}>
+                                <ArgumentAxis />
+                                <ValueAxis />
+
+                                <LineSeries valueField="value" argumentField="argument" />
+                            </Chart>
+                        </Paper>
                     </Segment>
 
 

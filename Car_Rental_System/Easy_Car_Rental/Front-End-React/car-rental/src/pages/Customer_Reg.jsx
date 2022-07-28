@@ -39,6 +39,7 @@ class Customer_Form extends Component {
 
 
     render() {
+
         return (
 
             <form style = {{margin: "40px"}} class="loginForm ui form" onSubmit={this.handleSubmit}>

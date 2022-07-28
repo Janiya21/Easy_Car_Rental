@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react';
-import Luxary_V from './Luxary_Vehicles';
-import Premium_V from './Premium_Vehicles';
-import { Dropdown } from 'semantic-ui-react';
-import {  Link, useNavigate } from "react-router-dom";
+import {  Link } from "react-router-dom";
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
+
+const useStyles = makeStyles((theme) => ({
+    container: {
+      display: 'none',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+      width: 200,
+    },
+  }));
+
+//==============================================
 
 class Homepage extends Component {
 
@@ -15,32 +27,22 @@ class Homepage extends Component {
             pickup_date:'',
             return_date:'',
             pickup_location:'',
-            vehicle_type:''
+            vehicle_type:'',
+
         }
     }
-
-    // =================================================================
-
-        peoplestates = () => {
-            const navigate = useNavigate();
-            const openprofile = (id) => {
-                navigate("/customer",{
-                    state: {
-                        id: "fuckk"
-                    }
-                });
-            }
-            return openprofile;
-        }
-
-    // =================================================================
 
     changeHandler = (e) => {
         this.setState({ [e.target.name] : e.target.value});
     }
 
+    onNavigateCustomer(){
+
+    }
+
     render() {
         const {pickup_date,return_date,location,vehicle_type} = this.state; 
+        const {classes} = this.props;
         return (
                 
             <div>
@@ -78,7 +80,6 @@ class Homepage extends Component {
                         <div class="eight wide column">
 
                             <img src={require('../images/add1.png')} />
-                            {/* <img src="https://fleetroot.com/blog/wp-content/uploads/2020/08/20-features-in-car-rental-software-in-2020.jpg" style={{ margin: "20px 0 20px 30px" }} class="ui large rounded image" /> */}
 
                             <div className="row" style={{ margin: "60px 0 0 70px" }}>
 
@@ -112,11 +113,27 @@ class Homepage extends Component {
                                 <form class="ui form">
                                     <div class="field">
                                         <label>Pick-Up</label>
-                                        <input name="pickup_date" value={pickup_date} onChange={this.changeHandler}  placeholder="pickup date" />
+                                        <TextField name="pickup_date" value={pickup_date} onChange={this.changeHandler} 
+                                            id="date"
+                                            type="date"
+                                            defaultValue="2022-05-24"
+                                            className={classes.textField}
+                                            InputLabelProps={{
+                                            shrink: true,
+                                            }}
+                                        />
                                     </div>
                                     <div class="field">
                                         <label>Return-date</label>
-                                        <input name="return_date" value={return_date} onChange={this.changeHandler}  placeholder="return date" />
+                                        <TextField name="return_date" value={return_date} onChange={this.changeHandler} 
+                                            id="date"
+                                            type="date"
+                                            defaultValue="2022-05-24"
+                                            className={classes.textField}
+                                            InputLabelProps={{
+                                            shrink: true,
+                                            }}
+                                        />
                                     </div>
                                     <div class="field">
                                         <label>PickUp Location</label>
@@ -130,10 +147,9 @@ class Homepage extends Component {
                                         </select>
                                     </div>
                                     <button class="ui button">
-                                        <Link to='/customer'>
-                                            Search Vehicle
-                                        </Link>
+                                        <Link to="/customer">  Search Vehicle </Link> 
                                     </button>
+                                    {/* npm i history */}
                                 </form>
                             </div>
                             <div class="ui container" style={{ padding: "30px 0 0 0" }}>
@@ -234,4 +250,4 @@ class Homepage extends Component {
     }
 }
 
-export default Homepage;
+export default  withStyles(useStyles)(Homepage);

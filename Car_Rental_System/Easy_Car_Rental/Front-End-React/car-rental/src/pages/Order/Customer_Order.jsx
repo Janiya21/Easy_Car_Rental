@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Icon, Grid, Message, Header,Table,Image  } from 'semantic-ui-react';
-
-import {  Link } from "react-router-dom";
+import axios from 'axios';
 
 class CustomerOrder extends Component {
 
@@ -9,12 +8,19 @@ class CustomerOrder extends Component {
         super(props)
 
         this.state = {
+            referenceNo:'R-0004',
+            downPayment:'17000',
+            rentalTime:"10:30:00",
+            reqStatus: "Pending",
+            customer:{},
             driver:{},
-            carDetails: {},
-            vehType:'',
-            pickUpdate:'',
+            vehicle: {},
+            rentalDate:'',
             returnDate:''
         }
+
+        this.getCustomer = this.getCustomer.bind(this)
+        this.getCustomer();
 
         this.getDriverDetails = this.getDriverDetails.bind(this)
         this.getDriverDetails();
@@ -24,33 +30,25 @@ class CustomerOrder extends Component {
     }
 
     componentDidMount(){
-        this.state.vehType = localStorage.getItem("type");
-        this.state.pickUpdate = localStorage.getItem("pickup");
+        this.state.rentalDate = localStorage.getItem("pickup");
         this.state.returnDate = localStorage.getItem("return");
-        let nic = localStorage.getItem("cusNIC");
-        // console.log(type , pickup, returnD, nic);
     }
 
     getDriverDetails(){
-        // fetch("http://localhost:8081/easyRents/api/v1/driver/ran").then(
-        //     (response) => response.json()
-        // ).then((data) => {
-        //     console.log(data);
-        //     let driverDetails = {
-        //         "password": "dany2",
-        //         "name": "dananjaya",
-        //         "tel": "0112817281",
-        //         "email": "Dana@gmail.com",
-        //         "status": "Approved",
-        //         "nic_or_License_photo": "added",
-        //         "nic": "118291v"
-        //     }
-        //     this.setState({
-        //         driver: driverDetails
-        //     })
-        // });
-        
         let driverDetails = {
+            "driverId": "D-0003",
+            "password": "chStonis",
+            "name": "Chamika",
+            "email": "Chami88@gmail.com",
+            "telNo": "0758738212"
+        }
+
+        this.state.driver = driverDetails;
+        console.log(this.state.driver);
+    }
+
+    getCustomer(){
+        let customerDetils = {
             "password": "dany2",
             "name": "dananjaya",
             "tel": "0112817281",
@@ -58,9 +56,10 @@ class CustomerOrder extends Component {
             "status": "Approved",
             "nic_or_License_photo": "added",
             "nic": "118291v"
-        }
-        this.state.driver = driverDetails;
-        console.log(this.state.driver);
+        };
+
+        this.state.customer = customerDetils;
+        console.log(this.state.customer);
     }
 
     getVehicleDetails() {
@@ -71,18 +70,58 @@ class CustomerOrder extends Component {
         ).then((data) => {
             console.log(data);
             this.setState({
-                carDetails: data.data[0]
+                vehicle: data.data[0]
             })
         });
-        console.log(this.state.carDetails);
+        console.log(this.state.vehicle);
+    }
+
+    submitHandler = async (e) => {
+        e.preventDefault();
+        console.log(this.state);
+
+        let res = await this.postOrder(this.state);
+        console.log(res);
+
+        if (res.status === 201) {
+            this.setState({
+                alert: true,
+                message: res.data.message,
+                severity: 'success'
+            });
+        } else {
+            this.setState({
+                alert: true,
+                message: res.response.data.message,
+                severity: 'error'
+            });
+        }
+    }
+
+    postOrder = async (data) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('http://localhost:8081/easyRents/api/v1/ride', data)
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        });
+
+        return await promise;
     }
 
     render() {
 
-        let veh = this.state.carDetails;
+        let veh = this.state.vehicle;
         let driver = this.state.driver;
+        let customer = this.state.customer;
+
         console.log(veh);
         console.log(driver);
+        console.log(customer);
+
                 return (
 
                     <div>
@@ -154,7 +193,7 @@ class CustomerOrder extends Component {
                                                 <Header.Content>Pick-up Date</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell>{this.state.pickUpdate}</Table.Cell>
+                                        <Table.Cell>{this.state.rentalDate}</Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
@@ -178,7 +217,7 @@ class CustomerOrder extends Component {
                                                 <Header.Content>Driver's Contact</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell>011-28927182</Table.Cell>
+                                        <Table.Cell>{driver.telNo}</Table.Cell>
                                     </Table.Row>
                                     
                                     <Table.Row>
@@ -187,7 +226,7 @@ class CustomerOrder extends Component {
                                                 <Header.Content>Driver's Name</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell>Saman Kumara</Table.Cell>
+                                        <Table.Cell>{driver.name}</Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
@@ -195,7 +234,7 @@ class CustomerOrder extends Component {
                                                 <Header.Content>Your Email</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell>DasunShanaka7@gmail.com</Table.Cell>
+                                        <Table.Cell>{customer.email}</Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
@@ -203,7 +242,7 @@ class CustomerOrder extends Component {
                                                 <Header.Content>Your Nic No</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell>200102198921</Table.Cell>
+                                        <Table.Cell>{customer.nic}</Table.Cell>
                                     </Table.Row>
                                     </Table.Body>
                                 </Table>
@@ -217,16 +256,16 @@ class CustomerOrder extends Component {
                                                 <Header.Content> Your Emaergance No</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell>0768739283</Table.Cell>
+                                        <Table.Cell>{customer.tel}</Table.Cell>
                                     </Table.Row>
-                                    <Table.Row>
+                                    {/* <Table.Row>
                                         <Table.Cell>
                                             <Header as='h4' image>
                                                 <Header.Content>Your Address</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell>22B Werahera, Colombo</Table.Cell>
-                                    </Table.Row>
+                                        <Table.Cell>{customer.email}</Table.Cell>
+                                    </Table.Row> */}
                                     <Table.Row>
                                         <Table.Cell>
                                             <Header as='h4' image>
@@ -241,7 +280,7 @@ class CustomerOrder extends Component {
                                                 <Header.Content>Vehicle Charge</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell>12000.00</Table.Cell>
+                                        <Table.Cell>{veh.daily_cost} </Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
@@ -249,7 +288,7 @@ class CustomerOrder extends Component {
                                                 <Header.Content>Loss Damage Charge</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell>16000.00</Table.Cell>
+                                        <Table.Cell>{veh.loss_damage_amount} </Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
@@ -264,10 +303,8 @@ class CustomerOrder extends Component {
                                         
                                         </Table.Cell>
                                         <Table.Cell>
-                                            <button id="btnBook" style={{ width: "200px" }} class="ui inverted primary button">
-                                                <Link to="/add_order">
-                                                    Confirm Order
-                                                </Link>
+                                            <button id="btnBook" onClick={this.submitHandler} style={{ width: "200px" }} class="ui inverted primary button">
+                                                Confirm Order
                                             </button>
                                         </Table.Cell>
                                     </Table.Row>

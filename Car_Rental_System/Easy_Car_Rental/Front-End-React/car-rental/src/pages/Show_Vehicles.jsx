@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Grid, Table, Button, Card, Image, Input, Popup, Segment, Icon, Header } from 'semantic-ui-react';
 import styles from '../css/loader.css'
-
-function loader(){
-    const loader = document.getElementById("loader");
-    loader.style.display = "flex";
-}
+import history from '../history';
 
 class Luxary_Vehicles extends Component {
 
@@ -14,15 +10,30 @@ class Luxary_Vehicles extends Component {
         super(props);
 
         this.state = {
-            posts: []
+            posts: [],
+            pickup_date:'',
+            return_date:'',
+            vehicle_type:'',
+            vehicle_regNo:''
         }
 
         this.callAPI = this.callAPI.bind(this)
         this.callAPI();
     }
 
+    navigateToCustomer = (vehType) => {
+        localStorage.setItem('pickup', localStorage.getItem("pickup"))
+        localStorage.setItem('return', localStorage.getItem("return"))
+        localStorage.setItem('type', localStorage.getItem("type"))
+        localStorage.setItem('regNo', vehType)
+        history.push({pathname:'/add_order'});
+        
+        console.log(vehType);
+    }
+
     callAPI() {
-        fetch("http://localhost:8081/easyRents/api/v1/vehicle").then(
+        let type = localStorage.getItem("type");
+        fetch("http://localhost:8081/easyRents/api/v1/vehicle/comfy/" + type).then(
             (response) => response.json()
         ).then((data) => {
             console.log(data);
@@ -57,8 +68,8 @@ class Luxary_Vehicles extends Component {
                     <Table.Cell singleLine>{item.daily_cost}</Table.Cell>
                     <Table.Cell singleLine>{item.monthly_cost}</Table.Cell>
                     <Table.Cell singleLine>
-                        <Button>
-                            <Link to="/add_order">
+                        <Button onClick={() => this.navigateToCustomer(item.regNo)}>
+                            <Link to="/customer">
                                 Continue
                             </Link>
                         </Button>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Popup, Checkbox, Form } from 'semantic-ui-react';
 import {  Link, useParams, useLocation} from "react-router-dom";
 import axios from "axios";
-
+import history from '../history';
 
 class CustomerLogin extends Component {
 
@@ -10,15 +10,22 @@ class CustomerLogin extends Component {
         super(props);
         
         this.state = {
+            logNic:'',
             nic: '',
             name: '',
             email:'',
             tel:'',
             password:'',
             status:'Pending',
-            nic_or_License_photo:'added'
+            nic_or_License_photo:'added',
+            vehicleType : ''
         }
-        
+    }
+
+    navigateCustomer = () => {
+        localStorage.setItem('cusNIC', this.state.logNic);
+
+        history.push({pathname:'/add_order'});
     }
 
     changeHandler = (e) => {
@@ -47,8 +54,6 @@ class CustomerLogin extends Component {
         }
     }
 
-    
-
     /*==============================*/
 
     postCustomer = async (data) => {
@@ -68,8 +73,12 @@ class CustomerLogin extends Component {
     /*==============================*/
 
     render() {
-    
-        const {nic,name,email,password,tel} = this.state;
+
+        // let type = localStorage.getItem("type");
+        // console.log(type + " cus");
+
+        const {logNic, nic,name,email,password,tel} = this.state;
+
         return (
             <div class="ui">
                 <div class="ui two column grid">
@@ -81,7 +90,7 @@ class CustomerLogin extends Component {
                             <div class="field">
                                 <label>NIC</label>
                                 <div class="ui left icon input">
-                                    <input type="text" placeholder="nic number" />
+                                    <input name="logNic" value={logNic} onChange={this.changeHandler}  type="text" placeholder="nic number" />
                                     <i aria-hidden="true" class="user icon"></i>
                                 </div>
                             </div>
@@ -92,10 +101,11 @@ class CustomerLogin extends Component {
                                     <i aria-hidden="true" class="lock icon"></i>
                                 </div>
                             </div>
-                            <button style={{ margin: "40px 0 30px 10vw" }} class="ui primary inverted button">
-                                <Link to="/luxary_vehicle">
+                            <button onClick={this.navigateCustomer} style={{ margin: "40px 0 30px 10vw" }} class="ui primary inverted button">
+                                <Link to="/add_order">
                                     Log In
                                 </Link>
+                                
                             </button>
                         </form>
                     </div>

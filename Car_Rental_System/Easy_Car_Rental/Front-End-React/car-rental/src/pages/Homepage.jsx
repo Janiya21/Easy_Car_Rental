@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {  Link } from "react-router-dom";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
+import history from '../history';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -32,12 +32,16 @@ class Homepage extends Component {
         }
     }
 
-    changeHandler = (e) => {
-        this.setState({ [e.target.name] : e.target.value});
+    navigateCustomer = () => {
+        localStorage.setItem('pickup', this.state.pickup_date)
+        localStorage.setItem('return', this.state.return_date)
+        localStorage.setItem('type',this.state.vehicle_type)
+
+        history.push({pathname:'/show_vhicles'});
     }
 
-    onNavigateCustomer(){
-
+    changeHandler = (e) => {
+        this.setState({ [e.target.name] : e.target.value});
     }
 
     render() {
@@ -146,10 +150,12 @@ class Homepage extends Component {
                                             <option value="luxary" onChange={this.changeHandler}>Luxary</option>
                                         </select>
                                     </div>
-                                    <button class="ui button">
-                                        <Link to="/customer">  Search Vehicle </Link> 
+                                    <button class="ui button" onClick={this.navigateCustomer}>
+                                       <Link to={{pathname:'/show_vhicles', query:{test:'test'}}} >
+                                            Search Vehicle
+                                       </Link>
                                     </button>
-                                    {/* npm i history */}
+
                                 </form>
                             </div>
                             <div class="ui container" style={{ padding: "30px 0 0 0" }}>

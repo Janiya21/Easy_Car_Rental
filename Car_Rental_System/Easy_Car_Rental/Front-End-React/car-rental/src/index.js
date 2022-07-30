@@ -7,7 +7,7 @@ import Layout2 from './pages/Layout2';
 import Homepage from './pages/Homepage';
 import Customer_Login from './pages/CustomerLogin';
 import Driver_Login from './pages/DriverLogin.jsx';
-import Luxary_V from './pages/Luxary_Vehicles';
+import Show_Vehicles from './pages/Show_Vehicles.jsx';
 import Premium_V from './pages/Premium_Vehicles';
 import Admin_Login from './pages/Admin_Login.jsx';
 import Admin_CusView from './pages/Admin/Admin_AllView';
@@ -18,8 +18,10 @@ import NewCar_Admin from './pages/Admin/Add_NewCar.jsx';
 import Cus_Order from './pages/Order/Customer_Order'
 import Driver_View from './pages/Driver/Driver_View';
 import Order_Admin from './pages/Admin/Order_Ad.jsx'
+import history from '../src/history';
 
-export default function App() {
+export default function App(props) {
+  console.log(props);
   return (
     <BrowserRouter>
       <Routes>
@@ -28,7 +30,7 @@ export default function App() {
           <Route path="customer" element={<Customer_Login />} />
           <Route path="driver" element={<Driver_Login />} />
           <Route path="admin" element={<Admin_Login />} />
-          <Route path="luxary_vehicle" element={<Luxary_V />} />
+          <Route path="show_vhicles" element={<Show_Vehicles />} />
           <Route path="premium_vehicle" element={<Premium_V />} />
           <Route path="add_order" element={<Cus_Order />} />
         </Route>

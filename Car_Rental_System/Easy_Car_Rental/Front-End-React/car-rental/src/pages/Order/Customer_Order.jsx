@@ -8,7 +8,7 @@ class CustomerOrder extends Component {
         super(props)
 
         this.state = {
-            referenceNo:'R-0004',
+            referenceNo:'',
             downPayment:'17000',
             rentalTime:"10:30:00",
             reqStatus: "Pending",
@@ -27,6 +27,9 @@ class CustomerOrder extends Component {
 
         this.getVehicleDetails = this.getVehicleDetails.bind(this)
         this.getVehicleDetails();
+
+        this.getLastID = this.getLastID.bind(this)
+        this.getLastID();
     }
 
     componentDidMount(){
@@ -72,6 +75,18 @@ class CustomerOrder extends Component {
             })
         });
         console.log(this.state.vehicle);
+    }
+
+    getLastID(){
+        fetch("http://localhost:8081/easyRents/api/v1/ride/generateOID").then(
+            (response) => response.json()
+        ).then((data) => {
+            console.log(data);
+            this.setState({
+                referenceNo: data.data
+            })
+        });
+        console.log(this.state.referenceNo);
     }
 
     submitHandler = async (e) => {

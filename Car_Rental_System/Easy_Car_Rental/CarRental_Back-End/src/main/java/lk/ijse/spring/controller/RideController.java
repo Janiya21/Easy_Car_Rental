@@ -66,16 +66,12 @@ public class RideController {
         String lastID = rideService.getLastID();
         System.out.println(lastID + " lfg");
         String[] arrOfStr = lastID.split("-");
-        for (String a : arrOfStr){
-            System.out.println(a);
-            newID.append(a);
-        }
+        System.out.println(arrOfStr[1] + " this is the two");
         System.out.println("-----------------");
-        int i = Integer.parseInt(String.valueOf(newID));
-        System.out.println(i + " iiiii ");
+        int i = Integer.parseInt(String.valueOf(arrOfStr[1]));
         i++;
         System.out.println(i);
-        return new ResponseUtil(200,"Successfully Returned !!",newID);
+        return new ResponseUtil(200,"Successfully Returned !!", "R-"+i);
     }
 
 }

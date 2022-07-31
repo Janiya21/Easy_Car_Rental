@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Popup, Checkbox, Form } from 'semantic-ui-react';
-import {  Link, useParams, useLocation} from "react-router-dom";
+import { Link, useParams, useLocation} from "react-router-dom";
 import axios from "axios";
 import history from '../history';
 
@@ -10,6 +10,7 @@ class CustomerLogin extends Component {
         super(props);
         
         this.state = {
+            posts:[],
             logNic:'',
             nic: '',
             name: '',
@@ -20,6 +21,9 @@ class CustomerLogin extends Component {
             nic_or_License_photo:'added',
             vehicleType : ''
         }
+
+        this.callAPI = this.callAPI.bind(this)
+        this.callAPI();
     }
 
     navigateCustomer = () => {
@@ -72,6 +76,26 @@ class CustomerLogin extends Component {
 
     /*==============================*/
 
+    callAPI(){
+        fetch("http://localhost:8081/easyRents/api/v1/customer")
+            .then(
+                (response) => response.json()
+            ).then((data)=> {
+            console.log(data);
+            this.setState({
+                posts:data.data
+            })
+            console.log("oyeeee");
+            for (const post of this.state.posts) {
+                if(this.state.logNic === post.nic){
+                    console.log("ojjj")
+                }
+            }
+            this.navigateCustomer();
+
+        })
+    }
+
     render() {
 
         // let type = localStorage.getItem("type");
@@ -101,11 +125,11 @@ class CustomerLogin extends Component {
                                     <i aria-hidden="true" class="lock icon"></i>
                                 </div>
                             </div>
-                            <button onClick={this.navigateCustomer} style={{ margin: "40px 0 30px 10vw" }} class="ui primary inverted button">
-                                <Link to="/add_order">
-                                    Log In
-                                </Link>
-                                
+                            <button onClick={this.callAPI} style={{ margin: "40px 0 30px 10vw" }} class="ui primary inverted button">
+                                {/*<Link to="/add_order">*/}
+                                {/*    Log In*/}
+                                {/*</Link>*/}
+                                Log In
                             </button>
                         </form>
                     </div>

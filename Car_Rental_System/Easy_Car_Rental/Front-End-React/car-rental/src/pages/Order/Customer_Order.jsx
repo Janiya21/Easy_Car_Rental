@@ -38,13 +38,29 @@ class CustomerOrder extends Component {
     }
 
     getDriverDetails(){
-        this.state.driver = {
-            "driverId": "D-0003",
-            "password": "chStonis",
-            "name": "Chamika",
-            "email": "Chami88@gmail.com",
-            "telNo": "0758738212"
-        };
+        // this.state.driver = {
+        //     "driverId": "D-0003",
+        //     "password": "chStonis",
+        //     "name": "Chamika",
+        //     "email": "Chami88@gmail.com",
+        //     "telNo": "0758738212"
+        // };
+        // console.log(this.state.driver);
+
+        fetch("http://localhost:8081/easyRents/api/v1/driver").then(
+            (response) => response.json()
+        ).then((data) => {
+            console.log(data);
+            console.log(data.data.length);
+            let number = Math.floor(Math.random() * data.data.length);
+            console.log(number + " number")
+            let revDriver = data.data[number];
+            console.log(revDriver)
+            this.setState({
+                driver: revDriver
+            })
+
+        });
         console.log(this.state.driver);
     }
 
@@ -69,7 +85,7 @@ class CustomerOrder extends Component {
         fetch("http://localhost:8081/easyRents/api/v1/vehicle/orderVeh/"+regNo).then(
             (response) => response.json()
         ).then((data) => {
-            console.log(data);
+            console.log(data.data);
             this.setState({
                 vehicle: data.data[0]
             })

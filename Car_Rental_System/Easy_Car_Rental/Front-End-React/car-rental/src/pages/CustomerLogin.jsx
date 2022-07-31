@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Popup, Checkbox, Form } from 'semantic-ui-react';
-import { Link, useParams, useLocation} from "react-router-dom";
+import { Link, useHistory, useLocation} from "react-router-dom";
 import axios from "axios";
 import history from '../history';
 
@@ -19,11 +19,10 @@ class CustomerLogin extends Component {
             password:'',
             status:'Pending',
             nic_or_License_photo:'added',
-            vehicleType : ''
+            vehicleType : '',
+            loginPassword: '',
+            loginValidLocation:'#'
         }
-
-        this.callAPI = this.callAPI.bind(this)
-        this.callAPI();
     }
 
     navigateCustomer = () => {
@@ -76,7 +75,7 @@ class CustomerLogin extends Component {
 
     /*==============================*/
 
-    callAPI(){
+    callAPI = (e) => {
         fetch("http://localhost:8081/easyRents/api/v1/customer")
             .then(
                 (response) => response.json()
@@ -85,24 +84,23 @@ class CustomerLogin extends Component {
             this.setState({
                 posts:data.data
             })
-            console.log("oyeeee");
             for (const post of this.state.posts) {
-                if(this.state.logNic === post.nic){
-                    console.log("ojjj")
+                console.log(post.nic, this.state.logNic)
+                if (this.state.logNic === post.nic) {
+                    if(this.state.loginPassword === post.password){
+                        console.log("fukooof")
+                        this.state.loginValidLocation='/add_order';
+                        this.navigateCustomer();
+                    }
                 }
             }
-            this.navigateCustomer();
-
+            console.log(this.state.loginValidLocation);
         })
     }
 
     render() {
 
-        // let type = localStorage.getItem("type");
-        // console.log(type + " cus");
-
-        const {logNic, nic,name,email,password,tel} = this.state;
-
+        const {logNic, nic,name,email,password,tel,loginPassword} = this.state;
         return (
             <div class="ui">
                 <div class="ui two column grid">
@@ -110,7 +108,7 @@ class CustomerLogin extends Component {
                         <div className="row">
                             <h2 style={{ margin: "50px 0 50px 260px" }} class="ui header"><img src="https://react.semantic-ui.com/images/avatar/large/patrick.png" class="ui circular image" />Customer Log-In</h2>
                         </div>
-                        <form style={{width:"30vw", marginLeft:"10vw"}} class="ui form">
+                        <form style={{width:"30vw", marginLeft:"10vw"}} class="ui form" >
                             <div class="field">
                                 <label>NIC</label>
                                 <div class="ui left icon input">
@@ -121,15 +119,14 @@ class CustomerLogin extends Component {
                             <div class="field">
                                 <label>Password</label>
                                 <div class="ui left icon input">
-                                    <input type="password" />
+                                    <input name="loginPassword" value={loginPassword} onChange={this.changeHandler} type="password" />
                                     <i aria-hidden="true" class="lock icon"></i>
                                 </div>
                             </div>
-                            <button onClick={this.callAPI} style={{ margin: "40px 0 30px 10vw" }} class="ui primary inverted button">
-                                {/*<Link to="/add_order">*/}
-                                {/*    Log In*/}
-                                {/*</Link>*/}
-                                Log In
+                            <button type="button" onClick={this.callAPI} style={{ margin: "40px 0 30px 10vw" }} class="ui primary inverted button">
+                                <Link to={this.state.loginValidLocation}>
+                                    Log In
+                                </Link>
                             </button>
                         </form>
                     </div>

@@ -24,9 +24,21 @@ public class VehicleController {
         return new ResponseUtil(200,"Successfully returned !!",vehicleService.getAllVehicles());
     }
 
+    @GetMapping(path = "orderVeh/{regNo}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getOrderVehicle(@PathVariable String regNo){
+        System.out.println("avo");
+        return new ResponseUtil(200,"Successfully returned !!",vehicleService.getOrderedVehicle(regNo));
+    }
+
+    @GetMapping(path = "/comfy/{com}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getRevVehicles(@PathVariable String com) {
+        return new ResponseUtil(200,"Successfully returned !!",vehicleService.getRevVehicle(com));
+    }
+
     @ResponseStatus(HttpStatus.CREATED) //201
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO) {
+        System.out.println(vehicleDTO);
         vehicleService.saveVehicle(vehicleDTO);
         return new ResponseUtil(200,"Successfully Saved !!",null);
     }

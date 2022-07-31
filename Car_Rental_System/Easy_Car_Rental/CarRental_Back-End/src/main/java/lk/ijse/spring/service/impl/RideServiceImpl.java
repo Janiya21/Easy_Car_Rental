@@ -70,4 +70,15 @@ public class RideServiceImpl implements RideService {
     public List<String> getAllRefs() {
         return mapper.map(repo.getAllRideRefs(), new TypeToken<List<String>>() {}.getType());
     }
+
+    @Override
+    public String getLastID() {
+        return repo.getLastID();
+    }
+
+    @Override
+    public void updateStatus(String status) {
+        System.out.println(status + " st");
+        repo.updateReqStatus(status);
+    }
 }

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Button, Icon, Grid, Message, Header,Table,Image  } from 'semantic-ui-react';
+import React, {Component} from 'react';
+import {Grid, Header, Message, Table} from 'semantic-ui-react';
 import axios from 'axios';
 
 class CustomerOrder extends Component {
@@ -35,30 +35,28 @@ class CustomerOrder extends Component {
     }
 
     getDriverDetails(){
-        let driverDetails = {
+        this.state.driver = {
             "driverId": "D-0003",
             "password": "chStonis",
             "name": "Chamika",
             "email": "Chami88@gmail.com",
             "telNo": "0758738212"
-        }
-
-        this.state.driver = driverDetails;
+        };
         console.log(this.state.driver);
     }
 
     getCustomer(){
-        let customerDetils = {
-            "password": "dany2",
-            "name": "dananjaya",
-            "tel": "0112817281",
-            "email": "Dana@gmail.com",
-            "status": "Approved",
-            "nic_or_License_photo": "added",
-            "nic": "118291v"
-        };
 
-        this.state.customer = customerDetils;
+        let nic = localStorage.getItem("cusNIC");
+        console.log(nic + " regNo");
+        fetch("http://localhost:8081/easyRents/api/v1/customer/"+nic).then(
+            (response) => response.json()
+        ).then((data) => {
+            console.log(data);
+            this.setState({
+                customer: data.data
+            })
+        });
         console.log(this.state.customer);
     }
 
@@ -253,27 +251,19 @@ class CustomerOrder extends Component {
                                     <Table.Row>
                                         <Table.Cell>
                                             <Header as='h4' image>
-                                                <Header.Content> Your Emaergance No</Header.Content>
+                                                <Header.Content> Your Emergency No</Header.Content>
                                             </Header>
                                         </Table.Cell>
                                         <Table.Cell>{customer.tel}</Table.Cell>
                                     </Table.Row>
-                                    {/* <Table.Row>
-                                        <Table.Cell>
-                                            <Header as='h4' image>
-                                                <Header.Content>Your Address</Header.Content>
-                                            </Header>
-                                        </Table.Cell>
-                                        <Table.Cell>{customer.email}</Table.Cell>
-                                    </Table.Row> */}
-                                    <Table.Row>
-                                        <Table.Cell>
-                                            <Header as='h4' image>
-                                                <Header.Content>Extar Charge</Header.Content>
-                                            </Header>
-                                        </Table.Cell>
-                                        <Table.Cell>0.00</Table.Cell>
-                                    </Table.Row>
+                                    {/*<Table.Row>*/}
+                                    {/*    <Table.Cell>*/}
+                                    {/*        <Header as='h4' image>*/}
+                                    {/*            <Header.Content>Downpayment Charge</Header.Content>*/}
+                                    {/*        </Header>*/}
+                                    {/*    </Table.Cell>*/}
+                                    {/*    <Table.Cell>{customer.downPayment}</Table.Cell>*/}
+                                    {/*</Table.Row>*/}
                                     <Table.Row>
                                         <Table.Cell>
                                             <Header as='h4' image>
@@ -296,7 +286,7 @@ class CustomerOrder extends Component {
                                                 <Header.Content>Total Charge</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell><h2>Rs 28000.00</h2></Table.Cell>
+                                        <Table.Cell><h2>Rs {veh.loss_damage_amount + veh.daily_cost}</h2></Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>

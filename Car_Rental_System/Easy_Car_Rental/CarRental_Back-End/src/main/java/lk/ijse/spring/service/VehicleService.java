@@ -12,6 +12,8 @@ public interface VehicleService {
     void updateVehicle(VehicleDTO dto);
     VehicleDTO searchVehicle(String id);
     List<VehicleDTO> getAllVehicles();
+    List<VehicleDTO> getRevVehicle(String com);
+    List<VehicleDTO> getOrderedVehicle(String regNo);
     List<String> getAllRegNos();
 
 }

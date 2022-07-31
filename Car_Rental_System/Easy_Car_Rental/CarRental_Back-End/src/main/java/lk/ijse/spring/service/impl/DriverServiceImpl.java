@@ -62,6 +62,13 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
+    public DriverDTO SearchRandomDriver() {
+        Driver randomDriver = repo.getRandomDriver();
+        System.out.println(randomDriver);
+        return mapper.map(randomDriver, DriverDTO.class);
+    }
+
+    @Override
     public List<DriverDTO> getAllDrivers() {
         return mapper.map(repo.findAll(), new TypeToken<List<DriverDTO>>() {}.getType());
     }

@@ -52,4 +52,30 @@ public class RideController {
         return new ResponseUtil(200,"Successfully Returned !!",rideService.getAllRefs());
     }
 
+    @PutMapping(params = {"refUp"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil changeStatus(@RequestParam String refUp){
+        System.out.println("fukuuu");
+        rideService.updateStatus(refUp);
+        return new ResponseUtil(200,"Successfully Updated The Status !!",null);
+    }
+
+    @GetMapping(path = "generateOID")
+    public ResponseUtil generateOrderID(){
+        StringBuilder newID= new StringBuilder();
+        System.out.println("haree");
+        String lastID = rideService.getLastID();
+        System.out.println(lastID + " lfg");
+        String[] arrOfStr = lastID.split("-");
+        for (String a : arrOfStr){
+            System.out.println(a);
+            newID.append(a);
+        }
+        System.out.println("-----------------");
+        int i = Integer.parseInt(String.valueOf(newID));
+        System.out.println(i + " iiiii ");
+        i++;
+        System.out.println(i);
+        return new ResponseUtil(200,"Successfully Returned !!",newID);
+    }
+
 }

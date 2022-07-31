@@ -26,6 +26,7 @@ public class Customer {
     private String tel;
     private String email;
     private String nic_or_License_photo;
+    private String status;
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)

@@ -13,5 +13,7 @@ public interface RideService {
     RideDTO searchOrder(String id);
     List<RideDTO> getAllOrders();
     List<String> getAllRefs();
+    String getLastID();
+    void updateStatus(String status);
 
 }

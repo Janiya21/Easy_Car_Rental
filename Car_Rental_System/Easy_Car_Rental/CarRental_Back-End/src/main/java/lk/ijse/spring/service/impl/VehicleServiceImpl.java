@@ -70,6 +70,17 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
+    public List<VehicleDTO> getOrderedVehicle(String regNo) {
+        return mapper.map(repo.getOrderedVehicle(regNo), new TypeToken<List<VehicleDTO>>() {}.getType());
+    }
+
+    @Override
+    public List<VehicleDTO> getRevVehicle(String com) {
+        System.out.println(com);
+        return mapper.map(repo.getRevVehicle(com), new TypeToken<List<VehicleDTO>>() {}.getType());
+    }
+
+    @Override
     public List<String> getAllRegNos() {
         return mapper.map(repo.getAllVehicleIds(), new TypeToken<List<String>>() {}.getType());
     }

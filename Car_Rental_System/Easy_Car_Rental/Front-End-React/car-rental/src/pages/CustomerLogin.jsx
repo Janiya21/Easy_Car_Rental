@@ -27,7 +27,6 @@ class CustomerLogin extends Component {
 
     navigateCustomer = () => {
         localStorage.setItem('cusNIC', this.state.logNic);
-
         history.push({pathname:'/add_order'});
     }
 
@@ -88,7 +87,6 @@ class CustomerLogin extends Component {
                 console.log(post.nic, this.state.logNic)
                 if (this.state.logNic === post.nic) {
                     if(this.state.loginPassword === post.password){
-                        console.log("fukooof")
                         this.state.loginValidLocation='/add_order';
                         this.navigateCustomer();
                     }

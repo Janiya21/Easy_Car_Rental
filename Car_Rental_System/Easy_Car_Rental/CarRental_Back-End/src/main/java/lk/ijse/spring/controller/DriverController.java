@@ -20,12 +20,14 @@ public class DriverController  {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllDrivers() {
+        System.out.println(  " ID");
         return new ResponseUtil(200,"Successfully returned !!",driverService.getAllDrivers());
     }
 
     @ResponseStatus(HttpStatus.CREATED) //201
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveDriver(@ModelAttribute DriverDTO driverDTO) {
+    public ResponseUtil saveDriver(@RequestBody DriverDTO driverDTO) {
+        System.out.println(driverDTO);
         driverService.saveDriver(driverDTO);
         return new ResponseUtil(200,"Successfully Saved !!",null);
     }
@@ -44,7 +46,15 @@ public class DriverController  {
 
     @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchDriver(@PathVariable String id) {
+        System.out.println(id + " ID");
         return new ResponseUtil(200,"Successfully Found !!",driverService.SearchDriver(id));
+    }
+
+    @GetMapping(path = "/ran/randomDriver",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchRandomDriver() {
+        DriverDTO driverDTO = driverService.SearchDriver("D-0001");
+        System.out.println(driverDTO + " DD");
+        return new ResponseUtil(200,"Successfully Found !!",driverDTO);
     }
 
     @GetMapping(path = "all")

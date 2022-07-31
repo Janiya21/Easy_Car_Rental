@@ -1,4 +1,4 @@
-function AdminloginCheck(){
+function AdminLoginCheck(){
 
     let username = "Suresh_22" ;
     let password = "sure209";
@@ -23,3 +23,27 @@ function AdminloginCheck(){
         }
     });
 }
+
+
+function loadCustomerOrderStatus(){
+    $.ajax({
+        url: baseUrl + "api/v1/ride",
+        method: "GET",
+        success: function (resp) {
+            // load all Ride Details To a Table
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function changeRideStatus(){
+
+}
+
+// ====================================================================
+
+loadCustomerOrderStatus();
+
+changeRideStatus();

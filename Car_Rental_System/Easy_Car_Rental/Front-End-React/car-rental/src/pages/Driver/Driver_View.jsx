@@ -7,7 +7,7 @@ class Driver_View extends Component {
         super(props)
 
         this.state ={
-            posts:[]
+            posts:[],
         }
 
         this.callAPI = this.callAPI.bind(this)
@@ -21,39 +21,38 @@ class Driver_View extends Component {
         .then(
             (response) => response.json()
         ).then((data)=> {
-            console.log(data);
+            console.log(data.data.rides);
             this.setState({
-                posts:data.data
+                posts:data.data.rides
             })
         })
+        console.log(this.state.posts)
     }
 
     render() {
 
-        /*let tb_data = this.state.posts.map((item)=>{
-            console.log(item.rides);
+        for (let postsKey of this.state.posts) {
+            console.log(postsKey.referenceNo);
+        }
 
-            var jsonData = JSON.parse(JSON.stringify(item.rides));
-            for (var i = 0; i < jsonData.length; i++) {
-                var ride = jsonData[i];
-                console.log(ride.downPayment);
-                return (
-                    <Table.Row>
-                          <Table.Cell singleLine>{item.driverId }</Table.Cell>
-                          <Table.Cell singleLine>{ride.rentalDate}</Table.Cell>
-                          <Table.Cell singleLine>{ride.rentalTime}</Table.Cell>
-                          <Table.Cell singleLine>{ride.returnDate}</Table.Cell>
-                          <Table.Cell singleLine>{ride.vehicle.regNo}</Table.Cell>
-                          <Table.Cell singleLine>{ride.vehicle.brand}</Table.Cell>
-                          <Table.Cell singleLine>{ride.customer.nic}</Table.Cell>
-                          <Table.Cell singleLine>{ride.customer.name}</Table.Cell>
-                          <Table.Cell singleLine>{ride.customer.tel}</Table.Cell>
+        let tb_data = this.state.posts.map((item)=>{
+            console.log(item.referenceNo);
 
-                    </Table.Row>
-                )
-            }
+            return (
+                <Table.Row>
+                    <Table.Cell singleLine>{item.referenceNo }</Table.Cell>
+                    <Table.Cell singleLine>{item.rentalDate}</Table.Cell>
+                    <Table.Cell singleLine>{item.rentalTime}</Table.Cell>
+                    <Table.Cell singleLine>{item.returnDate}</Table.Cell>
+                    <Table.Cell singleLine>{item.vehicle.regNo}</Table.Cell>
+                    <Table.Cell singleLine>{item.vehicle.brand}</Table.Cell>
+                    <Table.Cell singleLine>{item.customer.nic}</Table.Cell>
+                    <Table.Cell singleLine>{item.customer.name}</Table.Cell>
+                    <Table.Cell singleLine>{item.customer.tel}</Table.Cell>
 
-        })*/
+                </Table.Row>
+            )
+        })
 
         return (
             <Grid celled='internally'>
@@ -87,7 +86,7 @@ class Driver_View extends Component {
                     <Table celled style={{marginLeft:"0px", width:"96vw"}}>
                         <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>DriverID</Table.HeaderCell>
+                            <Table.HeaderCell>Ref No</Table.HeaderCell>
                             <Table.HeaderCell>Ride Date</Table.HeaderCell>
                             <Table.HeaderCell>Time</Table.HeaderCell>
                             <Table.HeaderCell>Return Date</Table.HeaderCell>

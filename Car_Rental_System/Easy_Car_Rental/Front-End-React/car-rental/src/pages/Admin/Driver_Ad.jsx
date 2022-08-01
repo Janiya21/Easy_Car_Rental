@@ -28,23 +28,36 @@ class Driver_Ad extends Component {
     submitHandler = async (e) => {
         e.preventDefault();
         console.log(this.state);
+        this.getLastDriverID();
+    }
 
-        let res = await this.postDriver(this.state);
-        console.log(res);
+     getLastDriverID(){
+        fetch("http://localhost:8081/easyRents/api/v1/driver/generateDriverID").then(
+            (response) => response.json()
+        ).then(async (data) => {
+            console.log(data);
+            this.setState({
+                driverId: data.data
+            })
+            console.log(this.state.driverId);
 
-        if (res.status === 201) {
-            this.setState({
-                alert: true,
-                message: res.data.message,
-                severity: 'success'
-            });
-        } else {
-            this.setState({
-                alert: true,
-                message: res.response.data.message,
-                severity: 'error'
-            });
-        }
+            let res = await this.postDriver(this.state);
+            console.log(res);
+
+            if (res.status === 201) {
+                this.setState({
+                    alert: true,
+                    message: res.data.message,
+                    severity: 'success'
+                });
+            } else {
+                this.setState({
+                    alert: true,
+                    message: res.response.data.message,
+                    severity: 'error'
+                });
+            }
+        })
     }
 
     postDriver = async (data) => {
@@ -76,7 +89,7 @@ class Driver_Ad extends Component {
 
     render() {
 
-        const {driverId,name,email,telNo} = this.state;
+        const {name,email,telNo} = this.state;
 
         let tb_data = this.state.posts.map((item)=>{
                 return (
@@ -119,10 +132,10 @@ class Driver_Ad extends Component {
                     </Header>
 
                     <Form onSubmit={this.submitHandler}>
-                        <Form.Field>
-                            <label>Driver ID</label>
-                            <input name="driverId" value={driverId} onChange={this.changeHandler} placeholder='nic number' />
-                        </Form.Field>
+                        {/*<Form.Field>*/}
+                        {/*    <label>Driver ID</label>*/}
+                        {/*    <input name="driverId"  onChange={this.changeHandler} placeholder='nic number' />*/}
+                        {/*</Form.Field>*/}
                         <Form.Group widths='equal'>
                             <Form.Input name="name" value={name} onChange={this.changeHandler} fluid label='name' placeholder='name' />
                             <Form.Input name="email" value={email} onChange={this.changeHandler} fluid label='email' placeholder='email' />

@@ -26,6 +26,58 @@ class Customer_Ad extends Component {
         })
     }
 
+    submitHandler = async (nic,email,name,nic_or_License_photo,password,tel,status) => {
+        //e.preventDefault();
+        console.log(nic , email , name ,  nic_or_License_photo , password , tel , status);
+        let updatedObj = {
+            "nic":nic,
+            "email":email,
+            "name":name,
+            "nic_or_License_photo":"added",
+            "password":password,
+            "tel":tel,
+            "status":"Approved"
+        }
+        console.log(this.state);
+
+        let res = await this.updateStatus(updatedObj);
+        console.log(res);
+
+        if (res.status === 200) {
+           alert("Successfully Approved The Request");
+            window.location.reload();
+        } else {
+            alert("Request Not Approved Correctly")
+        }
+    }
+
+    updateStatus = async (data) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.put('http://localhost:8081/easyRents/api/v1/customer', data)
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        });
+
+        return await promise;
+    }
+
+    /*changeStatus(nic,email,name,nic_or_License_photo,password,tel,status) {
+        console.log(nic , email , name ,  nic_or_License_photo , password , tel , status);
+        let updatedObj = {
+            "NIC":nic,
+            "email":email,
+            "name":name,
+            "nic_or_License_photo":"added",
+            "password":password,
+            "tel":tel,
+            "status":"Approved"
+        }
+    }*/
+
     render() {
         // const {posts} = this.state
         let tb_data = this.state.posts.map((item)=>{
@@ -48,8 +100,8 @@ class Customer_Ad extends Component {
                     </Table.Row>
                 )
             }
-            
         });
+
         let pending_table = this.state.posts.map((item)=>{
             if(item.status === "Pending"){
                 return (
@@ -90,7 +142,7 @@ class Customer_Ad extends Component {
                                     />
                                 </Table.Cell>
                                 <Table.Cell>
-                                <Button basic color='green'>Approve</Button>
+                                <Button basic color='green' onClick={() => this.submitHandler(item.nic, item.email, item.name, item.tel, item.nic_or_License_photo, item.password, item.status)} >Approve</Button>
                                 <Button basic color='red'>Decline </Button>
                             </Table.Cell>
                     </Table.Row>

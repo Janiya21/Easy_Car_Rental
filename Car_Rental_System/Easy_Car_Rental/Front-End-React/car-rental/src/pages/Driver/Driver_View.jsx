@@ -15,7 +15,9 @@ class Driver_View extends Component {
     }
 
     callAPI(){
-        fetch("http://localhost:8081/easyRents/api/v1/driver")
+        let code = localStorage.getItem("driverID");
+        console.log(code + " code")
+        fetch("http://localhost:8081/easyRents/api/v1/driver/"+code)
         .then(
             (response) => response.json()
         ).then((data)=> {
@@ -28,7 +30,7 @@ class Driver_View extends Component {
 
     render() {
 
-        let tb_data = this.state.posts.map((item)=>{
+        /*let tb_data = this.state.posts.map((item)=>{
             console.log(item.rides);
 
             var jsonData = JSON.parse(JSON.stringify(item.rides));
@@ -46,12 +48,12 @@ class Driver_View extends Component {
                           <Table.Cell singleLine>{ride.customer.nic}</Table.Cell>
                           <Table.Cell singleLine>{ride.customer.name}</Table.Cell>
                           <Table.Cell singleLine>{ride.customer.tel}</Table.Cell>
-                         
+
                     </Table.Row>
                 )
             }
-                
-        })
+
+        })*/
 
         return (
             <Grid celled='internally'>

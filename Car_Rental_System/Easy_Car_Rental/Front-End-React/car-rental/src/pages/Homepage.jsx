@@ -85,7 +85,7 @@ class Homepage extends Component {
 
                             <img src={require('../images/add1.png')} />
 
-                            <div className="row" style={{ margin: "60px 0 0 70px" }}>
+                            <div className="row" style={{ margin: "60px 0 0 40px" }}>
 
                                 <div class="ui statistics">
                                     <div class="ui statistic">
@@ -139,9 +139,20 @@ class Homepage extends Component {
                                             }}
                                         />
                                     </div>
-                                    <div class="field">
-                                        <label>PickUp Location</label>
-                                        <input name="location" value={location} onChange={this.changeHandler}  placeholder="your location" />
+                                    <div className="equal width fields">
+                                        <select name="location"
+                                                className="ui dropdown">
+                                            <option value="Colombo" onChange={this.changeHandler}>Colombo</option>
+                                            <option value="Piliyandala" onChange={this.changeHandler}>Piliyandala</option>
+                                            <option value="Boralesgamuwa" onChange={this.changeHandler}>Boralesgamuwa</option>
+                                            <option value="Moratuwa" onChange={this.changeHandler}>Moratuwa</option>
+                                            <option value="Kotte" onChange={this.changeHandler}>Kotte</option>
+                                            <option value="Panadura" onChange={this.changeHandler}>Panadura</option>
+                                            <option value="Maharagama" onChange={this.changeHandler}>Maharagama</option>
+                                            <option value="Kottawa" onChange={this.changeHandler}>Kottawa</option>
+                                            <option value="Homagama" onChange={this.changeHandler}>Homagama</option>
+                                            <option value="Kesbewa" onChange={this.changeHandler}>Kesbewa</option>
+                                        </select>
                                     </div>
                                     <div class="equal width fields">
                                         <select name="vehicle_type" value={vehicle_type} onChange={this.changeHandler} class="ui dropdown">

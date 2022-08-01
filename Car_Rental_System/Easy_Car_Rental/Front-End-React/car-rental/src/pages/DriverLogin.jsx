@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import history from "../history";
 
 class DriverLogin extends Component {
 
@@ -9,12 +10,21 @@ class DriverLogin extends Component {
         super(props)
 
         this.state = {
+            posts:[],
             driverId: '',
             name: '',
             email:'',
             telNo:'',
-            password:''
+            password:'',
+            logID:'',
+            loginPassword: '',
+            loginValidLocation:'#'
         }
+    }
+
+    navigateDriver = () => {
+        localStorage.setItem('driverID', this.state.logID);
+        history.push({pathname:'/driver_view'});
     }
 
     changeHandler = (e) => {
@@ -56,9 +66,31 @@ class DriverLogin extends Component {
 
         return await promise;
     }
+
+    callAPI = (e) => {
+        fetch("http://localhost:8081/easyRents/api/v1/driver")
+            .then(
+                (response) => response.json()
+            ).then((data)=> {
+            console.log(data);
+            this.setState({
+                posts:data.data
+            })
+            for (const post of this.state.posts) {
+                console.log(post.driverId, this.state.logID)
+                if (this.state.logID === post.driverId) {
+                    if(this.state.loginPassword === post.password){
+                        this.state.loginValidLocation='/driver_view';
+                        this.navigateDriver();
+                    }
+                }
+            }
+            console.log(this.state.loginValidLocation);
+        })
+    }
  
     render() {
-        const {driverId,name,email,telNo,password} = this.state;
+        const {driverId,name,email,telNo,password,logID, loginPassword} = this.state;
         return (
             <div class="ui">
             <div class="ui two column grid">
@@ -71,20 +103,20 @@ class DriverLogin extends Component {
                         <div class="field">
                             <label>Driver_ID</label>
                             <div class="ui left icon input">
-                                <input type="text" placeholder="driver id" />
+                                <input type="text" name="logID" value={logID} onChange={this.changeHandler}  placeholder="driver id" />
                                 <i aria-hidden="true" class="user icon"/>
                             </div>
                         </div>
                         <div class="field">
                             <label>Password</label>
                             <div class="ui left icon input">
-                                <input type="password" />
+                                <input type="password"  name="loginPassword" value={loginPassword} onChange={this.changeHandler} />
                                 <i aria-hidden="true" class="lock icon"/>
                             </div>
                         </div>
-                        <button style={{ margin: "40px 0 30px 10vw" }} class="ui inverted primary button">
-                            <Link to="/driver_view">
-                                Log-In
+                        <button onClick={this.callAPI} style={{ margin: "40px 0 30px 10vw" }} class="ui inverted primary button">
+                            <Link to={this.state.loginValidLocation}>
+                                Log In
                             </Link>
                         </button>
                     </form>

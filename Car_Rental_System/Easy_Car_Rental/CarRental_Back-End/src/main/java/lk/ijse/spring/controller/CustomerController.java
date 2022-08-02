@@ -34,17 +34,19 @@ public class CustomerController {
         return new ResponseUtil(200,"Done",allImages);
     }
 
-    @PostMapping(path = "upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile) {
+    @PostMapping(path = "upload/{regNo}" ,consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile, @PathVariable String regNo) {
         try {
+            System.out.println(regNo + " Reg No");
             // String projectPath = new File("C:\\Users\\JANITH\\Desktop\\Desktop All Here\\Web All\\Spring MVC cw\\Car_Rental_System\\Easy_Car_Rental\\CarRental_Front-End\\car-regs").getParentFile().getParentFile().getAbsolutePath();
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
-            File uploadsDir = new File(projectPath + "/uploads");
-            System.out.println(projectPath);
+            System.out.println(projectPath + " proj path");
+            File uploadsDir = new File(projectPath + "/" + regNo + "/");
+            System.out.println(uploadsDir);
             uploadsDir.mkdir();
             myFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
 
-            allImages.add("uploads/" + myFile.getOriginalFilename());
+            allImages.add(regNo + "/" +myFile.getOriginalFilename());
 
             return new ResponseUtil(200,"Successfully returned !!",null);
         } catch (IOException | URISyntaxException e) {

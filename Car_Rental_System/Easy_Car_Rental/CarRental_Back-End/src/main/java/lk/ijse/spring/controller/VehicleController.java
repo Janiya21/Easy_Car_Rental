@@ -10,6 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("api/v1/vehicle")
@@ -18,6 +24,8 @@ public class VehicleController {
 
     @Autowired
     VehicleService vehicleService;
+
+    private static final ArrayList<String> vehiclePhotos = new ArrayList<>();
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllVehicles() {
@@ -63,6 +71,32 @@ public class VehicleController {
     @GetMapping(path = "all")
     public ResponseUtil getAllRegNos() {
         return new ResponseUtil(200,"Successfully Returned !!",vehicleService.getAllRegNos());
+    }
+
+    @GetMapping(path = "download",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllImagesFromDatabase() {
+        return new ResponseUtil(200,"Done",vehiclePhotos);
+    }
+
+    @PostMapping(path = "upload/{regNo}" ,consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile, @PathVariable String regNo) {
+        try {
+            System.out.println(regNo + " Reg No");
+            // String projectPath = new File("C:\\Users\\JANITH\\Desktop\\Desktop All Here\\Web All\\Spring MVC cw\\Car_Rental_System\\Easy_Car_Rental\\CarRental_Front-End\\car-regs").getParentFile().getParentFile().getAbsolutePath();
+            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+            System.out.println(projectPath + " proj path");
+            File uploadsDir = new File(projectPath + "/" + regNo + "/");
+            System.out.println(uploadsDir);
+            uploadsDir.mkdir();
+            myFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
+
+            vehiclePhotos.add(regNo + "/" +myFile.getOriginalFilename());
+
+            return new ResponseUtil(200,"Successfully returned !!",null);
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+            return new ResponseUtil(500,e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

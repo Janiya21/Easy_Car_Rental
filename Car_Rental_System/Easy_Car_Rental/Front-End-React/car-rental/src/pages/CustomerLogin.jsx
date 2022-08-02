@@ -61,6 +61,7 @@ class CustomerLogin extends Component {
 
     uploadImage = async () => {
         let promise;
+        let id = this.state.nic;
 
         const data = new FormData();
         let file = $("#file")[0].files[0];
@@ -68,7 +69,8 @@ class CustomerLogin extends Component {
         data.append("myFile", file, fileName);
 
         promise = new Promise((resolve, reject) => {
-            axios.post("http://localhost:8081/easyRents/api/v1/customer/upload",data)
+            console.log(id + " nic")
+            axios.post("http://localhost:8081/easyRents/api/v1/customer/upload/"+id,data)
                 .then((res) => {
                     alert("Image Successfully Uploaded")
                 });

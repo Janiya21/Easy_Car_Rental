@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Popup, Grid, Form, Icon, Card, Image, Dropdown, Input  } from 'semantic-ui-react';
 import {Link } from "react-router-dom";
 import axios from 'axios';
+import $ from "jquery";
 
 class New_Car extends Component {
     constructor(props){
@@ -29,6 +30,26 @@ class New_Car extends Component {
 
     changeHandler = (e) => {
         this.setState({ [e.target.name] : e.target.value});
+    }
+
+    uploadImage = async () => {
+        let promise;
+        let id = this.state.regNo;
+
+        const data = new FormData();
+        let file = $("#file")[0].files[0];
+        let fileName = $("#file")[0].files[0].name;
+        data.append("myFile", file, fileName);
+
+        promise = new Promise((resolve, reject) => {
+            console.log(id + " reg")
+            axios.post("http://localhost:8081/easyRents/api/v1/vehicle/upload/"+id,data)
+                .then((res) => {
+                    alert("Image Successfully Uploaded")
+                });
+        });
+
+        return await promise;
     }
 
     submitHandler = async (e) => {
@@ -90,7 +111,7 @@ class New_Car extends Component {
                                 <input style={{margin:"10px 0 0 30px"}} id="file" name="myFile" type="file" />} 
                             />
                             {/* <input style={{margin:"10px 0 0 30px"}} id="file" name="myFile" type="file" /> */}
-                            <button style={{margin:"14px 0 10px 195px"}} type="button" id="btnUpload" class="ui button primary">Upload File</button>
+                            <button onClick={this.uploadImage} style={{margin:"14px 0 10px 195px"}} type="button" id="btnUpload" class="ui button primary">Upload File</button>
                         </form>
 
                         <form style={{width:"30vw", marginLeft:"10vw"}} class="ui form" onSubmit={this.submitHandler}>

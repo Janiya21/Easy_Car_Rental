@@ -3,6 +3,7 @@ import { Popup, Checkbox, Form } from 'semantic-ui-react';
 import { Link, useHistory, useLocation} from "react-router-dom";
 import axios from "axios";
 import history from '../history';
+import $ from 'jquery';
 
 class CustomerLogin extends Component {
 
@@ -58,7 +59,26 @@ class CustomerLogin extends Component {
 
     /*==============================*/
 
+    uploadImage = async () => {
+        let promise;
+
+        const data = new FormData();
+        let file = $("#file")[0].files[0];
+        let fileName = $("#file")[0].files[0].name;
+        data.append("myFile", file, fileName);
+
+        promise = new Promise((resolve, reject) => {
+            axios.post("http://localhost:8081/easyRents/api/v1/customer/upload",data)
+                .then((res) => {
+                    alert("Image Successfully Uploaded")
+                });
+        });
+
+        return await promise;
+    }
+
     postCustomer = async (data) => {
+
         const promise = new Promise((resolve, reject) => {
             axios.post('http://localhost:8081/easyRents/api/v1/customer', data)
                 .then((res) => {
@@ -165,8 +185,8 @@ class CustomerLogin extends Component {
 
                                 </div>
 
-                                <div className="field">
-                                    <button style={{margin: "34px 0 10px 30px"}} type="button" id="btnUpload"
+                                <div className="field" id="file">
+                                    <button onClick={this.uploadImage} style={{margin: "34px 0 10px 30px"}} type="button" id="btnUpload"
                                             className="ui inverted button primary">Upload File
                                     </button>
                                 </div>

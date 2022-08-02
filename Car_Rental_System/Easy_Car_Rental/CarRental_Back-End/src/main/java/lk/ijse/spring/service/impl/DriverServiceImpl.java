@@ -77,4 +77,9 @@ public class DriverServiceImpl implements DriverService {
     public List<String> getAllDriverIDs() {
         return mapper.map(repo.getAllDriverIds(), new TypeToken<List<String>>() {}.getType());
     }
+
+    @Override
+    public String getLastID() {
+        return repo.getLastID();
+    }
 }

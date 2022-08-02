@@ -61,4 +61,26 @@ public class DriverController  {
     public ResponseUtil getAllIds() {
         return new ResponseUtil(200,"Successfully Returned !!",driverService.getAllDriverIDs());
     }
+
+    @GetMapping(path = "generateDriverID")
+    public ResponseUtil generateDriverID(){
+        System.out.println("avooo");
+        String lastID = driverService.getLastID();
+        System.out.println(lastID + " lfg");
+        String[] arrOfStr = lastID.split("-");
+        System.out.println(arrOfStr[1] + " this is the two");
+        System.out.println("-----------------");
+        int i = Integer.parseInt(String.valueOf(arrOfStr[1]));
+        i++;
+        String generatedId="";
+        if(i<10)
+            generatedId="D-000"+i;
+        else if(i<100)
+            generatedId="D-00"+i;
+        else if(i<1000)
+            generatedId="D-0"+i;
+
+        System.out.println(generatedId);
+        return new ResponseUtil(200,"Successfully Returned !!", generatedId);
+    }
 }

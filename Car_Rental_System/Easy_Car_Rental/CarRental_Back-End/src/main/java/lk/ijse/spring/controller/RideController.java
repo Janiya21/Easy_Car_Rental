@@ -61,7 +61,7 @@ public class RideController {
 
     @GetMapping(path = "generateOID")
     public ResponseUtil generateOrderID(){
-        StringBuilder newID= new StringBuilder();
+        //StringBuilder newID= new StringBuilder();
         System.out.println("haree");
         String lastID = rideService.getLastID();
         System.out.println(lastID + " lfg");
@@ -70,8 +70,16 @@ public class RideController {
         System.out.println("-----------------");
         int i = Integer.parseInt(String.valueOf(arrOfStr[1]));
         i++;
-        System.out.println(i);
-        return new ResponseUtil(200,"Successfully Returned !!", "R-"+i);
+        String generatedId="";
+        if(i<10)
+            generatedId="R-000"+i;
+        else if(i<100)
+            generatedId="R-00"+i;
+        else if(i<1000)
+            generatedId="R-0"+i;
+
+        System.out.println(generatedId);
+        return new ResponseUtil(200,"Successfully Returned !!", generatedId);
     }
 
 }

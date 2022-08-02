@@ -8,7 +8,7 @@ class Order_Ad extends Component {
         super(props)
 
         this.state = {
-            posts: []
+            posts: [],
         }
 
         this.callAPI = this.callAPI.bind(this)
@@ -26,13 +26,61 @@ class Order_Ad extends Component {
         })
     }
 
+    submitHandler = async (refNo) => {
+
+        let clickedObj = null;
+
+        for (let ob of this.state.posts) {
+            if(ob.referenceNo === refNo){
+               clickedObj = ob;
+            }
+        }
+        console.log(clickedObj);
+
+        let updatedObj = {
+            "referenceNo": clickedObj.referenceNo ,
+            "downPayment": clickedObj.downPayment ,
+            "rentalDate": clickedObj.rentalDate ,
+            "rentalTime": clickedObj.rentalTime ,
+            "reqStatus": "Approved" ,
+            "returnDate": clickedObj.returnDate ,
+            customer: clickedObj.customer,
+            driver: clickedObj.driver,
+            vehicle: clickedObj.vehicle
+        }
+
+        console.log(updatedObj);
+
+        let res = await this.updateOrderStatus(updatedObj);
+        console.log(res);
+
+        if (res.status === 200) {
+            alert("Successfully Approved The Request");
+            window.location.reload();
+        } else {
+            alert("Request Not Approved Correctly")
+        }
+    }
+
+    updateOrderStatus = async (data) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.put('http://localhost:8081/easyRents/api/v1/ride', data)
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        });
+
+        return await promise;
+    }
+
     render() {
        
         let tb_data = this.state.posts.map((item)=>{
             console.log(item);
             if (item.reqStatus === "Approved"){
-
-                //console.log(item);
 
                 return (
                     <Table.Row>
@@ -164,7 +212,7 @@ class Order_Ad extends Component {
                             />
                         </Table.Cell>
                         <Table.Cell>
-                            <Button basic color='green'>Approve</Button>
+                            <Button onClick={() => this.submitHandler(item.referenceNo)} type="button" basic color='green'>Approve</Button>
                             <Button basic color='red'>Decline </Button>
                         </Table.Cell>
                     </Table.Row>

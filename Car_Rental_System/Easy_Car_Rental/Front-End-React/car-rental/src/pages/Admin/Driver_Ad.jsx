@@ -50,12 +50,15 @@ class Driver_Ad extends Component {
                     message: res.data.message,
                     severity: 'success'
                 });
+                alert("Successfully Approved The Request");
+                window.location.reload();
             } else {
                 this.setState({
                     alert: true,
                     message: res.response.data.message,
                     severity: 'error'
                 });
+                alert("Error while adding a Driver");
             }
         })
     }

@@ -17,11 +17,19 @@ class Admin_All extends Component {
 
         this.state = {
             activeItem: 'inbox',
-            totalCustomers:null
+            totalCustomers:null,
+            totalDrivers:null,
+            totVehicles:null
         }
 
         this.getCustomers = this.getCustomers.bind(this)
         this.getCustomers();
+
+        this.getDrivers = this.getDrivers.bind(this)
+        this.getDrivers();
+
+        this.getAllCars = this.getAllCars.bind(this)
+        this.getAllCars();
     }
     
 
@@ -50,8 +58,13 @@ class Admin_All extends Component {
             (response) => response.json()
         ).then((data)=> {
             console.log(data);
+            let count =0;
+            for (const a of data.data){
+                count++;
+            }
+            console.log(count + " drivers")
             this.setState({
-
+                totalDrivers:count
             })
         })
     }
@@ -61,15 +74,19 @@ class Admin_All extends Component {
             (response) => response.json()
         ).then((data)=> {
             console.log(data);
+            let count =0;
+            for (const a of data.data){
+                count++;
+            }
             this.setState({
-                posts:data.data
+                totVehicles:count
             })
         })
     }
 
     render() {
         const { activeItem } = this.state;
-        const { totalCustomers } = this.state;
+        const { totalCustomers,totalDrivers,totVehicles } = this.state;
         const square = { width: 175, height: 175};
         const data = [
             { argument: 1, value: 10 },
@@ -190,7 +207,7 @@ class Admin_All extends Component {
                                     href='#card-example-link-card'
                                     header={<h3 style={{marginLeft:"30px"}}>Total Bookings Today</h3>}
                                     meta={<div style={{margin:"20px 0 20px 70px"}}>
-                                       <Label size='huge'> <Icon name='mail' /> 23</Label>
+                                       <Label size='huge'> <Icon name='mail' /> 2</Label>
                                     </div>}
                                 />
                             </Grid.Column>
@@ -199,7 +216,7 @@ class Admin_All extends Component {
                                     href='#card-example-link-card'
                                     header={<h3 style={{marginLeft:"30px"}}>Total Available Drivers</h3>}
                                     meta={<div style={{margin:"20px 0 20px 70px"}}>
-                                       <Label size='huge'> <Icon name='mail' /> 23</Label>
+                                       <Label size='huge'> <Icon name='mail' /> {totalDrivers}</Label>
                                     </div>}
                                 />
                             </Grid.Column>
@@ -208,7 +225,7 @@ class Admin_All extends Component {
                                     href='#card-example-link-card'
                                     header={<h3 style={{marginLeft:"30px"}}>Total Available Cars</h3>}
                                     meta={<div style={{margin:"20px 0 20px 70px"}}>
-                                       <Label size='huge'> <Icon name='mail' /> 23</Label>
+                                       <Label size='huge'> <Icon name='mail' />{totVehicles}</Label>
                                     </div>}
                                 />
                             </Grid.Column>

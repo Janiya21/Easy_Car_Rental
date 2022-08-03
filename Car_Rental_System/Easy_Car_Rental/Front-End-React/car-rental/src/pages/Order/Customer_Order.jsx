@@ -9,7 +9,7 @@ class CustomerOrder extends Component {
 
         this.state = {
             referenceNo:'',
-            downPayment:'',
+            downPayment:null,
             rentalTime:"10:30:00",
             reqStatus: "Pending",
             customer:{},
@@ -52,8 +52,8 @@ class CustomerOrder extends Component {
         let cost = this.state.vehicle.daily_cost;
         let loss = this.state.vehicle.loss_damage_amount;
 
-        this.state.total = (dif * cost) + loss;
-        console.log(this.state.total + " total")
+        this.state.downPayment = (dif * cost) + loss;
+        console.log(this.state.downPayment + " total")
     }
 
     getDriverDetails(){
@@ -121,6 +121,8 @@ class CustomerOrder extends Component {
         e.preventDefault();
         console.log(this.state);
 
+        this.setTotal();
+
         let res = await this.postOrder(this.state);
         console.log(res);
 
@@ -144,7 +146,6 @@ class CustomerOrder extends Component {
         const promise = new Promise((resolve, reject) => {
             axios.post('http://localhost:8081/easyRents/api/v1/ride', data)
                 .then((res) => {
-                    this.setTotal();
                     return resolve(res);
                 })
                 .catch((err) => {
@@ -199,7 +200,7 @@ class CustomerOrder extends Component {
                         </div>
                         <Message warning>
                                 <Message.Header>You Have to Pay</Message.Header>
-                                <p>This is one of best Luxary Vehicle, So you have to pay refundable damage Fee, We will Pay-back money after calculating damages !!</p>
+                                <p>This is one of best Luxury Vehicle, So you have to pay refundable damage Fee, We will Pay-back money after calculating damages !!</p>
                                 <p>Rental, deposit and all other charges related to vehicle hire should be paid in advance by the Hirer. If the rental is delayed, daily rates will apply until the vehicle is safely returned. </p>
                                 <p>We will charge extra money for late hours !</p>
                         </Message>

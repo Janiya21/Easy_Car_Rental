@@ -141,7 +141,7 @@ class Admin_All extends Component {
                     </Menu>
                 </div>
                 <div class="twelve wide column" style={{marginLeft:"-40px"}}>
-                    <Segment raised>Pellentesque habitant morbi tristique senectus.</Segment>
+                    <Segment raised>Profit Summary </Segment>
                     <div class="ui">
                         <div className="row">
                             <Grid>
@@ -183,7 +183,7 @@ class Admin_All extends Component {
                         </div>
                     </div>
                     
-                    <Segment raised>Daily Summary</Segment>
+                    <Segment raised>Report Summary</Segment>
 
                     <Segment basic>
                         {/* <Progress progress='value' value={35} indicating inverted>Registered Users </Progress>

@@ -9,14 +9,16 @@ class CustomerOrder extends Component {
 
         this.state = {
             referenceNo:'',
-            downPayment:'17000',
+            downPayment:'',
             rentalTime:"10:30:00",
             reqStatus: "Pending",
             customer:{},
             driver:{},
             vehicle: {},
             rentalDate:'',
-            returnDate:''
+            returnDate:'',
+            days:null,
+            total:null
         }
 
         this.getCustomer = this.getCustomer.bind(this)
@@ -33,19 +35,28 @@ class CustomerOrder extends Component {
     }
 
     componentDidMount(){
-        this.state.rentalDate = localStorage.getItem("pickup");
-        this.state.returnDate = localStorage.getItem("return");
+        let pickup = localStorage.getItem("pickup");
+        let returnD = localStorage.getItem("return");
+        let startingDate = new Date(pickup);
+        let returnDate = new Date(returnD);
+        let difTime = returnDate.getTime() - startingDate.getTime();
+        let difDate = difTime/(1000*3600*24);
+        console.log(difDate + " dif dates");
+        this.state.days=difDate;
+        this.state.rentalDate = pickup;
+        this.state.returnDate = returnD;
+    }
+
+    setTotal(){
+        let dif = this.state.days;
+        let cost = this.state.vehicle.daily_cost;
+        let loss = this.state.vehicle.loss_damage_amount;
+
+        this.state.total = (dif * cost) + loss;
+        console.log(this.state.total + " total")
     }
 
     getDriverDetails(){
-        // this.state.driver = {
-        //     "driverId": "D-0003",
-        //     "password": "chStonis",
-        //     "name": "Chamika",
-        //     "email": "Chami88@gmail.com",
-        //     "telNo": "0758738212"
-        // };
-        // console.log(this.state.driver);
 
         fetch("http://localhost:8081/easyRents/api/v1/driver").then(
             (response) => response.json()
@@ -87,7 +98,8 @@ class CustomerOrder extends Component {
         ).then((data) => {
             console.log(data.data);
             this.setState({
-                vehicle: data.data[0]
+                vehicle: data.data[0],
+                downPayment: data.data[0].loss_damage_amount
             })
         });
         console.log(this.state.vehicle);
@@ -118,6 +130,7 @@ class CustomerOrder extends Component {
                 message: res.data.message,
                 severity: 'success'
             });
+            alert("Order Added Successfully !! Your Reference No : " + this.state.referenceNo );
         } else {
             this.setState({
                 alert: true,
@@ -131,11 +144,12 @@ class CustomerOrder extends Component {
         const promise = new Promise((resolve, reject) => {
             axios.post('http://localhost:8081/easyRents/api/v1/ride', data)
                 .then((res) => {
-                    return resolve(res)
+                    this.setTotal();
+                    return resolve(res);
                 })
                 .catch((err) => {
                     return resolve(err)
-                })
+                });
         });
 
         return await promise;
@@ -146,6 +160,7 @@ class CustomerOrder extends Component {
         let veh = this.state.vehicle;
         let driver = this.state.driver;
         let customer = this.state.customer;
+        const days = this.state.days;
 
         console.log(veh);
         console.log(driver);
@@ -265,20 +280,28 @@ class CustomerOrder extends Component {
                                         </Table.Cell>
                                         <Table.Cell>{customer.email}</Table.Cell>
                                     </Table.Row>
-                                    <Table.Row>
-                                        <Table.Cell>
-                                            <Header as='h4' image>
-                                                <Header.Content>Your Nic No</Header.Content>
-                                            </Header>
-                                        </Table.Cell>
-                                        <Table.Cell>{customer.nic}</Table.Cell>
-                                    </Table.Row>
+                                        <Table.Row>
+                                            <Table.Cell>
+                                                <Header as='h4' image>
+                                                    <Header.Content>Total Days</Header.Content>
+                                                </Header>
+                                            </Table.Cell>
+                                            <Table.Cell>{days}</Table.Cell>
+                                        </Table.Row>
                                     </Table.Body>
                                 </Table>
                             </Grid.Column>
                             <Grid.Column width={5}>
                             <Table basic='very' celled collapsing>
                                     <Table.Body>
+                                        <Table.Row>
+                                            <Table.Cell>
+                                                <Header as='h4' image>
+                                                    <Header.Content>Your Nic No</Header.Content>
+                                                </Header>
+                                            </Table.Cell>
+                                            <Table.Cell>{customer.nic}</Table.Cell>
+                                        </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
                                             <Header as='h4' image>
@@ -287,21 +310,13 @@ class CustomerOrder extends Component {
                                         </Table.Cell>
                                         <Table.Cell>{customer.tel}</Table.Cell>
                                     </Table.Row>
-                                    {/*<Table.Row>*/}
-                                    {/*    <Table.Cell>*/}
-                                    {/*        <Header as='h4' image>*/}
-                                    {/*            <Header.Content>Downpayment Charge</Header.Content>*/}
-                                    {/*        </Header>*/}
-                                    {/*    </Table.Cell>*/}
-                                    {/*    <Table.Cell>{customer.downPayment}</Table.Cell>*/}
-                                    {/*</Table.Row>*/}
                                     <Table.Row>
                                         <Table.Cell>
                                             <Header as='h4' image>
                                                 <Header.Content>Vehicle Charge</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell>{veh.daily_cost} </Table.Cell>
+                                        <Table.Cell>{veh.daily_cost * days} </Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
@@ -317,7 +332,7 @@ class CustomerOrder extends Component {
                                                 <Header.Content>Total Charge</Header.Content>
                                             </Header>
                                         </Table.Cell>
-                                        <Table.Cell><h2>Rs {veh.loss_damage_amount + veh.daily_cost}</h2></Table.Cell>
+                                        <Table.Cell><h2>Rs {veh.loss_damage_amount + (veh.daily_cost * days)}</h2></Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>

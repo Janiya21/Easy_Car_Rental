@@ -156,6 +156,7 @@ class Homepage extends Component {
                                     </div>
                                     <div class="equal width fields">
                                         <select name="vehicle_type" value={vehicle_type} onChange={this.changeHandler} class="ui dropdown">
+                                            <option value="any" onChange={this.changeHandler}>Any Type</option>
                                             <option value="general" onChange={this.changeHandler}>General</option>
                                             <option value="premium" onChange={this.changeHandler}>Premium</option>
                                             <option value="luxary" onChange={this.changeHandler}>Luxary</option>

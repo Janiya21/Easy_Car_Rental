@@ -24,6 +24,8 @@ public class Ride {
     private LocalDate returnDate;
     private String reqStatus;
     private Double downPayment;
+//    private int days;
+//    private double total;
 
     @ManyToOne
     @JoinColumn(name= "NIC", referencedColumnName = "NIC",nullable = false)

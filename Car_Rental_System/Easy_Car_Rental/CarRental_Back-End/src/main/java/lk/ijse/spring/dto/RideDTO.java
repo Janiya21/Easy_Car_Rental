@@ -23,6 +23,8 @@ public class RideDTO {
     private LocalDate returnDate;
     private String reqStatus;
     private Double downPayment;
+//    private int days;
+//    private double total;
 
     private Driver driver;
     private Vehicle vehicle;

@@ -17,14 +17,59 @@ class Admin_All extends Component {
 
         this.state = {
             activeItem: 'inbox',
+            totalCustomers:null
         }
+
+        this.getCustomers = this.getCustomers.bind(this)
+        this.getCustomers();
     }
     
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+    getCustomers(){
+        fetch("http://localhost:8081/easyRents/api/v1/customer").then(
+            (response) => response.json()
+        ).then((data)=> {
+            console.log(data);
+            let count =0;
+            for (const a of data.data){
+                if(a.status === "Approved"){
+                    count++;
+                }
+            }
+            console.log(count + " count")
+            this.setState({
+                totalCustomers:count
+            })
+        })
+    }
+
+    getDrivers(){
+        fetch("http://localhost:8081/easyRents/api/v1/driver").then(
+            (response) => response.json()
+        ).then((data)=> {
+            console.log(data);
+            this.setState({
+
+            })
+        })
+    }
+
+    getAllCars(){
+        fetch("http://localhost:8081/easyRents/api/v1/vehicle").then(
+            (response) => response.json()
+        ).then((data)=> {
+            console.log(data);
+            this.setState({
+                posts:data.data
+            })
+        })
+    }
+
     render() {
         const { activeItem } = this.state;
+        const { totalCustomers } = this.state;
         const square = { width: 175, height: 175};
         const data = [
             { argument: 1, value: 10 },
@@ -136,7 +181,7 @@ class Admin_All extends Component {
                                     href='#card-example-link-card'
                                     header={<h3 style={{marginLeft:"30px"}}>Total Registered Users</h3>}
                                     meta={<div style={{margin:"20px 0 20px 70px"}}>
-                                       <Label size='huge'> <Icon name='mail' /> 23</Label>
+                                       <Label size='huge'> <Icon name='mail' /> {totalCustomers}</Label>
                                     </div>}
                                 />
                             </Grid.Column>
@@ -169,14 +214,14 @@ class Admin_All extends Component {
                             </Grid.Column>
                         </Grid>
 
-                        <Paper>
-                            <Chart data={data}>
-                                <ArgumentAxis />
-                                <ValueAxis />
+                        {/*<Paper>*/}
+                        {/*    <Chart data={data}>*/}
+                        {/*        <ArgumentAxis />*/}
+                        {/*        <ValueAxis />*/}
 
-                                <LineSeries valueField="value" argumentField="argument" />
-                            </Chart>
-                        </Paper>
+                        {/*        <LineSeries valueField="value" argumentField="argument" />*/}
+                        {/*    </Chart>*/}
+                        {/*</Paper>*/}
                     </Segment>
 
 

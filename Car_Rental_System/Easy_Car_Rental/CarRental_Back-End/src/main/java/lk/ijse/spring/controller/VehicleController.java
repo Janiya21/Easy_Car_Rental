@@ -82,7 +82,7 @@ public class VehicleController {
     public ResponseUtil uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile, @PathVariable String regNo) {
         try {
             System.out.println(regNo + " Reg No");
-            // String projectPath = new File("C:\\Users\\JANITH\\Desktop\\Desktop All Here\\Web All\\Spring MVC cw\\Car_Rental_System\\Easy_Car_Rental\\CarRental_Front-End\\car-regs").getParentFile().getParentFile().getAbsolutePath();
+            // String projectPath = new File("C:\\Users\\JANITH\\Desktop\\Desktop All Here\\Web All\\Spring MVC cw\\Car_Rental_System\\Easy_Car_Rental\\CarRental_Front-End\\car-regs\\src").getParentFile().getParentFile().getAbsolutePath();
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
             System.out.println(projectPath + " proj path");
             File uploadsDir = new File(projectPath + "/" + regNo + "/");

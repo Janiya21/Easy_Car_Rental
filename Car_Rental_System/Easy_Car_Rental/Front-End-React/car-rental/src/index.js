@@ -1,7 +1,5 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Driver_Reg from "./pages/Driver_Reg";
-import Customer_Reg from './pages/Customer_Reg';
 import Layout1 from './pages/Layout';
 import Layout2 from './pages/Layout2';
 import Homepage from './pages/Homepage';
@@ -18,7 +16,6 @@ import NewCar_Admin from './pages/Admin/Add_NewCar.jsx';
 import Cus_Order from './pages/Order/Customer_Order'
 import Driver_View from './pages/Driver/Driver_View';
 import Order_Admin from './pages/Admin/Order_Ad.jsx'
-import history from '../src/history';
 
 export default function App(props) {
   console.log(props);

@@ -3,7 +3,6 @@ import './App.css';
 import Form from './Customer_Form';
 import Form2 from "./Driver_Form";
 import NavBar from './NavBar';
-import history from '../src/history';
 
 class App extends Component{
   render(){

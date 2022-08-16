@@ -33,7 +33,6 @@ class Luxary_Vehicles extends Component {
 
     callAPI() {
         let type = localStorage.getItem("type");
-        console.log(type + " tyyyyyyyyyyyyyyyyyyyyyyyyyyyype")
         fetch("http://localhost:8081/easyRents/api/v1/vehicle/comfy/" + type).then(
             (response) => response.json()
         ).then((data) => {

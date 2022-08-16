@@ -197,7 +197,7 @@ class Customer_Ad extends Component {
                     <Grid.Column width={7}>
                     
                         <Input icon='search' placeholder='Search customer by NIC' /> 
-                    <Table celled style={{marginLeft:"0px", width:"50vw"}}>
+                        <Table celled style={{marginLeft:"0px", width:"50vw"}}>
                         <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>NIC</Table.HeaderCell>

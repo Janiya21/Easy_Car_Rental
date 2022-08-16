@@ -28,7 +28,6 @@ class Homepage extends Component {
             return_date:'',
             pickup_location:'',
             vehicle_type:'',
-
         }
     }
 
@@ -48,32 +47,31 @@ class Homepage extends Component {
         const {pickup_date,return_date,location,vehicle_type} = this.state; 
         const {classes} = this.props;
         return (
-                
             <div>
                 <div class="ui internally celled grid">
                     <div class="ui steps">
                         <div class="active step">
-                            <i aria-hidden="true" class="calendar times icon"></i>
+                            <i aria-hidden="true" class="calendar times icon"/>
                             <div class="content">
                                 <div class="title">Select a Date/Time</div>
                                 <div class="description">Enter billing information</div>
                             </div>
                         </div>
                         <div class="step">
-                            <i aria-hidden="true" class="icon car"></i>
+                            <i aria-hidden="true" class="icon car"/>
                             <div class="content"><div class="title">Select A Car</div>
                                 <div class="description">Choose your shipping options</div>
                             </div>
                         </div>
                         <div class="step">
-                            <i aria-hidden="true" class="drivers license icon"></i>
+                            <i aria-hidden="true" class="drivers license icon"/>
                             <div class="content">
                                 <div class="title">Pick-up Random Driver</div>
                                 <div class="description">Enter billing information</div>
                             </div>
                         </div>
                         <div class="disabled step">
-                            <i aria-hidden="true" class="info icon"></i>
+                            <i aria-hidden="true" class="info icon"/>
                             <div class="content">
                                 <div class="title">Confirm Order</div>
                             </div>
@@ -99,7 +97,7 @@ class Homepage extends Component {
                                     </div>
                                     <div class="ui statistic">
                                         <div class="value">
-                                            <i aria-hidden="true" class="plane icon"></i>5
+                                            <i aria-hidden="true" class="plane icon"/>5
                                         </div>
                                         <div class="label">Flights</div>
                                     </div>
@@ -140,8 +138,7 @@ class Homepage extends Component {
                                         />
                                     </div>
                                     <div className="equal width fields">
-                                        <select name="location"
-                                                className="ui dropdown">
+                                        <select name="location" className="ui dropdown">
                                             <option value="Colombo" onChange={this.changeHandler}>Colombo</option>
                                             <option value="Piliyandala" onChange={this.changeHandler}>Piliyandala</option>
                                             <option value="Boralesgamuwa" onChange={this.changeHandler}>Boralesgamuwa</option>
@@ -182,86 +179,6 @@ class Homepage extends Component {
                     </div>
 
                 </div>
-
-                {/* <div class="ui raised segment">
-                    <h1 class="ui container center aligned">Most Available Cars Matching For You </h1>
-                </div>
-
-                <div class="ui grid" style={{ margin: "20px" }}>
-
-                    <div style={{ margin: "20px 50px 30px 90px" }} class="ui doubling three column grid">
-                        <div class="column">
-                    
-                            <div class="ui card">
-                                <div class="image">
-                                    <img style={{height:"23vh",width:"18.6vw"}} src="https://neethutravels.com/wp-content/uploads/2018/02/mercedes-benz-s-class.jpg" />
-                                </div>
-                                <div class="content">
-                                    <div class="header">Luxary Vehicles</div>
-                                    <div class="meta">
-                                        <span class="date">Starting from : rs 8000 - 20000</span>
-                                    </div>
-                                    <div class="description">Max Comfortable - 5 passengers</div>
-                                </div>
-                                <div class="extra content">
-                                    <a><i aria-hidden="true" class="user icon"></i>920 Buyers</a>
-                                </div>
-                                <button class="ui button">
-                                    <Link to="/luxary_vehicle">
-                                        <div class="detail"><h3>Availability : 13</h3></div>
-                                    </Link>
-                                </button>
-                            </div>
-
-                        </div>
-                        <div class="column">
-
-                            <div class="ui card">
-                                <div class="image">
-                                    <img src="https://rental.timescar.jp/price/items/C3212.jpg" />
-                                </div>
-                                <div class="content">
-                                    <div class="header">Luxary Vehicles</div>
-                                    <div class="meta">
-                                        <span class="date">Starting from : rs 6000 - 17000</span>
-                                    </div>
-                                    <div class="description">Medium Comfortable - 5 passengers</div>
-                                </div>
-                                <div class="extra content">
-                                    <a><i aria-hidden="true" class="user icon"></i>2.1K Buyers</a>
-                                </div>
-                                <button class="ui button">
-                                    <Link to="/premium_vehicle">
-                                        <div class="detail"><h3>Availability : 23</h3></div>
-                                    </Link>
-                                </button>
-                            </div>
-
-                        </div>
-                        <div class="column">
-
-                            <div class="ui card">
-                                <div class="image">
-                                    <img style={{height:"23vh",width:"18.6vw"}} src="http://3.bp.blogspot.com/-QK3rjTIu0zA/UywFlaaeZtI/AAAAAAAAA_4/IaxajFYLAMQ/s1600/Mazda-Carol-10.jpg" />
-                                </div>
-                                <div class="content">
-                                    <div class="header">General</div>
-                                    <div class="meta">
-                                        <span class="date">Starting from : rs 3000 - 11000</span>
-                                    </div>
-                                    <div class="description">Medium Comfortable - 5 passengers</div>
-                                </div>
-                                <div class="extra content">
-                                    <a><i aria-hidden="true" class="user icon"></i>5K Buyers</a>
-                                </div>
-                                <button class="ui button">
-                                    <div class="detail"><h3>Availability : 32</h3></div>
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div> */}
 
             </div>
         )

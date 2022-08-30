@@ -2,45 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce219c1f-b391-4788-9462-63d210a03df1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/src/main/java/lk/ijse/spring/controller/RideController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/src/main/java/lk/ijse/spring/controller/RideController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/src/main/java/lk/ijse/spring/repo/RideRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/src/main/java/lk/ijse/spring/repo/RideRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/src/main/java/lk/ijse/spring/service/RideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/src/main/java/lk/ijse/spring/service/RideService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/src/main/java/lk/ijse/spring/service/impl/RideServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/src/main/java/lk/ijse/spring/service/impl/RideServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0.war" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/controller/CustomerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/controller/RideController.class" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/controller/RideController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/entity/cj.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/repo/RideRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/repo/RideRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/service/RideService.class" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/service/RideService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/service/impl/RideServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/CarRental_Back-End-1.0.0/WEB-INF/classes/lk/ijse/spring/service/impl/RideServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/controller/CustomerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/controller/RideController.class" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/controller/RideController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/entity/cj.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/repo/RideRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/repo/RideRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/service/RideService.class" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/service/RideService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/service/impl/RideServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Back-End/target/classes/lk/ijse/spring/service/impl/RideServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Front-End/controller/AdminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Front-End/controller/AdminController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental_Front-End/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental_Front-End/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/NavBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/Customer_Form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/Driver.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/Driver_Form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/NavBar.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/Admin_Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/Admin_Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/CustomerLogin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/CustomerLogin.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/React_Front-End.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/src/components/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/src/components/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/src/components/Form.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/React_Front-End/easy_rentals/src/style/style.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,10 +31,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2021.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -73,10 +47,25 @@
       <option name="presentableId" value="Default" />
       <updated>1658213206279</updated>
       <workItem from="1658213207695" duration="35000" />
+      <workItem from="1661573263174" duration="2555000" />
+      <workItem from="1661835978412" duration="1227000" />
+      <workItem from="1661837762881" duration="6149000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

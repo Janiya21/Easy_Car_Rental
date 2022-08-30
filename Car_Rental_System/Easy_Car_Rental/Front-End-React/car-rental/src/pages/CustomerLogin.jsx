@@ -133,14 +133,14 @@ class CustomerLogin extends Component {
                                 <label>NIC</label>
                                 <div class="ui left icon input">
                                     <input name="logNic" value={logNic} onChange={this.changeHandler}  type="text" placeholder="nic number" />
-                                    <i aria-hidden="true" class="user icon"></i>
+                                    <i aria-hidden="true" class="user icon"/>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Password</label>
                                 <div class="ui left icon input">
                                     <input name="loginPassword" value={loginPassword} onChange={this.changeHandler} type="password" />
-                                    <i aria-hidden="true" class="lock icon"></i>
+                                    <i aria-hidden="true" class="lock icon"/>
                                 </div>
                             </div>
                             <button type="button" onClick={this.callAPI} style={{ margin: "40px 0 30px 10vw" }} class="ui primary inverted button">

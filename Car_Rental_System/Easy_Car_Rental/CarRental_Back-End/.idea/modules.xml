@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../CarRental_Front-End/CarRental_Front-End.iml" filepath="$PROJECT_DIR$/../CarRental_Front-End/CarRental_Front-End.iml" />
       <module fileurl="file://$PROJECT_DIR$/../React_Front-End/React_Front-End.iml" filepath="$PROJECT_DIR$/../React_Front-End/React_Front-End.iml" />
     </modules>
   </component>

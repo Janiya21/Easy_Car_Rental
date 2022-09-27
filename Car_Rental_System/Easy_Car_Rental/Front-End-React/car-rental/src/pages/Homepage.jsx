@@ -97,13 +97,13 @@ class Homepage extends Component {
                                     </div>
                                     <div class="ui statistic">
                                         <div class="value">
-                                            <i aria-hidden="true" class="plane icon"/>5
+                                            <i aria-hidden="true" class="car icon"/>5
                                         </div>
-                                        <div class="label">Flights</div>
+                                        <div class="label">Drivers</div>
                                     </div>
                                     <div class="ui statistic">
                                         <div class="value">
-                                            <img src="https://react.semantic-ui.com/images/avatar/small/joe.jpg" class="ui circular inline image" />42
+                                            22
                                         </div>
                                         <div class="label">Team Members</div></div>
                                 </div>
@@ -168,12 +168,14 @@ class Homepage extends Component {
                                 </form>
                             </div>
                             <div class="ui container" style={{ padding: "30px 0 0 0" }}>
-                                Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-                                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
-                                Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut
-                                metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
-                                Curabitur ullamcorper ultricies nisi.Aenean imperdiet. Etiam ultricies nisi vel augue.
-                                Curabitur ullamcorper ultricies nisi.
+                                To start the easy process of booking a car rental on Expedia, simply enter the location along with the dates and times
+                                for pickup and drop-off. Alternatively, browse our selection of popular car rental types and destinations if you need
+                                some inspiration. Whether you’re looking for a convertible rental for you and your partner or a passenger van rental for
+                                the whole family, we have a wide variety of car rental options available that can have you riding with efficiency and style.
+
+                                Rental cars are available from various places in your destination, including near your hotel or downtown or at the airport,
+                                such as car rentals at Logan International Airports. There are search filters available that let you choose the specific
+                                neighborhood where you need to find your rental car as well.
                             </div>
                         </div>
                     </div>

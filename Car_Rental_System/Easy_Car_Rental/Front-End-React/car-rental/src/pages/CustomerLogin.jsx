@@ -75,7 +75,6 @@ class CustomerLogin extends Component {
                     alert("Image Successfully Uploaded")
                 });
         });
-
         return await promise;
     }
 
@@ -119,7 +118,6 @@ class CustomerLogin extends Component {
     }
 
     render() {
-
         const {logNic, nic,name,email,password,tel,loginPassword} = this.state;
         return (
             <div class="ui">

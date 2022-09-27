@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce219c1f-b391-4788-9462-63d210a03df1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/Customer_Form.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/Driver.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/Driver_Form.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/components/NavBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/Admin_Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/Admin_Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/CustomerLogin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/CustomerLogin.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End-React/car-rental/src/pages/navbar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +40,10 @@
       <workItem from="1661573263174" duration="2555000" />
       <workItem from="1661835978412" duration="1227000" />
       <workItem from="1661837762881" duration="6149000" />
+      <workItem from="1661855399811" duration="698000" />
+      <workItem from="1661955222052" duration="1209000" />
+      <workItem from="1662637319596" duration="651000" />
+      <workItem from="1662702148081" duration="4352000" />
     </task>
     <servers />
   </component>

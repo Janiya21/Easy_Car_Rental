@@ -231,12 +231,12 @@ class Order_Ad extends Component {
                                     <Statistic.Label>Ratings</Statistic.Label>
                                 </Statistic>
                                 <Statistic>
-                                    <Statistic.Value>11,000</Statistic.Value>
+                                    <Statistic.Value>005</Statistic.Value>
                                     <Statistic.Label>Total Customers</Statistic.Label>
                                 </Statistic>
                                 <Statistic>
-                                    <Statistic.Value>92%</Statistic.Value>
-                                    <Statistic.Label>Reviews</Statistic.Label>
+                                    <Statistic.Value>004</Statistic.Value>
+                                    <Statistic.Label>Total Pendings</Statistic.Label>
                                 </Statistic>
                             </Statistic.Group>
                         </div>
